@@ -1,7 +1,4 @@
 #include "main.h"
-#include "robot.h"
-#include "global.h"
-#include "driver_control.h"
 
 /**
  * A callback function for LLEMU's center button.
@@ -27,7 +24,7 @@ void on_center_button() {
  */
 void initialize() {
 	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
+	pros::lcd::set_text(1, "dillon is a bozo!");
 
 	pros::lcd::register_btn1_cb(on_center_button);
 }
@@ -77,10 +74,45 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-		while(true){
-			chassis();
-			intake();
-			pros::delay(5);
+	pros::Motor LF (1); //"false" one side to reverse
+	pros::Motor LB (2);
+	pros::Motor RF (3);
+	pros::Motor RB (4);
+
+	pros::Motor intakeL (5); //"false" one of these to reverse
+	pros::Motor intakeR (6);
+
+	pros::Controller master (CONTROLLER_MASTER);
+
+	while(true) {
+		//chassis
+		int power = master.get_analog(ANALOG_LEFT_Y);
+		int turn = master.get_analog(ANALOG_RIGHT_X);
+		int left = power + turn;
+		int right = power - turn;
+		LF.move(left);
+		LB.move(left);
+		RF.move(right);
+		RB.move(right);
+
+		//intake
+		if (master.get_digital(DIGITAL_R1)){
+			intakeL.move_velocity(200);
+			intakeR.move_velocity(-200);
 		}
+		else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
+			intakeL.move_velocity(-200);
+			intakeR.move_velocity(200);
+		}
+		else{
+			intakeL.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+			intakeR.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+			intakeL.brake();
+			intakeR.brake();
+		}
+
+
+		pros::delay(2);
 	}
+}
 
