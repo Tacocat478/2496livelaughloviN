@@ -74,13 +74,13 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	pros::Motor LF (1); //"false" one side to reverse
-	pros::Motor LB (2);
-	pros::Motor RF (3);
-	pros::Motor RB (4);
+	pros::Motor LF (9); //"false" one side to reverse
+	pros::Motor LB (10);
+	pros::Motor RF (5, true);
+	pros::Motor RB (1, true);
 
-	pros::Motor intakeL (5); //"false" one of these to reverse
-	pros::Motor intakeR (6);
+	pros::Motor intakeL (8); //"true" one of these to reverse
+	pros::Motor intakeR (3, true);
 
 	pros::Controller master (CONTROLLER_MASTER);
 
