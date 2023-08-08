@@ -80,14 +80,14 @@ void opcontrol() {
 	pros::Motor RB (1, true);
 
 	pros::Motor intakeL (8); //"true" one of these to reverse
-	pros::Motor intakeR (3, true);
+	pros::Motor intakeR (3);
 
 	pros::Controller master (CONTROLLER_MASTER);
 
 	while(true) {
 		//chassis
-		int power = master.get_analog(ANALOG_LEFT_Y);
-		int turn = master.get_analog(ANALOG_RIGHT_X);
+		int power = -(master.get_analog(ANALOG_LEFT_Y));
+		int turn = -(master.get_analog(ANALOG_RIGHT_X));
 		int left = power + turn;
 		int right = power - turn;
 		LF.move(left);
