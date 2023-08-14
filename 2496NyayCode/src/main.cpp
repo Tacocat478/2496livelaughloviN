@@ -84,6 +84,11 @@ void opcontrol() {
 
 	pros::Controller master (CONTROLLER_MASTER);
 
+	pros::ADIDigitalOut wingL ('A');
+	bool wings = false;
+	bool toggle = false;
+	wingL.set_value(LOW);
+
 	while(true) {
 		//chassis
 		int power = -(master.get_analog(ANALOG_LEFT_Y));
@@ -111,8 +116,19 @@ void opcontrol() {
 			intakeR.brake();
 		}
 
+		//wings
+		if (master.get_digital_new_press(DIGITAL_L1)){
+			wings = !wings;
+			if (wings){
+				wingL.set_value(HIGH);
+			}
+			else{
+				wingL.set_value(LOW);
+			}
+		}
 
 		pros::delay(2);
+
 	}
 }
 
