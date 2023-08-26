@@ -79,14 +79,12 @@ void opcontrol() {
 	pros::Motor RF (5, true);
 	pros::Motor RB (1, true);
 
-	pros::Motor intakeL (8); //"true" one of these to reverse
-	pros::Motor intakeR (3);
+	pros::Motor intake (8); //"true" one of these to reverse
 
 	pros::Controller master (CONTROLLER_MASTER);
 
 	pros::ADIDigitalOut wingL ('A');
 	bool wings = false;
-	bool toggle = false;
 	wingL.set_value(LOW);
 
 	while(true) {
@@ -102,18 +100,14 @@ void opcontrol() {
 
 		//intake
 		if (master.get_digital(DIGITAL_R1)){
-			intakeL.move_velocity(200);
-			intakeR.move_velocity(-200);
+			intake.move_velocity(200);
 		}
 		else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
-			intakeL.move_velocity(-200);
-			intakeR.move_velocity(200);
+			intake.move_velocity(-200);
 		}
 		else{
-			intakeL.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-			intakeR.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-			intakeL.brake();
-			intakeR.brake();
+			intake.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+			intake.brake();
 		}
 
 		//wings
