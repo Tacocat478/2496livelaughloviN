@@ -74,21 +74,37 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	//CHASSIS MOTORS
 	pros::Motor LF (9); //"false" one side to reverse
 	pros::Motor LB (10);
 	pros::Motor RF (5, true);
 	pros::Motor RB (1, true);
 
+	//CATAPULT MOTORS
+	pros::Motor CL (11);
+	pros::Motor CR (12);
+	bool cataDown = true;
+
+	//INTAKE MOTORS
 	pros::Motor intake (8); //"true" one of these to reverse
 
+	//CONTROLLER
 	pros::Controller master (CONTROLLER_MASTER);
 
+	//WING SOLENOIDS
 	pros::ADIDigitalOut wingL ('A');
 	bool wings = false;
 	wingL.set_value(LOW);
 
+	//LIMIT SWITCH
+	pros::ADIDigitalIn cataLimit ('B');
+
+
+	//------------------------------------------------------------------------------------------------------------------
+
+
 	while(true) {
-		//chassis
+		//CHASSIS
 		int power = -(master.get_analog(ANALOG_LEFT_Y));
 		int turn = -(master.get_analog(ANALOG_RIGHT_X));
 		int left = power + turn;
@@ -98,7 +114,9 @@ void opcontrol() {
 		RF.move(right);
 		RB.move(right);
 
-		//intake
+
+
+		//INTAKE
 		if (master.get_digital(DIGITAL_R1)){
 			intake.move_velocity(200);
 		}
@@ -110,7 +128,9 @@ void opcontrol() {
 			intake.brake();
 		}
 
-		//wings
+
+
+		//WINGS
 		if (master.get_digital_new_press(DIGITAL_L1)){
 			wings = !wings;
 			if (wings){
@@ -121,8 +141,35 @@ void opcontrol() {
 			}
 		}
 
-		pros::delay(2);
 
+
+		//CATAPULT 
+		CL.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+		CR.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)){
+			cataDown = false;
+		}
+		while(!cataDown){
+			CL.move_velocity(200);
+			CR.move_velocity(200);
+
+			if (cataLimit.get_value() == true){
+				cataDown = true;
+				CL.brake();
+				CR.brake();
+			}
+		}
+		while(master.get_digital(pros::E_CONTROLLER_DIGITAL_X)){
+			CL.move_velocity(200);
+			CR.move_velocity(200);
+		}
+		CL.brake();
+		CR.brake();
+
+
+
+		pros::delay(2);
 	}
 }
 
