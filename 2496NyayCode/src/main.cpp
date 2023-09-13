@@ -82,7 +82,7 @@ void opcontrol() {
 
 	//CATAPULT MOTORS
 	pros::Motor CL (11);
-	pros::Motor CR (12);
+	pros::Motor CR (12, true);
 	bool cataDown = true;
 
 	//INTAKE MOTORS
@@ -151,8 +151,8 @@ void opcontrol() {
 			cataDown = false;
 		}
 		while(!cataDown){
-			CL.move_velocity(200);
-			CR.move_velocity(200);
+			CL.move_velocity(100);
+			CR.move_velocity(100);
 
 			if (cataLimit.get_value() == true){
 				cataDown = true;
@@ -161,8 +161,8 @@ void opcontrol() {
 			}
 		}
 		while(master.get_digital(pros::E_CONTROLLER_DIGITAL_X)){
-			CL.move_velocity(200);
-			CR.move_velocity(200);
+			CL.move_velocity(100);
+			CR.move_velocity(100);
 		}
 		CL.brake();
 		CR.brake();
