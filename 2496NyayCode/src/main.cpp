@@ -81,8 +81,8 @@ void opcontrol() {
 	pros::Motor RB (1, true);
 
 	//CATAPULT MOTORS
-	pros::Motor CL (11);
-	pros::Motor CR (12, true);
+	pros::Motor CL (19);
+	pros::Motor CR (20, true);
 	bool cataDown = true;
 
 	//INTAKE MOTORS
