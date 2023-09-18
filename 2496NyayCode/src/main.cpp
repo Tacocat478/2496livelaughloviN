@@ -80,10 +80,10 @@ void opcontrol() {
 	pros::Motor RF (5, true);
 	pros::Motor RB (1, true);
 
-	//CATAPULT MOTORS
-	pros::Motor CL (19);
-	pros::Motor CR (20, true);
-	bool cataDown = true;
+	//KICKER MOTORS
+	pros::Motor KL (19);
+	pros::Motor KR (20, true);
+	bool kickerDown = false;
 
 	//INTAKE MOTORS
 	pros::Motor intake (8); //"true" one of these to reverse
@@ -97,7 +97,7 @@ void opcontrol() {
 	wingL.set_value(LOW);
 
 	//LIMIT SWITCH
-	pros::ADIDigitalIn cataLimit ('B');
+	pros::ADIDigitalIn kickerLimit ('B');
 
 
 	//------------------------------------------------------------------------------------------------------------------
@@ -143,29 +143,29 @@ void opcontrol() {
 
 
 
-		//CATAPULT 
-		CL.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-		CR.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+		//KICKER
+		KL.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+		KR.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 
 		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)){
-			cataDown = false;
+			kickerDown = false;
 		}
-		while(!cataDown){
-			CL.move_velocity(100);
-			CR.move_velocity(100);
+		while(!kickerDown){
+			KL.move_velocity(100);
+			KR.move_velocity(100);
 
-			if (cataLimit.get_value() == true){
-				cataDown = true;
-				CL.brake();
-				CR.brake();
+			if (kickerLimit.get_new_press()){
+				kickerDown = true;
+				KL.brake();
+				KR.brake();
 			}
 		}
 		while(master.get_digital(pros::E_CONTROLLER_DIGITAL_X)){
-			CL.move_velocity(100);
-			CR.move_velocity(100);
+			KL.move_velocity(100);
+			KR.move_velocity(100);
 		}
-		CL.brake();
-		CR.brake();
+		KL.brake();
+		KR.brake();
 
 
 
