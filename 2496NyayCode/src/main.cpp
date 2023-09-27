@@ -88,7 +88,6 @@ void opcontrol() {
 	//KICKER MOTORS
 	pros::Motor KL (19);
 	pros::Motor KR (20, true);
-	bool kickerDown = false;
 
 	//INTAKE MOTORS
 	pros::Motor intake (11); //"true" one of these to reverse
@@ -127,10 +126,10 @@ void opcontrol() {
 
 
 		//INTAKE
-		if (master.get_digital(DIGITAL_R1)){
+		if (master.get_digital(DIGITAL_L1)){
 			intake.move_velocity(200);
 		}
-		else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
+		else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
 			intake.move_velocity(-200);
 		}
 		else{
@@ -141,7 +140,7 @@ void opcontrol() {
 
 
 		//WINGS
-		if (master.get_digital_new_press(DIGITAL_L1)){
+		if (master.get_digital_new_press(DIGITAL_R1)){
 			wingsTog = !wingsTog;
 			if (wingsTog){
 				wings.set_value(HIGH);
@@ -154,7 +153,7 @@ void opcontrol() {
 
 
 		//DESCORER
-		if (master.get_digital_new_press(DIGITAL_UP)){
+		if (master.get_digital_new_press(DIGITAL_X)){
 			descorerTog = !descorerTog;
 			if (descorerTog){
 				descorer.set_value(HIGH);
@@ -165,34 +164,9 @@ void opcontrol() {
 		}
 
 
-	/*
+
 		//KICKER
-		//below code bad because the robot will stop moving while this is looping (stuck in while loop)
-		KL.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-		KR.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-
-		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)){
-			kickerDown = false;
-		}
-		while(!kickerDown){
-			KL.move_velocity(100);
-			KR.move_velocity(100);
-
-			if (kickerLimit.get_new_press()){
-				kickerDown = true;
-				KL.brake();
-				KR.brake();
-				break; //new addition
-			}
-		}
-		while(master.get_digital(pros::E_CONTROLLER_DIGITAL_X)){
-			KL.move_velocity(100);
-			KR.move_velocity(100);
-		}
-		KL.brake();
-		KR.brake();*/
-
-		if (kickerLimit.get_value() == false || master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
+		if (kickerLimit.get_value() == false || master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
 			KL.move_velocity(100);
 			KR.move_velocity(100);
 		}
