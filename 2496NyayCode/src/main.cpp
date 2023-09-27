@@ -26,6 +26,7 @@ void initialize() {
 	pros::lcd::initialize();
 	pros::lcd::set_text(1, "dillon is a bozo!");
 
+
 	pros::lcd::register_btn1_cb(on_center_button);
 }
 
@@ -34,7 +35,11 @@ void initialize() {
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
  */
-void disabled() {}
+void disabled() {
+
+
+	
+}
 
 /**
  * Runs after initialize(), and before autonomous when connected to the Field
@@ -76,9 +81,9 @@ void autonomous() {}
 void opcontrol() {
 	//CHASSIS MOTORS
 	pros::Motor LF (9); //"false" one side to reverse
-	pros::Motor LB (10);
-	pros::Motor RF (5, true);
-	pros::Motor RB (1, true);
+	pros::Motor LB (18);
+	pros::Motor RF (13, true);
+	pros::Motor RB (12, true);
 
 	//KICKER MOTORS
 	pros::Motor KL (19);
@@ -86,18 +91,23 @@ void opcontrol() {
 	bool kickerDown = false;
 
 	//INTAKE MOTORS
-	pros::Motor intake (8); //"true" one of these to reverse
+	pros::Motor intake (11); //"true" one of these to reverse
 
 	//CONTROLLER
 	pros::Controller master (CONTROLLER_MASTER);
 
 	//WING SOLENOIDS
-	pros::ADIDigitalOut wingL ('A');
-	bool wings = false;
-	wingL.set_value(LOW);
+	pros::ADIDigitalOut wings ('G');
+	pros::ADIDigitalOut descorer ('H');
+	bool wingsTog = false;
+	bool descorerTog = false;
+	
 
 	//LIMIT SWITCH
 	pros::ADIDigitalIn kickerLimit ('B');
+
+	wings.set_value(true);
+	descorer.set_value(true);
 
 
 	//------------------------------------------------------------------------------------------------------------------
@@ -132,18 +142,32 @@ void opcontrol() {
 
 		//WINGS
 		if (master.get_digital_new_press(DIGITAL_L1)){
-			wings = !wings;
-			if (wings){
-				wingL.set_value(HIGH);
+			wingsTog = !wingsTog;
+			if (wingsTog){
+				wings.set_value(HIGH);
 			}
 			else{
-				wingL.set_value(LOW);
+				wings.set_value(LOW);
 			}
 		}
 
 
 
+		//DESCORER
+		if (master.get_digital_new_press(DIGITAL_UP)){
+			descorerTog = !descorerTog;
+			if (descorerTog){
+				descorer.set_value(HIGH);
+			}
+			else{
+				descorer.set_value(LOW);
+			}
+		}
+
+
+	/*
 		//KICKER
+		//below code bad because the robot will stop moving while this is looping (stuck in while loop)
 		KL.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 		KR.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 
@@ -158,6 +182,7 @@ void opcontrol() {
 				kickerDown = true;
 				KL.brake();
 				KR.brake();
+				break; //new addition
 			}
 		}
 		while(master.get_digital(pros::E_CONTROLLER_DIGITAL_X)){
@@ -165,7 +190,16 @@ void opcontrol() {
 			KR.move_velocity(100);
 		}
 		KL.brake();
-		KR.brake();
+		KR.brake();*/
+
+		if (kickerLimit.get_value() == false || master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
+			KL.move_velocity(100);
+			KR.move_velocity(100);
+		}
+		else{
+			KL.brake();
+			KR.brake();
+		}
 
 
 
