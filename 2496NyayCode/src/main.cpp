@@ -98,8 +98,10 @@ void opcontrol() {
 	//WING SOLENOIDS
 	pros::ADIDigitalOut wings ('G');
 	pros::ADIDigitalOut descorer ('H');
+	pros::ADIDigitalOut hook ('D');
 	bool wingsTog = false;
 	bool descorerTog = false;
+	bool hookTog = false;
 	
 
 	//LIMIT SWITCH
@@ -165,6 +167,20 @@ void opcontrol() {
 
 
 
+		//HOOK 
+		if (master.get_digital_new_press(DIGITAL_Y)){
+			hookTog = !hookTog;
+			if (hookTog){
+				hook.set_value(HIGH);
+			}
+			else{
+				hook.set_value(LOW);
+			}
+		}
+
+
+
+	
 		//KICKER
 		if (kickerLimit.get_value() == false || master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
 			KL.move_velocity(100);
