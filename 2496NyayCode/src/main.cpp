@@ -128,10 +128,10 @@ void opcontrol() {
 
 
 		//INTAKE
-		if (master.get_digital(DIGITAL_L1)){
+		if (master.get_digital(DIGITAL_R1)){
 			intake.move_velocity(200);
 		}
-		else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
+		else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
 			intake.move_velocity(-200);
 		}
 		else{
@@ -142,7 +142,7 @@ void opcontrol() {
 
 
 		//WINGS
-		if (master.get_digital_new_press(DIGITAL_R1)){
+		if (master.get_digital_new_press(DIGITAL_L1)){
 			wingsTog = !wingsTog;
 			if (wingsTog){
 				wings.set_value(HIGH);
@@ -168,7 +168,7 @@ void opcontrol() {
 
 
 		//HOOK 
-		if (master.get_digital_new_press(DIGITAL_Y)){
+		if (master.get_digital_new_press(DIGITAL_A)){
 			hookTog = !hookTog;
 			if (hookTog){
 				hook.set_value(HIGH);
@@ -182,9 +182,9 @@ void opcontrol() {
 
 	
 		//KICKER
-		if (kickerLimit.get_value() == false || master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
-			KL.move_velocity(100);
-			KR.move_velocity(100);
+		if (kickerLimit.get_value() == false || master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
+			KL.move_velocity(90);
+			KR.move_velocity(90);
 		}
 		else{
 			KL.brake();
