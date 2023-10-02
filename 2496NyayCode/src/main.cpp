@@ -1,4 +1,6 @@
 #include "main.h"
+#include "../include/robot_config.h"
+#include "../include/driver.h"
 
 /**
  * A callback function for LLEMU's center button.
@@ -79,6 +81,7 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	/*
 	//CHASSIS MOTORS
 	pros::Motor LF (9); //"false" one side to reverse
 	pros::Motor LB (18);
@@ -103,17 +106,13 @@ void opcontrol() {
 	bool descorerTog = false;
 	bool hookTog = false;
 	
-
 	//LIMIT SWITCH
 	pros::ADIDigitalIn kickerLimit ('B');
 
 	wings.set_value(true);
 	descorer.set_value(true);
 
-
 	//------------------------------------------------------------------------------------------------------------------
-
-
 	while(true) {
 		//CHASSIS
 		int power = -(master.get_analog(ANALOG_LEFT_Y));
@@ -192,6 +191,18 @@ void opcontrol() {
 		}
 
 
+
+		pros::delay(2);
+	}
+	*/
+
+	while(true){
+		arcade_driver();
+		intake_driver();
+		wings_driver();
+		hook_driver();
+		descorer_driver();
+		kicker_driver();
 
 		pros::delay(2);
 	}
