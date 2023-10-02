@@ -81,120 +81,6 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	/*
-	//CHASSIS MOTORS
-	pros::Motor LF (9); //"false" one side to reverse
-	pros::Motor LB (18);
-	pros::Motor RF (13, true);
-	pros::Motor RB (12, true);
-
-	//KICKER MOTORS
-	pros::Motor KL (19);
-	pros::Motor KR (20, true);
-
-	//INTAKE MOTORS
-	pros::Motor intake (11); //"true" one of these to reverse
-
-	//CONTROLLER
-	pros::Controller master (CONTROLLER_MASTER);
-
-	//WING SOLENOIDS
-	pros::ADIDigitalOut wings ('G');
-	pros::ADIDigitalOut descorer ('H');
-	pros::ADIDigitalOut hook ('D');
-	bool wingsTog = false;
-	bool descorerTog = false;
-	bool hookTog = false;
-	
-	//LIMIT SWITCH
-	pros::ADIDigitalIn kickerLimit ('B');
-
-	wings.set_value(true);
-	descorer.set_value(true);
-
-	//------------------------------------------------------------------------------------------------------------------
-	while(true) {
-		//CHASSIS
-		int power = -(master.get_analog(ANALOG_LEFT_Y));
-		int turn = -(master.get_analog(ANALOG_RIGHT_X));
-		int left = power + turn;
-		int right = power - turn;
-		LF.move(left);
-		LB.move(left);
-		RF.move(right);
-		RB.move(right);
-
-
-
-		//INTAKE
-		if (master.get_digital(DIGITAL_R1)){
-			intake.move_velocity(200);
-		}
-		else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
-			intake.move_velocity(-200);
-		}
-		else{
-			intake.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-			intake.brake();
-		}
-
-
-
-		//WINGS
-		if (master.get_digital_new_press(DIGITAL_L1)){
-			wingsTog = !wingsTog;
-			if (wingsTog){
-				wings.set_value(HIGH);
-			}
-			else{
-				wings.set_value(LOW);
-			}
-		}
-
-
-
-		//DESCORER
-		if (master.get_digital_new_press(DIGITAL_X)){
-			descorerTog = !descorerTog;
-			if (descorerTog){
-				descorer.set_value(HIGH);
-			}
-			else{
-				descorer.set_value(LOW);
-			}
-		}
-
-
-
-		//HOOK 
-		if (master.get_digital_new_press(DIGITAL_A)){
-			hookTog = !hookTog;
-			if (hookTog){
-				hook.set_value(HIGH);
-			}
-			else{
-				hook.set_value(LOW);
-			}
-		}
-
-
-
-	
-		//KICKER
-		if (kickerLimit.get_value() == false || master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
-			KL.move_velocity(90);
-			KR.move_velocity(90);
-		}
-		else{
-			KL.brake();
-			KR.brake();
-		}
-
-
-
-		pros::delay(2);
-	}
-	*/
 
 	while(true){
 		arcade_driver();
@@ -206,5 +92,6 @@ void opcontrol() {
 
 		pros::delay(2);
 	}
+	
 }
 
