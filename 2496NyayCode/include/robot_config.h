@@ -24,6 +24,7 @@ extern pros::Controller master;
 extern pros::ADIDigitalOut wings;
 extern pros::ADIDigitalOut descorer;
 extern pros::ADIDigitalOut hook;
+extern pros::ADIDigitalOut blocker;
 
 //LIMIT SWITCH
 extern pros::ADIDigitalIn kickerLimit;

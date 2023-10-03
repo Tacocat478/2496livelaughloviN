@@ -89,9 +89,10 @@ void opcontrol() {
 		hook_driver();
 		descorer_driver();
 		kicker_driver();
+		blocker_driver();
 
 		pros::delay(2);
 	}
-	
+
 }
 

@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "../include/robot_config.h"
+#include "pros/adi.hpp"
 
 //CHASSIS MOTORS
 pros::Motor LF (9); //"false" one side to reverse
@@ -24,6 +25,7 @@ pros::Controller master (CONTROLLER_MASTER);
 pros::ADIDigitalOut wings ('G', true);
 pros::ADIDigitalOut descorer ('H', true);
 pros::ADIDigitalOut hook ('D');
+pros::ADIDigitalOut blocker('E');
 	
 //LIMIT SWITCH
 pros::ADIDigitalIn kickerLimit ('B');

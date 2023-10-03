@@ -10,5 +10,6 @@ void wings_driver();
 void hook_driver();
 void descorer_driver();
 void kicker_driver();
+void blocker_driver();
 
 #endif

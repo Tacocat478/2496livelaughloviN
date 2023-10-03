@@ -7,6 +7,7 @@
 bool wingsTog = false;
 bool descorerTog = false;
 bool hookTog = false;
+bool blockerTog = false;
 
 
 void arcade_driver(){
@@ -65,6 +66,18 @@ void descorer_driver(){
 		}
 		else{
 			descorer.set_value(LOW);
+		}
+	}
+}
+
+void blocker_driver(){
+    if (master.get_digital_new_press(DIGITAL_LEFT)){
+		blockerTog = !blockerTog;
+		if (blockerTog){
+			blocker.set_value(HIGH);
+		}
+		else{
+			blocker.set_value(LOW);
 		}
 	}
 }
