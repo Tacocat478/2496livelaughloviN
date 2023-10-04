@@ -84,8 +84,8 @@ void blocker_driver(){
 
 void kicker_driver(){
     if (kickerLimit.get_value() == false || master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
-		KL.move_velocity(90);
-		KR.move_velocity(90);
+		KL.move_velocity(80);
+		KR.move_velocity(80);
 	}
     else{
 		KL.brake();
