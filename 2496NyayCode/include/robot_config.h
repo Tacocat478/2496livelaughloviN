@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "pros/adi.hpp"
+#include "pros/imu.hpp"
 
 //CHASSIS
 extern pros::Motor LF;
@@ -28,5 +29,8 @@ extern pros::ADIDigitalOut blocker;
 
 //LIMIT SWITCH
 extern pros::ADIDigitalIn kickerLimit;
+
+//IMU
+extern pros::IMU imu;
 
 #endif

@@ -1,6 +1,7 @@
 #include "main.h"
 #include "../include/robot_config.h"
 #include "../include/driver.h"
+#include "../include/pid.h"
 
 /**
  * A callback function for LLEMU's center button.
@@ -65,7 +66,9 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+		turn(90);
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -90,6 +93,10 @@ void opcontrol() {
 		descorer_driver();
 		kicker_driver();
 		blocker_driver();
+
+		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)){
+			autonomous();
+		}
 
 		pros::delay(2);
 	}

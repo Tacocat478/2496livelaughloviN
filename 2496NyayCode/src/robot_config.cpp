@@ -30,4 +30,7 @@ pros::ADIDigitalOut blocker('E');
 //LIMIT SWITCH
 pros::ADIDigitalIn kickerLimit ('B');
 
+//IMU
+pros::IMU imu (16); 
+
 #endif
