@@ -94,11 +94,17 @@ void opcontrol() {
 		kicker_driver();
 		blocker_driver();
 
-		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)){
+		/*
+		float positionTest = imu.get_rotation();
+		float target = 90.0;
+		master.print(0, 0, "%f %f", (target - positionTest), positionTest);
+		*/
+
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)){
 			autonomous();
 		}
 
-		pros::delay(2);
+		pros::delay(10);
 	}
 
 }
