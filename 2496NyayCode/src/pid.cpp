@@ -23,8 +23,7 @@ float calc (int target, float input, int integralKI, int maxI){
     //prev_error = error; 
     error = target - input; 
 
-    /*
-    if(std::abs(error) < integralKI){ //add max to prevent non-zero integral when error is extremely low (would cause overshoot)
+    if(std::abs(error) < integralKI && std::abs(error) > 0.7){ //add max to prevent non-zero integral when error is extremely low (would cause overshoot)
         integral += error;            
     }
     else{
@@ -39,7 +38,7 @@ float calc (int target, float input, int integralKI, int maxI){
     }
 
     //derivative = error - prev_error; 
-    */
+    
 
     power = t_kp*error + t_ki*integral + t_kd*derivative; 
 
@@ -84,23 +83,24 @@ void forwardMove(int target){
 }
 
 void turn(int target){
-    imu.tare_rotation();
-    setConstants(1.29, 0.0, 0.0);
+    imu.tare_heading();
+    setConstants(1.39, 1.5, 0.0);
     float voltage;
     float position;
     int count = 0;
+    float bound = 1.3;
 
     while(true){
-        position = imu.get_rotation();
-        master.print(0, 0, "%f", (target - position));
-        voltage = calc(target, position, 0, 0);
+        position = imu.get_heading();
+        voltage = calc(target, position, 2, 10);
+        master.print(0, 0, "%f %f", (target - position), voltage);
 
         chas_move(-voltage, voltage);
-        if (abs(target - position) <= 1.5){
-            master.print(0, 0, "test");
+        if ((target - position) <= bound && (target - position) >= -bound){
+            //master.print(0, 0, "test");
             count++;
         }
-        if (count >= 10) {
+        if (count >= 30) {
             break;
         }
         pros::delay(10);
