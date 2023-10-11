@@ -84,7 +84,7 @@ void forwardMove(int target){
 
 void turn(int target){
     imu.tare_heading();
-    setConstants(1.39, 1.5, 0.0);
+    setConstants(1.39, 2.7, 0.0);
     float voltage;
     float position;
     int count = 0;
@@ -92,7 +92,7 @@ void turn(int target){
 
     while(true){
         position = imu.get_heading();
-        voltage = calc(target, position, 2, 10);
+        voltage = calc(target, position, 2, 20);
         master.print(0, 0, "%f %f", (target - position), voltage);
 
         chas_move(-voltage, voltage);
