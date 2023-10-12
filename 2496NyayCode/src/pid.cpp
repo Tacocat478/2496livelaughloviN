@@ -60,31 +60,36 @@ void reset_encoders(){
 }
 
 void forwardMove(int target){
-    setConstants(0.39, 0.15, 0.01);
+    setConstants(0.15, 0.0, 0.0);
 
     float voltage;
     float encoder_average;
     int count = 0;
+    int bound = 60;
 
     reset_encoders(); 
     while(true){
         
         encoder_average = (LF.get_position() + RF.get_position()) / 2;
-        voltage = calc(target, encoder_average, 200, 20);
-
+        voltage = calc(target, encoder_average, 0, 0);
+        master.print(0, 0, "%f %f", (target - encoder_average), voltage);
 
         chas_move(voltage, voltage); 
-        if (abs(target - encoder_average) <= 3) count++; 
-        if (count >= 28) break; 
-                                                       
+        if ((target - encoder_average) <= bound && (target - encoder_average) >= -bound) {
+            count++; 
+        }
+        if (count >= 28) {
+            break; 
+        }                                   
         pros::delay(10);
     }
     chas_move(0,0); 
 }
 
-void turn(int target){
+void turn(int target, float p, float i, float d, int KI, int maxI){
     imu.tare_heading();
-    setConstants(1.39, 2.7, 0.0);
+    //setConstants(1.39, 2.7, 0.0);
+    setConstants(p, i, d);
     float voltage;
     float position;
     int count = 0;
@@ -92,7 +97,8 @@ void turn(int target){
 
     while(true){
         position = imu.get_heading();
-        voltage = calc(target, position, 2, 20);
+        //voltage = calc(target, position, 2, 20);
+        voltage = calc(target, position, KI, maxI);
         master.print(0, 0, "%f %f", (target - position), voltage);
 
         chas_move(-voltage, voltage);

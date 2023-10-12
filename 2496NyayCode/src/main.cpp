@@ -67,7 +67,8 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-		turn(80);
+		//turn(90, 1.47, 0.0, 0.0, 0, 0);
+		forwardMove(2000);
 }
 
 /**
@@ -84,7 +85,7 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-
+	//imu.tare_heading();
 	while(true){
 		arcade_driver();
 		intake_driver();
@@ -95,7 +96,7 @@ void opcontrol() {
 		blocker_driver();
 
 		/*
-		float positionTest = imu.get_rotation();
+		float positionTest = imu.get_heading();
 		float target = 90.0;
 		master.print(0, 0, "%f %f", (target - positionTest), positionTest);
 		*/
