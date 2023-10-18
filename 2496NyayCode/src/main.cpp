@@ -67,8 +67,13 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-		//turn(90, 1.47, 0.0, 0.0, 0, 0);
-		forwardMove(2000);
+		//turn(-90, 1.47, 0.0, 0.0, 0, 0);
+		
+		forwardMove(300, 0.20);
+		turn(50, 1.8, 0.0, 0.0, 0, 0);
+		forwardMove(700, 0.15);
+		turn(-15, 7.0, 0.0, 0.0, 0, 0);
+		
 }
 
 /**
@@ -85,7 +90,7 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	//imu.tare_heading();
+	imu.tare_rotation();
 	while(true){
 		arcade_driver();
 		intake_driver();
@@ -95,17 +100,17 @@ void opcontrol() {
 		kicker_driver();
 		blocker_driver();
 
-		/*
-		float positionTest = imu.get_heading();
-		float target = 90.0;
-		master.print(0, 0, "%f %f", (target - positionTest), positionTest);
-		*/
+		
+		//float positionTest = imu.get_rotation();
+		//float target = 90.0;
+		//master.print(0, 0, "%f %f", positionTest, (target - positionTest));
+		//master.print(0,0,"%f",imu.get_rotation());
 
 		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)){
 			autonomous();
 		}
 
-		pros::delay(10);
+		pros::delay(100);//
 	}
 
 }

@@ -59,8 +59,8 @@ void reset_encoders(){
     RB.tare_position();
 }
 
-void forwardMove(int target){
-    setConstants(0.15, 0.0, 0.0);
+void forwardMove(int target, float p){
+    setConstants(p, 0.0, 0.0);
 
     float voltage;
     float encoder_average;
@@ -87,7 +87,7 @@ void forwardMove(int target){
 }
 
 void turn(int target, float p, float i, float d, int KI, int maxI){
-    imu.tare_heading();
+    imu.tare_rotation();
     //setConstants(1.39, 2.7, 0.0);
     setConstants(p, i, d);
     float voltage;
@@ -96,7 +96,7 @@ void turn(int target, float p, float i, float d, int KI, int maxI){
     float bound = 1.3;
 
     while(true){
-        position = imu.get_heading();
+        position = imu.get_rotation();
         //voltage = calc(target, position, 2, 20);
         voltage = calc(target, position, KI, maxI);
         master.print(0, 0, "%f %f", (target - position), voltage);

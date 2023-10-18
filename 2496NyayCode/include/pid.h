@@ -8,7 +8,7 @@ void setConstants(float, float, float);
 float calc(int, float, int, int);
 void chas_move(int, int);
 void reset_encoders();
-void forwardMove(int);
+void forwardMove(int, float);
 void turn(int, float, float, float, int, int);
 
 #endif
