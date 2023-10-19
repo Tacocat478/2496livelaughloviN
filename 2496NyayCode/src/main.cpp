@@ -69,10 +69,18 @@ void competition_initialize() {}
 void autonomous() {
 		//turn(-90, 1.47, 0.0, 0.0, 0, 0);
 		
+		
 		forwardMove(300, 0.20);
-		turn(50, 1.8, 0.0, 0.0, 0, 0);
-		forwardMove(700, 0.15);
-		turn(-15, 7.0, 0.0, 0.0, 0, 0);
+		turn(50, 1.61, 0.0, 0.0, 0, 0); //1.75
+		forwardMove(800, 0.15); //1250
+		pros::delay(500);
+		turn(-17, 6.0, 0.0, 0.0, 0, 0); //-8, 9.0
+		forwardMove(3800, 0.11);
+		pros::delay(500);
+		turn(-17, 6.0, 0.0, 0.0, 0, 0); 
+		forwardMove(300, 0.20);
+
+		turn(-67, 1.40, 0.0, 0.0, 0, 0);
 		
 }
 
@@ -90,7 +98,8 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	imu.tare_rotation();
+	//imu.tare_rotation();
+	//LF.tare_position();
 	while(true){
 		arcade_driver();
 		intake_driver();
@@ -105,6 +114,7 @@ void opcontrol() {
 		//float target = 90.0;
 		//master.print(0, 0, "%f %f", positionTest, (target - positionTest));
 		//master.print(0,0,"%f",imu.get_rotation());
+		//master.print(0,0,"%f",LF.get_position());
 
 		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)){
 			autonomous();

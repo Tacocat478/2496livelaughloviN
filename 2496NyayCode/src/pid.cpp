@@ -60,6 +60,7 @@ void reset_encoders(){
 }
 
 void forwardMove(int target, float p){
+    reset_encoders(); 
     setConstants(p, 0.0, 0.0);
 
     float voltage;
@@ -67,12 +68,11 @@ void forwardMove(int target, float p){
     int count = 0;
     int bound = 60;
 
-    reset_encoders(); 
     while(true){
         
         encoder_average = (LF.get_position() + RF.get_position()) / 2;
         voltage = calc(target, encoder_average, 0, 0);
-        master.print(0, 0, "%f %f", (target - encoder_average), voltage);
+        master.print(0, 0, "%f", (target - encoder_average));
 
         chas_move(voltage, voltage); 
         if ((target - encoder_average) <= bound && (target - encoder_average) >= -bound) {
