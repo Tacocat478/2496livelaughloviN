@@ -27,7 +27,7 @@ void on_center_button() {
  */
 void initialize() {
 	pros::lcd::initialize();
-	pros::lcd::set_text(1, "dillon is a bozo!");
+	pros::lcd::set_text(1, "");
 
 
 	pros::lcd::register_btn1_cb(on_center_button);
@@ -67,20 +67,56 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-		//turn(-90, 1.47, 0.0, 0.0, 0, 0);
-		
-		
+		//SKILS PROG
+		KL.move_velocity(85);
+		KR.move_velocity(85);
+		int count = 0;
+		while(count < 45){
+			count ++;
+			pros::delay(300);
+		}
+		KL.brake();
+		KR.brake();
+
+		pros::delay(500);		
 		forwardMove(300, 0.20);
-		turn(50, 1.61, 0.0, 0.0, 0, 0); //1.75
-		forwardMove(800, 0.15); //1250
-		pros::delay(500);
-		turn(-17, 6.0, 0.0, 0.0, 0, 0); //-8, 9.0
-		forwardMove(3800, 0.11);
-		pros::delay(500);
+		turn(50, 1.55, 0.0, 0.0, 0, 0); //1.75  1.61
+		forwardMove(1150, 0.15); //1250  950
+		pros::delay(300);
+		//turn(-17, 6.0, 0.0, 0.0, 0, 0); //-8, 9.0
+		turn(-14, 3.5, 0.0, 0.0, 0, 0);
+		forwardMove(3200, 0.11); //3800
+		pros::delay(300);
 		turn(-17, 6.0, 0.0, 0.0, 0, 0); 
 		forwardMove(300, 0.20);
+		pros::delay(300);
+		turn(-69, 1.4, 0.0, 0.0, 0, 0);
+		pros::delay(300);
+		forwardMove(1180, 0.15);
 
-		turn(-67, 1.40, 0.0, 0.0, 0, 0);
+		//pros::delay(300);
+		turn2(-90, 1.27, 0.0, 0.0, 0, 0);
+		forwardMove(1350, 0.15);
+		//pros::delay(300);
+		turn2(90, 1.27, 0.0, 0.0, 0, 0);
+		forwardMove(1600, 0.15);
+		//pros::delay(300);
+		turn2(90, 1.27, 0.0, 0.0, 0, 0);
+		wings.set_value(LOW); //wings out
+		forwardMove(2000, 0.15);
+
+		//SHOOT ONE
+		/*
+		KL.move_velocity(85);
+		KR.move_velocity(85);
+		int count2 = 0;
+		while(count < 2){
+			count ++;
+			pros::delay(300);
+		}
+		KL.brake();
+		KR.brake();
+		*/
 		
 }
 

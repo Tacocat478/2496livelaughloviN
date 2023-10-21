@@ -25,7 +25,7 @@ pros::Controller master (CONTROLLER_MASTER);
 pros::ADIDigitalOut wings ('G', true);
 pros::ADIDigitalOut descorer ('H', true);
 pros::ADIDigitalOut hook ('D');
-pros::ADIDigitalOut blocker('E');
+pros::ADIDigitalOut blocker('E', true);
 	
 //LIMIT SWITCH
 pros::ADIDigitalIn kickerLimit ('B');
