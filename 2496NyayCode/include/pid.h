@@ -11,5 +11,6 @@ void reset_encoders();
 void forwardMove(int, float);
 void turn(int, float, float, float, int, int);
 void turn2(int, float, float, float, int, int);
+void turn3(int, float, float, float, int, int);
 
 #endif

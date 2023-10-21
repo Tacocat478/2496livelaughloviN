@@ -72,20 +72,23 @@ void autonomous() {
 		KR.move_velocity(85);
 		int count = 0;
 		while(count < 45){
+			if (kickerLimit.get_new_press()) {
 			count ++;
 			pros::delay(300);
+			}
 		}
 		KL.brake();
 		KR.brake();
-
+		
+		
 		pros::delay(500);		
 		forwardMove(300, 0.20);
-		turn(50, 1.55, 0.0, 0.0, 0, 0); //1.75  1.61
+		turn(50, 1.65, 0.0, 0.0, 0, 0); //1.75  1.61  1.55
 		forwardMove(1150, 0.15); //1250  950
 		pros::delay(300);
 		//turn(-17, 6.0, 0.0, 0.0, 0, 0); //-8, 9.0
 		turn(-14, 3.5, 0.0, 0.0, 0, 0);
-		forwardMove(3200, 0.11); //3800
+		forwardMove(3300, 0.11); //3800
 		pros::delay(300);
 		turn(-17, 6.0, 0.0, 0.0, 0, 0); 
 		forwardMove(300, 0.20);
@@ -104,19 +107,44 @@ void autonomous() {
 		turn2(90, 1.27, 0.0, 0.0, 0, 0);
 		wings.set_value(LOW); //wings out
 		forwardMove(2000, 0.15);
+		
 
 		//SHOOT ONE
 		/*
 		KL.move_velocity(85);
 		KR.move_velocity(85);
 		int count2 = 0;
-		while(count < 2){
-			count ++;
+		while(count2 < 1){
+			if (kickerLimit.get_new_press()) {
+			count2 ++;
 			pros::delay(300);
+			}
 		}
 		KL.brake();
 		KR.brake();
 		*/
+
+
+		//FAR AWP PUSH
+		/*
+		turn(-45, 1.69, 0.0, 0.0, 0, 0);
+		forwardMove(700, 0.20);
+		turn(-45, 1.69, 0.0, 0.0, 0, 0);
+		forwardMove(3000, 0.15);
+		*/
+
+
+		//CLOSE AWP PUSH
+		/*
+		turn(45, 1.69, 0.0, 0.0, 0, 0);
+		forwardMove(700, 0.20);
+		turn(45, 1.69, 0.0, 0.0, 0, 0);
+		forwardMove(3000, 0.15);
+		*/
+
+
+
+		
 		
 }
 
@@ -152,11 +180,14 @@ void opcontrol() {
 		//master.print(0,0,"%f",imu.get_rotation());
 		//master.print(0,0,"%f",LF.get_position());
 
+		/*
 		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)){
 			autonomous();
 		}
+		*/
 
 		pros::delay(100);//
+
 	}
 
 }
