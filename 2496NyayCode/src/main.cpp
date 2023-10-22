@@ -68,6 +68,7 @@ void competition_initialize() {}
  */
 void autonomous() {
 		//SKILS PROG
+		/*
 		KL.move_velocity(85);
 		KR.move_velocity(85);
 		int count = 0;
@@ -79,7 +80,7 @@ void autonomous() {
 		}
 		KL.brake();
 		KR.brake();
-		
+		*/
 		
 		pros::delay(500);		
 		forwardMove(300, 0.20);
@@ -106,7 +107,8 @@ void autonomous() {
 		//pros::delay(300);
 		turn2(90, 1.27, 0.0, 0.0, 0, 0);
 		wings.set_value(LOW); //wings out
-		forwardMove(2000, 0.15);
+		forwardMove2(2000, 0.15);
+		forwardMove(-2000, 0.15);
 		
 
 		//SHOOT ONE
@@ -127,18 +129,19 @@ void autonomous() {
 
 		//FAR AWP PUSH
 		/*
-		turn(-45, 1.69, 0.0, 0.0, 0, 0);
-		forwardMove(700, 0.20);
-		turn(-45, 1.69, 0.0, 0.0, 0, 0);
+		turn3(-45, 1.69, 0.0, 0.0, 0, 0);
+		forwardMove(1350, 0.20);
+		turn3(-41, 1.51, 0.0, 0.0, 0, 0);
 		forwardMove(3000, 0.15);
 		*/
+		
 
 
 		//CLOSE AWP PUSH
 		/*
-		turn(45, 1.69, 0.0, 0.0, 0, 0);
-		forwardMove(700, 0.20);
-		turn(45, 1.69, 0.0, 0.0, 0, 0);
+		turn3(45, 1.69, 0.0, 0.0, 0, 0);
+		forwardMove(1350, 0.20);
+		turn3(41, 1.51, 0.0, 0.0, 0, 0);
 		forwardMove(3000, 0.15);
 		*/
 

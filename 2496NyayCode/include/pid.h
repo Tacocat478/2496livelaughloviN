@@ -9,6 +9,7 @@ float calc(int, float, int, int);
 void chas_move(int, int);
 void reset_encoders();
 void forwardMove(int, float);
+void forwardMove2(int, float);
 void turn(int, float, float, float, int, int);
 void turn2(int, float, float, float, int, int);
 void turn3(int, float, float, float, int, int);
