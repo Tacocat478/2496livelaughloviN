@@ -17,6 +17,7 @@ pros::Motor KR (20, true);
 
 //INTAKE MOTORS
 pros::Motor intake (11); //"true" one of these to reverse
+pros::Motor intake2 (15, true);
 
 //CONTROLLER
 pros::Controller master (CONTROLLER_MASTER);
