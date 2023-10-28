@@ -81,34 +81,59 @@ void autonomous() {
 		KL.brake();
 		KR.brake();
 		*/
+
+		/*
+		while (kickerLimit.get_value() == false){
+		KL.move_velocity(120);
+		KR.move_velocity(120);
+		}
 		
 		pros::delay(500);		
-		forwardMove(300, 0.20);
-		turn(50, 1.65, 0.0, 0.0, 0, 0); //1.75  1.61  1.55
+		forwardMove(200, 0.20);
+		turn3(50, 1.65, 0.0, 0.0, 0, 0); //1.75  1.61  1.55
 		forwardMove(1150, 0.15); //1250  950
-		pros::delay(300);
-		//turn(-17, 6.0, 0.0, 0.0, 0, 0); //-8, 9.0
-		turn(-14, 3.5, 0.0, 0.0, 0, 0);
+		turn3(-14, 3.5, 0.0, 0.0, 0, 0);
 		forwardMove(3300, 0.11); //3800
-		pros::delay(300);
-		turn(-17, 6.0, 0.0, 0.0, 0, 0); 
-		forwardMove(300, 0.20);
-		pros::delay(300);
-		turn(-69, 1.4, 0.0, 0.0, 0, 0);
-		pros::delay(300);
-		forwardMove(1180, 0.15);
 
-		//pros::delay(300);
 		turn2(-90, 1.27, 0.0, 0.0, 0, 0);
-		forwardMove(1350, 0.15);
-		//pros::delay(300);
+		forwardMove(1200, 0.15);
+
+		turn2(-90, 1.27, 0.0, 0.0, 0, 0);
+		forwardMove(1150, 0.15); //1250
 		turn2(90, 1.27, 0.0, 0.0, 0, 0);
-		forwardMove(1600, 0.15);
-		//pros::delay(300);
+		forwardMove(1800, 0.15); //1600
 		turn2(90, 1.27, 0.0, 0.0, 0, 0);
 		wings.set_value(LOW); //wings out
 		forwardMove2(2000, 0.15);
-		forwardMove(-2000, 0.15);
+		forwardMove(-1500, 0.15);
+		turn3(17, 6.0, 0.0, 0.0, 0, 0); 
+		forwardMove2(2000, 0.15);
+		forwardMove(-1500, 0.15);
+		wings.set_value(HIGH);
+		
+ 
+		turn3(55, 1.60, 0.0, 0.0, 0, 0);
+		forwardMove2(2800, 0.15); //3500
+		turn2(-120, 1.16, 0.0, 0.0, 0, 0);
+		forwardMove2(1500, 0.20);
+		forwardMove2(-1500, 0.20);
+		*/
+		
+		
+		//AWP DESCORE
+		descorer.set_value(LOW);
+		pros::delay(500);
+		turn2(-50, 1.65, 0.0, 0.0, 0, 0);
+		descorer.set_value(HIGH);
+		turn2(55, 1.60, 0.0, 0.0, 0, 0);
+		forwardMove(300, 0.20);
+		turn3(-17, 6.0, 0.0, 0.0, 0, 0); 
+		forwardMove(1000, 0.15);
+
+
+		
+
+
 		
 
 		//SHOOT ONE
@@ -176,7 +201,6 @@ void opcontrol() {
 		kicker_driver();
 		blocker_driver();
 
-		
 		//float positionTest = imu.get_rotation();
 		//float target = 90.0;
 		//master.print(0, 0, "%f %f", positionTest, (target - positionTest));

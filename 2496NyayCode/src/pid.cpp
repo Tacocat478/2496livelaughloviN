@@ -52,6 +52,13 @@ void chas_move(int vLeft, int vRight){
 	RB.move(vRight);
 }
 
+void chas_moveFor(int distance, int velocity){
+    LF.move_absolute(distance, velocity);
+    LB.move_absolute(distance, velocity);
+    RF.move_absolute(distance, velocity);
+    RB.move_absolute(distance, velocity);
+}
+
 void reset_encoders(){
     LF.tare_position();
     LB.tare_position();
@@ -176,7 +183,7 @@ void turn3(int target, float p, float i, float d, int KI, int maxI){
     float voltage;
     float position;
     int count = 0;
-    float bound = 8.0; //1.3
+    float bound = 2.0; //1.3
 
     while(true){
         position = imu.get_rotation();

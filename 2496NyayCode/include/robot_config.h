@@ -30,6 +30,7 @@ extern pros::ADIDigitalOut blocker;
 
 //LIMIT SWITCH
 extern pros::ADIDigitalIn kickerLimit;
+extern pros::ADIDigitalIn testLim;
 
 //IMU
 extern pros::IMU imu;
