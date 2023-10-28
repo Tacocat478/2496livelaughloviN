@@ -128,7 +128,10 @@ void autonomous() {
 		turn2(55, 1.60, 0.0, 0.0, 0, 0);
 		forwardMove(300, 0.20);
 		turn3(-17, 6.0, 0.0, 0.0, 0, 0); 
+		intake.move_velocity(200);
+		intake2.move_velocity(200);
 		forwardMove(1000, 0.15);
+		blocker.set_value(LOW);
 
 
 		
