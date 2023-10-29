@@ -14,5 +14,7 @@ void forwardMove2(int, float);
 void turn(int, float, float, float, int, int);
 void turn2(int, float, float, float, int, int);
 void turn3(int, float, float, float, int, int);
+void turn4(int, float, float, float, int, int);
+
 
 #endif

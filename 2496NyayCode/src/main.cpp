@@ -90,18 +90,18 @@ void autonomous() {
 		
 		pros::delay(500);		
 		forwardMove(200, 0.20);
-		turn3(50, 1.65, 0.0, 0.0, 0, 0); //1.75  1.61  1.55
-		forwardMove(1150, 0.15); //1250  950
-		turn3(-14, 3.5, 0.0, 0.0, 0, 0);
-		forwardMove(3300, 0.11); //3800
+		turn3(50, 1.65, 0.0, 0.0, 0, 0); 
+		forwardMove(1150, 0.15); 
+		turn4(-14, 3.5, 0.0, 0.0, 0, 0); //turn 3
+		forwardMove(3300, 0.11); 
 
 		turn2(-90, 1.27, 0.0, 0.0, 0, 0);
 		forwardMove(1200, 0.15);
 
 		turn2(-90, 1.27, 0.0, 0.0, 0, 0);
-		forwardMove(1150, 0.15); //1250
+		forwardMove(1150, 0.15); 
 		turn2(90, 1.27, 0.0, 0.0, 0, 0);
-		forwardMove(1800, 0.15); //1600
+		forwardMove(1800, 0.15); 
 		turn2(90, 1.27, 0.0, 0.0, 0, 0);
 		wings.set_value(LOW); //wings out
 		forwardMove2(2000, 0.15);
@@ -113,7 +113,7 @@ void autonomous() {
 		
  
 		turn3(55, 1.60, 0.0, 0.0, 0, 0);
-		forwardMove2(2800, 0.15); //3500
+		forwardMove2(2800, 0.15); 
 		turn2(-120, 1.16, 0.0, 0.0, 0, 0);
 		forwardMove2(1500, 0.20);
 		forwardMove2(-1500, 0.20);
@@ -121,23 +121,26 @@ void autonomous() {
 		
 		
 		//AWP DESCORE
+		
 		descorer.set_value(LOW);
 		pros::delay(500);
-		turn2(-50, 1.65, 0.0, 0.0, 0, 0);
+		//turn2(-50, 1.65, 0.0, 0.0, 0, 0);
+		turn2(-60, 1.50, 0.0, 0.0, 0, 0);
 		descorer.set_value(HIGH);
-		turn2(55, 1.60, 0.0, 0.0, 0, 0);
-		forwardMove(300, 0.20);
-		turn3(-17, 6.0, 0.0, 0.0, 0, 0); 
-		intake.move_velocity(200);
-		intake2.move_velocity(200);
-		forwardMove(1000, 0.15);
+		//turn2(55, 1.60, 0.0, 0.0, 0, 0);
+		//turn2(65, 1.40, 0.0, 0.0, 0, 0);
+		turn2(70, 1.35, 0.0, 0.0, 0, 0);
+		forwardMove(-1250, 0.20);
+		turn4(-14, 3.5, 0.0, 0.0, 0, 0); 
+		intake.move_velocity(-200);
+		intake2.move_velocity(-200);
+		forwardMove(-900, 0.15);
 		blocker.set_value(LOW);
-
-
 		
 
+		//turn2(70, 1.35, 0.0, 0.0, 0, 0);
 
-		
+
 
 		//SHOOT ONE
 		/*
