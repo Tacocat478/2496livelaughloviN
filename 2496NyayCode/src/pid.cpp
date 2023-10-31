@@ -183,7 +183,7 @@ void turn3(int target, float p, float i, float d, int KI, int maxI){
     float voltage;
     float position;
     int count = 0;
-    float bound = 2.0; //1.3  //2.0
+    float bound = 2.0; //1.3  //2.0 
 
     while(true){
         position = imu.get_rotation();

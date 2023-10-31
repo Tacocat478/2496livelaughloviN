@@ -90,9 +90,9 @@ void autonomous() {
 		
 		pros::delay(500);		
 		forwardMove(200, 0.20);
-		turn3(50, 1.65, 0.0, 0.0, 0, 0); 
+		turn4(50, 1.65, 0.0, 0.0, 0, 0); //turn3
 		forwardMove(1150, 0.15); 
-		turn4(-14, 3.5, 0.0, 0.0, 0, 0); //turn 3
+		turn4(-14, 3.5, 0.0, 0.0, 0, 0); //turn3
 		forwardMove(3300, 0.11); 
 
 		turn2(-90, 1.27, 0.0, 0.0, 0, 0);
@@ -105,23 +105,24 @@ void autonomous() {
 		turn2(90, 1.27, 0.0, 0.0, 0, 0);
 		wings.set_value(LOW); //wings out
 		forwardMove2(2000, 0.15);
+		wings.set_value(HIGH);
 		forwardMove(-1500, 0.15);
 		turn3(17, 6.0, 0.0, 0.0, 0, 0); 
+		wings.set_value(LOW);
 		forwardMove2(2000, 0.15);
-		forwardMove(-1500, 0.15);
 		wings.set_value(HIGH);
-		
+		forwardMove(-1500, 0.15);
  
 		turn3(55, 1.60, 0.0, 0.0, 0, 0);
 		forwardMove2(2800, 0.15); 
 		turn2(-120, 1.16, 0.0, 0.0, 0, 0);
-		forwardMove2(1500, 0.20);
+		forwardMove2(1600, 0.20);
 		forwardMove2(-1500, 0.20);
 		*/
 		
 		
 		//AWP DESCORE
-		
+		/*
 		descorer.set_value(LOW);
 		pros::delay(500);
 		//turn2(-50, 1.65, 0.0, 0.0, 0, 0);
@@ -136,7 +137,7 @@ void autonomous() {
 		intake2.move_velocity(-200);
 		forwardMove(-900, 0.15);
 		blocker.set_value(LOW);
-		
+		*/
 
 		//turn2(70, 1.35, 0.0, 0.0, 0, 0);
 
@@ -162,7 +163,7 @@ void autonomous() {
 		/*
 		turn3(-45, 1.69, 0.0, 0.0, 0, 0);
 		forwardMove(1350, 0.20);
-		turn3(-41, 1.51, 0.0, 0.0, 0, 0);
+		turn3(-41, 1.75, 0.0, 0.0, 0, 0); //1.51
 		forwardMove(3000, 0.15);
 		*/
 		
@@ -172,9 +173,24 @@ void autonomous() {
 		/*
 		turn3(45, 1.69, 0.0, 0.0, 0, 0);
 		forwardMove(1350, 0.20);
-		turn3(41, 1.51, 0.0, 0.0, 0, 0);
+		turn3(41, 1.75, 0.0, 0.0, 0, 0); //1.51
 		forwardMove(3000, 0.15);
 		*/
+
+
+		//CLOSE AUTON
+		forwardMove(1300, 0.20);
+		turn2(-26, 2.30, 0.0, 0.0, 0, 0);
+		//forwardMove(700, 0.20);
+		chas_moveFor(-500, 200);
+		pros::delay(1500);
+		chas_move(0,0);
+		
+		forwardMove(-300, 0.20);
+		turn2(90, 1.27, 0.0, 0.0, 0, 0);
+		forwardMove(-500, 0.20);
+		
+
 
 
 
