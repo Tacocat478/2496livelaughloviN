@@ -179,18 +179,49 @@ void autonomous() {
 
 
 		//CLOSE AUTON
+		
 		forwardMove(1300, 0.20);
 		turn2(-26, 2.30, 0.0, 0.0, 0, 0);
 		//forwardMove(700, 0.20);
-		chas_moveFor(-500, 200);
-		pros::delay(1500);
+		chas_moveFor(800, 300);
+		pros::delay(1000); //1400
 		chas_move(0,0);
 		
 		forwardMove(-300, 0.20);
 		turn2(90, 1.27, 0.0, 0.0, 0, 0);
-		forwardMove(-500, 0.20);
-		
+		forwardMove(-1150, 0.20);
+		pros::delay(300);
+		//turn4(65, 1.4, 0.0, 0.0, 0, 0);
+		//turn2(43, 1.75, 0.0, 0.0, 0, 0);
+		//turn3(47, 1.69, 0.0, 0.0, 0, 0);
+		turn3(50, 1.66, 0.0, 0.0, 0, 0);
 
+		intake.move_velocity(200);
+		intake2.move_velocity(200);
+
+		forwardMove(-2000, 0.20);
+		right_moveFor(-600, 200);
+		pros::delay(500);
+		intake.brake();
+		intake2.brake();
+		chas_move(0,0);
+		wings.set_value(LOW);
+		forwardMove(1700, 0.15);
+		wings.set_value(HIGH);
+		forwardMove(-500, 0.15);
+
+		turn2(180, 1.00, 0.0, 0.0, 0, 0);
+		intake.move_velocity(-200);
+		intake2.move_velocity(-200);
+		forwardMove(-800, 0.15);
+		
+		/*
+		turn2(70, 1.35, 0.0, 0.0, 0, 0);
+		intake.move_velocity(-200);
+		intake2.move_velocity(-200);
+		//turn2(180, 1.35, 0.0, 0.0, 0, 0);
+		*/
+		
 
 
 

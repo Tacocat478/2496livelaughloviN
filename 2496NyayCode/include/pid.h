@@ -7,6 +7,7 @@
 void setConstants(float, float, float);
 float calc(int, float, int, int);
 void chas_moveFor(int, int);
+void right_moveFor(int, int);
 void chas_move(int, int);
 void reset_encoders();
 void forwardMove(int, float);
