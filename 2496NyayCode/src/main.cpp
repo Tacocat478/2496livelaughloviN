@@ -182,30 +182,27 @@ void autonomous() {
 		
 		forwardMove(1300, 0.20);
 		turn2(-26, 2.30, 0.0, 0.0, 0, 0);
-		//forwardMove(700, 0.20);
 		chas_moveFor(800, 300);
-		pros::delay(1000); //1400
+		pros::delay(800); //1400
 		chas_move(0,0);
 		
 		forwardMove(-300, 0.20);
 		turn2(90, 1.27, 0.0, 0.0, 0, 0);
 		forwardMove(-1150, 0.20);
 		pros::delay(300);
-		//turn4(65, 1.4, 0.0, 0.0, 0, 0);
-		//turn2(43, 1.75, 0.0, 0.0, 0, 0);
-		//turn3(47, 1.69, 0.0, 0.0, 0, 0);
-		turn3(50, 1.66, 0.0, 0.0, 0, 0);
+		//turn3(50, 1.66, 0.0, 0.0, 0, 0);
+		turn3(45, 1.69, 0.0, 0.0, 0, 0);
 
 		intake.move_velocity(200);
 		intake2.move_velocity(200);
 
 		forwardMove(-2000, 0.20);
 		right_moveFor(-600, 200);
-		pros::delay(500);
-		intake.brake();
-		intake2.brake();
+		pros::delay(550);
 		chas_move(0,0);
 		wings.set_value(LOW);
+		intake.brake();
+		intake2.brake();
 		forwardMove(1700, 0.15);
 		wings.set_value(HIGH);
 		forwardMove(-500, 0.15);
@@ -213,14 +210,51 @@ void autonomous() {
 		turn2(180, 1.00, 0.0, 0.0, 0, 0);
 		intake.move_velocity(-200);
 		intake2.move_velocity(-200);
-		forwardMove(-800, 0.15);
-		
-		/*
-		turn2(70, 1.35, 0.0, 0.0, 0, 0);
+		pros::delay(700);
+
+		turn2(140, 1.08, 0.0, 0.0, 0, 0);
+		intake.move_velocity(200);
+		intake2.move_velocity(200);
+		forwardMove(-1500, 0.20);
+		left_moveFor(-600, 200);
+		pros::delay(500);
+		intake.brake();
+		intake2.brake();
+
+		forwardMove(500, 0.20);
+		//turn2(125, 1.15, 0.0, 0.0, 0, 0);
+		turn2(110, 1.17, 0.0, 0.0, 0, 0);
+		forwardMove(-1300, 0.20);
+		turn2(70, 1.38, 0.0, 0.0, 0, 0);
 		intake.move_velocity(-200);
 		intake2.move_velocity(-200);
-		//turn2(180, 1.35, 0.0, 0.0, 0, 0);
+		pros::delay(700);
+		intake.brake();
+		intake2.brake();
+
+		turn2(180, 1.00, 0.0, 0.0, 0, 0);
+		wings.set_value(LOW);
+		forwardMove(700, 0.15);
+		wings.set_value(HIGH);
+		forwardMove(-500, 0.15);
+
+		/*
+		intake.move_velocity(-200);
+		intake2.move_velocity(-200);
+		pros::delay(700);
+		intake.brake();
+		intake2.brake();
+		turn2(250, 0.95, 0.0, 0.0, 0, 0);
 		*/
+		
+
+		
+
+		
+		
+
+
+
 		
 
 
@@ -243,7 +277,7 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	//imu.tare_rotation();
+	imu.tare_rotation();
 	//LF.tare_position();
 	while(true){
 		arcade_driver();
@@ -257,7 +291,7 @@ void opcontrol() {
 		//float positionTest = imu.get_rotation();
 		//float target = 90.0;
 		//master.print(0, 0, "%f %f", positionTest, (target - positionTest));
-		//master.print(0,0,"%f",imu.get_rotation());
+		master.print(0,0,"%f",imu.get_rotation());
 		//master.print(0,0,"%f",LF.get_position());
 
 		/*

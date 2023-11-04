@@ -73,6 +73,12 @@ void right_moveFor(int distance, int velocity){
     RB.move_absolute(distance, velocity);
 }
 
+void left_moveFor(int distance, int velocity){
+    reset_encoders();
+    LF.move_absolute(distance, velocity);
+    LB.move_absolute(distance, velocity);
+}
+
 
 void forwardMove(int target, float p){
     reset_encoders(); 
@@ -81,7 +87,7 @@ void forwardMove(int target, float p){
     float voltage;
     float encoder_average;
     int count = 0;
-    int bound = 60;
+    int bound = 100; //60
 
     while(true){
         
