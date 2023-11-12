@@ -126,7 +126,7 @@ void forwardMoveb(int target, float p){
         if ((target - encoder_average) <= bound && (target - encoder_average) >= -bound) {
             count++; 
         }
-        if (count >= 10) {
+        if (count >= 28) {
             break; 
         }                                   
         pros::delay(10);

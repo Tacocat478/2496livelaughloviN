@@ -12,6 +12,7 @@ void left_moveFor(int, int);
 void chas_move(int, int);
 void reset_encoders();
 void forwardMove(int, float);
+void forwardMoveb(int, float);
 void forwardMove2(int, float);
 void forwardMove3(int, float);
 void turn(int, float, float, float, int, int);

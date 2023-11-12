@@ -146,8 +146,8 @@ void autonomous() {
 		turn4(-14, 3.5, 0.0, 0.0, 0, 0); 
 		intake.move_velocity(-200);
 		intake2.move_velocity(-200);
-		forwardMove(-900, 0.15);
-		blocker.set_value(LOW);
+		forwardMoveb(-850, 0.15);
+		//blocker.set_value(LOW); blocker up
 		*/
 
 
@@ -176,6 +176,7 @@ void autonomous() {
 		//turn3(-41, 1.75, 0.0, 0.0, 0, 0); //1.51
 		turn3(-45, 1.69, 0.0, 0.0, 0, 0);
 		forwardMove(3000, 0.15);
+		blocker.set_value(LOW); //blocker up
 		*/
 		
 
@@ -190,7 +191,7 @@ void autonomous() {
 		*/
 
 
-		//CLOSE AUTON
+		//FAR AUTON
 		/*
 		forwardMove(1300, 0.20);
 		turn2(-26, 2.30, 0.0, 0.0, 0, 0);
@@ -253,8 +254,8 @@ void autonomous() {
 		forwardMove2(1400, 0.15); //1000 f3
 		wings.set_value(HIGH);
 		forwardMove(-500, 0.15);
+		blocker.set_value(LOW); //blocker up
 		*/
-		
 }
 
 /**
