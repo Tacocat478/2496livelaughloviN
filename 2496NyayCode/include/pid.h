@@ -12,14 +12,11 @@ void left_moveFor(int, int);
 void chas_move(int, int);
 void reset_encoders();
 void forwardMove(int, float);
-void forwardMoveb(int, float);
 void forwardMove2(int, float);
-void forwardMove3b(int, float);
+void forwardMove3(int, float);
 void turn(int, float, float, float, int, int);
 void turn2(int, float, float, float, int, int);
-void turn2b(int, float, float, float, int, int);
 void turn3(int, float, float, float, int, int);
-void turn3b(int, float, float, float, int, int);
 void turn4(int, float, float, float, int, int);
 
 

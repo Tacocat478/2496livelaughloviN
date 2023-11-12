@@ -99,7 +99,7 @@ void forwardMove(int target, float p){
         if ((target - encoder_average) <= bound && (target - encoder_average) >= -bound) {
             count++; 
         }
-        if (count >= 28) {
+        if (count >= 10) { //28
             break; 
         }                                   
         pros::delay(10);
@@ -153,7 +153,7 @@ void forwardMove2(int target, float p){
         if ((target - encoder_average) <= bound && (target - encoder_average) >= -bound) {
             count++; 
         }
-        if (count >= 28) {
+        if (count >= 10) { //28
             break; 
         }                                   
         pros::delay(10);
@@ -161,7 +161,7 @@ void forwardMove2(int target, float p){
     chas_move(0,0); 
 }
 
-void forwardMove3b(int target, float p){
+void forwardMove3(int target, float p){
     reset_encoders(); 
     setConstants(p, 0.0, 0.0);
 
@@ -208,7 +208,7 @@ void turn(int target, float p, float i, float d, int KI, int maxI){
             //master.print(0, 0, "test");
             count++;
         }
-        if (count >= 30) {
+        if (count >= 10) { //30
             break;
         }
         pros::delay(10);
@@ -236,7 +236,7 @@ void turn2(int target, float p, float i, float d, int KI, int maxI){
             //master.print(0, 0, "test");
             count++;
         }
-        if (count >= 30) {
+        if (count >= 10) { //30
             break;
         }
         pros::delay(10);
@@ -244,33 +244,6 @@ void turn2(int target, float p, float i, float d, int KI, int maxI){
     chas_move(0,0);
 }
 
-void turn2b(int target, float p, float i, float d, int KI, int maxI){
-    imu.tare_rotation();
-    //setConstants(1.39, 2.7, 0.0);
-    setConstants(p, i, d);
-    float voltage;
-    float position;
-    int count = 0;
-    float bound = 7.5; //1.3
-
-    while(true){
-        position = imu.get_rotation();
-        //voltage = calc(target, position, 2, 20);
-        voltage = calc(target, position, KI, maxI);
-        master.print(0, 0, "%f %f", (target - position), voltage);
-
-        chas_move(-voltage, voltage);
-        if ((target - position) <= bound && (target - position) >= -bound){
-            //master.print(0, 0, "test");
-            count++;
-        }
-        if (count >= 10) {
-            break;
-        }
-        pros::delay(10);
-    }
-    chas_move(0,0);
-}
 
 void turn3(int target, float p, float i, float d, int KI, int maxI){
     imu.tare_rotation();
@@ -279,7 +252,7 @@ void turn3(int target, float p, float i, float d, int KI, int maxI){
     float voltage;
     float position;
     int count = 0;
-    float bound = 2.0; //1.3  //2.0 
+    float bound = 3.5; //2.0 
 
     while(true){
         position = imu.get_rotation();
@@ -292,7 +265,7 @@ void turn3(int target, float p, float i, float d, int KI, int maxI){
             //master.print(0, 0, "test");
             count++;
         }
-        if (count >= 30) {
+        if (count >= 10) { //30
             break;
         }
         pros::delay(10);
@@ -300,33 +273,6 @@ void turn3(int target, float p, float i, float d, int KI, int maxI){
     chas_move(0,0);
 }
 
-void turn3b(int target, float p, float i, float d, int KI, int maxI){
-    imu.tare_rotation();
-    //setConstants(1.39, 2.7, 0.0);
-    setConstants(p, i, d);
-    float voltage;
-    float position;
-    int count = 0;
-    float bound = 2.0; //1.3  //2.0 
-
-    while(true){
-        position = imu.get_rotation();
-        //voltage = calc(target, position, 2, 20);
-        voltage = calc(target, position, KI, maxI);
-        master.print(0, 0, "%f %f", (target - position), voltage);
-
-        chas_move(-voltage, voltage);
-        if ((target - position) <= bound && (target - position) >= -bound){
-            //master.print(0, 0, "test");
-            count++;
-        }
-        if (count >= 10) {
-            break;
-        }
-        pros::delay(10);
-    }
-    chas_move(0,0);
-}
 
 void turn4(int target, float p, float i, float d, int KI, int maxI){
     imu.tare_rotation();
@@ -348,7 +294,7 @@ void turn4(int target, float p, float i, float d, int KI, int maxI){
             //master.print(0, 0, "test");
             count++;
         }
-        if (count >= 30) {
+        if (count >= 10) { //30
             break;
         }
         pros::delay(10);

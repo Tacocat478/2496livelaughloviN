@@ -72,7 +72,7 @@ void autonomous() {
 		KL.move_velocity(85);
 		KR.move_velocity(85);
 		int count = 0;
-		while(count < 45){
+		while(count < 46){
 			if (kickerLimit.get_new_press()) {
 			count ++;
 			pros::delay(300);
@@ -81,18 +81,19 @@ void autonomous() {
 		KL.brake();
 		KR.brake();
 		*/
-
 		/*
 		while (kickerLimit.get_value() == false){
 		KL.move_velocity(120);
 		KR.move_velocity(120);
 		}
+		KL.brake();
+		KR.brake();
 		
 		pros::delay(500);		
 		forwardMove(200, 0.20);
-		turn4(50, 1.65, 0.0, 0.0, 0, 0); //turn3
+		turn4(50, 1.65, 0.0, 0.0, 0, 0);
 		forwardMove(1150, 0.15); 
-		turn4(-14, 3.5, 0.0, 0.0, 0, 0); //turn3
+		turn4(-14, 3.5, 0.0, 0.0, 0, 0);
 		forwardMove(3300, 0.11); 
 
 		turn2(-90, 1.27, 0.0, 0.0, 0, 0);
@@ -101,26 +102,36 @@ void autonomous() {
 		turn2(-90, 1.27, 0.0, 0.0, 0, 0);
 		forwardMove(1150, 0.15); 
 		turn2(90, 1.27, 0.0, 0.0, 0, 0);
-		forwardMove(1800, 0.15); 
-		turn2(90, 1.27, 0.0, 0.0, 0, 0);
+		forwardMove(3250, 0.15); //3500
+		turn2(115, 1.30, 0.0, 0.0, 0, 0);
 		wings.set_value(LOW); //wings out
-		forwardMove2(2000, 0.15);
+		forwardMove2(2700, 0.15); //2300
 		wings.set_value(HIGH);
-		forwardMove(-1500, 0.15);
-		turn3(17, 6.0, 0.0, 0.0, 0, 0); 
+		forwardMove(-1300, 0.15); //1500
+		turn3(35, 2.00, 0.0, 0.0, 0, 0);
 		wings.set_value(LOW);
-		forwardMove2(2000, 0.15);
+		forwardMove2(2100, 0.15); //2500
 		wings.set_value(HIGH);
-		forwardMove(-1500, 0.15);
- 
-		turn3(55, 1.60, 0.0, 0.0, 0, 0);
-		forwardMove2(2800, 0.15); 
+		forwardMove(-1500, 0.15); //1500
+		turn3(55, 1.60, 0.0, 0.0, 0, 0); //change
+		forwardMove2(3300, 0.15); 
 		turn2(-120, 1.16, 0.0, 0.0, 0, 0);
-		forwardMove2(1600, 0.20);
-		forwardMove2(-1500, 0.20);
+		
+		chas_moveFor(3000, 200);
+		pros::delay(800);
+		chas_moveFor(-1000, 200);
+		pros::delay(400);
+		chas_moveFor(3000, 200);
+		pros::delay(800);
+		chas_moveFor(-1000, 200);
+		pros::delay(400);
+		chas_moveFor(3000, 200);
+		pros::delay(800);
+		chas_moveFor(-1000, 200);
 		*/
 
-		
+
+
 		//AWP DESCORE
 		/*
 		descorer.set_value(LOW);
@@ -139,7 +150,6 @@ void autonomous() {
 		blocker.set_value(LOW);
 		*/
 
-		//turn2(70, 1.35, 0.0, 0.0, 0, 0);
 
 
 
@@ -162,8 +172,9 @@ void autonomous() {
 		//FAR AWP PUSH
 		/*
 		turn3(-45, 1.69, 0.0, 0.0, 0, 0);
-		forwardMove(1350, 0.20);
-		turn3(-41, 1.75, 0.0, 0.0, 0, 0); //1.51
+		forwardMove(1100, 0.20); //1350
+		//turn3(-41, 1.75, 0.0, 0.0, 0, 0); //1.51
+		turn3(-45, 1.69, 0.0, 0.0, 0, 0);
 		forwardMove(3000, 0.15);
 		*/
 		
@@ -172,174 +183,77 @@ void autonomous() {
 		//CLOSE AWP PUSH
 		/*
 		turn3(45, 1.69, 0.0, 0.0, 0, 0);
-		forwardMove(1350, 0.20);
-		turn3(41, 1.75, 0.0, 0.0, 0, 0); //1.51
+		forwardMove(1100, 0.20); //1350
+		//turn3(41, 1.75, 0.0, 0.0, 0, 0); //1.51
+		turn3(45, 1.69, 0.0, 0.0, 0, 0);
 		forwardMove(3000, 0.15);
 		*/
 
 
 		//CLOSE AUTON
 		/*
-		forwardMoveb(1300, 0.20);
-		turn2b(-26, 2.30, 0.0, 0.0, 0, 0);
+		forwardMove(1300, 0.20);
+		turn2(-26, 2.30, 0.0, 0.0, 0, 0);
 		chas_moveFor(800, 300);
 		pros::delay(600); //1400
 		chas_move(0,0);
 		
-		forwardMoveb(-300, 0.20);
-		turn2b(90, 1.27, 0.0, 0.0, 0, 0);
-		forwardMoveb(-1150, 0.20);
-		pros::delay(300);
-		//turn3(50, 1.66, 0.0, 0.0, 0, 0);
-		turn3(45, 1.69, 0.0, 0.0, 0, 0);
+		forwardMove(-300, 0.20);
+		//turn2(90, 1.27, 0.0, 0.0, 0, 0); //(on not yousef field)
+		turn2(96, 1.27, 0.0, 0.0, 0, 0); 
+		forwardMove(-1150, 0.20);
+		//turn3(45, 1.69, 0.0, 0.0, 0, 0); //(on not yousef field)
+		turn2(50, 1.65, 0.0, 0.0, 0, 0);
 
 		intake.move_velocity(200);
 		intake2.move_velocity(200);
 
-		forwardMoveb(-2000, 0.20);
-		right_moveFor(-600, 200);
-		pros::delay(550);
-		chas_move(0,0);
-		wings.set_value(LOW);
-		intake.brake();
-		intake2.brake();
-		forwardMoveb(1700, 0.15);
-		wings.set_value(HIGH);
-		forwardMoveb(-500, 0.15);
-
-		turn2b(180, 1.00, 0.0, 0.0, 0, 0);
-		intake.move_velocity(-200);
-		intake2.move_velocity(-200);
-		pros::delay(400); //700
-
-		turn2b(140, 1.08, 0.0, 0.0, 0, 0);
-		intake.move_velocity(200);
-		intake2.move_velocity(200);
-		forwardMoveb(-1500, 0.20);
-		left_moveFor(-600, 200);
-		pros::delay(500);
-		intake.brake();
-		intake2.brake();
-
-		forwardMoveb(500, 0.20);
-		//turn2(125, 1.15, 0.0, 0.0, 0, 0);
-		turn2b(110, 1.17, 0.0, 0.0, 0, 0);
-		forwardMoveb(-1300, 0.20);
-		turn2b(70, 1.38, 0.0, 0.0, 0, 0);
-		intake.move_velocity(-200);
-		intake2.move_velocity(-200);
-		pros::delay(400);
-		intake.brake();
-		intake2.brake();
-
-		turn2b(180, 1.00, 0.0, 0.0, 0, 0);
-		wings.set_value(LOW);
-		forwardMoveb(1100, 0.15); //700
-		wings.set_value(HIGH);
-		forwardMoveb(-500, 0.15);
-		*/
-
-
-
-		forwardMoveb(1300, 0.20);
-		turn2b(-26, 2.30, 0.0, 0.0, 0, 0);
-		chas_moveFor(800, 300);
-		pros::delay(600); //1400
-		chas_move(0,0);
-		
-		forwardMoveb(-300, 0.20);
-		turn2b(90, 1.27, 0.0, 0.0, 0, 0);
-		forwardMoveb(-1150, 0.20);
-		turn3b(45, 1.69, 0.0, 0.0, 0, 0);
-
-		intake.move_velocity(200);
-		intake2.move_velocity(200);
-
-		forwardMoveb(-2000, 0.20);
+		forwardMove(-2000, 0.20);
 		right_moveFor(-600, 200);
 		pros::delay(700); //550
 		chas_move(0,0);
 		wings.set_value(LOW);
-		forwardMoveb(1700, 0.15);
+		forwardMove(1700, 0.15);
 		wings.set_value(HIGH);
-		forwardMoveb(-500, 0.15);
+		forwardMove(-500, 0.15);
 		
 		intake.move_velocity(-26);
 		intake2.move_velocity(-26);
-		turn2b(180, 1.00, 0.0, 0.0, 0, 0);
+		turn2(180, 1.00, 0.0, 0.0, 0, 0);
 		intake.move_velocity(-200);
 		intake2.move_velocity(-200);
 		pros::delay(250);
 		intake.brake();
 		intake2.brake();
 
-		turn2b(140, 1.08, 0.0, 0.0, 0, 0);
+		turn2(140, 1.08, 0.0, 0.0, 0, 0);
 		intake.move_velocity(200);
 		intake2.move_velocity(200);
-		forwardMoveb(-1500, 0.20);
+		forwardMove(-1500, 0.20);
 		left_moveFor(-600, 200);
 		pros::delay(600);
 
-		forwardMoveb(500, 0.20);
-		turn2b(110, 1.17, 0.0, 0.0, 0, 0);
+		forwardMove(500, 0.20);
+		turn2(110, 1.17, 0.0, 0.0, 0, 0);
 		intake.brake();
 		intake2.brake();
-		forwardMoveb(-1300, 0.20);
+		forwardMove(-1300, 0.20);
 
 		intake.move_velocity(-47); //50
 		intake2.move_velocity(-47);
-		turn2b(70, 1.38, 0.0, 0.0, 0, 0);
+		turn2(70, 1.38, 0.0, 0.0, 0, 0);
 		intake.move_velocity(-200);
 		intake2.move_velocity(-200);
 		pros::delay(200);
 		intake.brake();
 		intake2.brake();
 
-		turn2b(180, 1.00, 0.0, 0.0, 0, 0);
+		turn2(180, 1.00, 0.0, 0.0, 0, 0);
 		wings.set_value(LOW);
-		forwardMove3b(1000, 0.15); //700
+		forwardMove2(1400, 0.15); //1000 f3
 		wings.set_value(HIGH);
-		forwardMoveb(-500, 0.15);
-
-
-
-
-		/*
-		intake.move_velocity(-50);
-		intake2.move_velocity(-50);
-		turn2b(70, 1.38, 0.0, 0.0, 0, 0);
-		intake.brake();
-		intake2.brake();
+		forwardMove(-500, 0.15);
 		*/
-		/*
-		intake.move_velocity(-40);
-		intake2.move_velocity(-40);
-		turn2b(180, 1.00, 0.0, 0.0, 0, 0);
-		intake.brake();
-		intake2.brake();
-		*/
-		/*
-		intake.move_velocity(-200);
-		intake2.move_velocity(-200);
-		pros::delay(700);
-		intake.brake();
-		intake2.brake();
-		turn2(250, 0.95, 0.0, 0.0, 0, 0);
-		*/
-		
-
-		
-
-		
-		
-
-
-
-		
-
-
-
-		
 		
 }
 
