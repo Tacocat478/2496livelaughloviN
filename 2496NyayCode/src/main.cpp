@@ -80,8 +80,8 @@ void autonomous() {
 		}
 		KL.brake();
 		KR.brake();
-		*/
-		/*
+		
+		
 		while (kickerLimit.get_value() == false){
 		KL.move_velocity(120);
 		KR.move_velocity(120);
@@ -92,11 +92,13 @@ void autonomous() {
 		pros::delay(500);		
 		forwardMove(200, 0.20);
 		turn4(50, 1.65, 0.0, 0.0, 0, 0);
-		forwardMove(1150, 0.15); 
-		turn4(-14, 3.5, 0.0, 0.0, 0, 0);
-		forwardMove(3300, 0.11); 
+		forwardMove(550, 0.15); //1150 800
+		turn4(-19, 3.5, 0.0, 0.0, 0, 0); //14
 
-		turn2(-90, 1.27, 0.0, 0.0, 0, 0);
+		
+		forwardMove(3450, 0.11); //3300
+
+		turn5(-90, 1.27, 0.0, 0.0, 0, 0); //t2
 		forwardMove(1200, 0.15);
 
 		turn2(-90, 1.27, 0.0, 0.0, 0, 0);
@@ -105,18 +107,19 @@ void autonomous() {
 		forwardMove(3250, 0.15); //3500
 		turn2(115, 1.30, 0.0, 0.0, 0, 0);
 		wings.set_value(LOW); //wings out
-		forwardMove2(2700, 0.15); //2300
+		forwardMove4(2700, 0.15); //2300 f2
 		wings.set_value(HIGH);
 		forwardMove(-1300, 0.15); //1500
 		turn3(35, 2.00, 0.0, 0.0, 0, 0);
 		wings.set_value(LOW);
-		forwardMove2(2100, 0.15); //2500
+		forwardMove4(2100, 0.15); //2500 f2
 		wings.set_value(HIGH);
 		forwardMove(-1500, 0.15); //1500
 		turn3(55, 1.60, 0.0, 0.0, 0, 0); //change
 		forwardMove2(3300, 0.15); 
 		turn2(-120, 1.16, 0.0, 0.0, 0, 0);
-		
+		turn4(-17, 3.5, 0.0, 0.0, 0, 0);
+
 		chas_moveFor(3000, 200);
 		pros::delay(800);
 		chas_moveFor(-1000, 200);
@@ -192,7 +195,7 @@ void autonomous() {
 
 
 		//FAR AUTON
-		/*
+		
 		forwardMove(1300, 0.20);
 		turn2(-26, 2.30, 0.0, 0.0, 0, 0);
 		chas_moveFor(800, 300);
@@ -249,13 +252,13 @@ void autonomous() {
 		intake.brake();
 		intake2.brake();
 
-		turn2(180, 1.00, 0.0, 0.0, 0, 0);
+		turn2(220, 1.00, 0.0, 0.0, 0, 0); //180
 		wings.set_value(LOW);
 		forwardMove2(1400, 0.15); //1000 f3
 		wings.set_value(HIGH);
 		forwardMove(-500, 0.15);
 		blocker.set_value(LOW); //blocker up
-		*/
+		
 }
 
 /**
