@@ -21,6 +21,19 @@ void arcade_driver(){
 	RB.move(right);
 }
 
+void arcade_driverFourMotor(){
+    int power = -(master.get_analog(ANALOG_LEFT_Y));
+	int turn = -(master.get_analog(ANALOG_RIGHT_X));
+	int left = power + turn;
+	int right = power - turn;
+	LF.move(left);
+	LM.move(left);
+	LB.move(left);
+	RF.move(right);
+	RM.move(right);
+	RB.move(right);
+}
+
 void intake_driver(){
     if (master.get_digital(DIGITAL_R1)){
 		intake.move_velocity(200);

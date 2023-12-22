@@ -8,8 +8,10 @@
 //CHASSIS
 extern pros::Motor LF;
 extern pros::Motor LB;
+extern pros::Motor LM;
 extern pros::Motor RF;
 extern pros::Motor RB;
+extern pros::Motor RM;
 
 //KICKER
 extern pros::Motor KL;

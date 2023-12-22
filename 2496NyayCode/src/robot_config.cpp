@@ -6,17 +6,19 @@
 #include "pros/adi.hpp"
 
 //CHASSIS MOTORS
-pros::Motor LF (9); //"false" one side to reverse
-pros::Motor LB (18);
-pros::Motor RF (13, true);
-pros::Motor RB (12, true);
+pros::Motor LF (11); //"false" one side to reverse
+pros::Motor LB (13);
+pros::Motor LM (12);
+pros::Motor RF (1, true);
+pros::Motor RB (4, true);
+pros::Motor RM (2, true);
 
 //KICKER MOTORS
 pros::Motor KL (19);
 pros::Motor KR (20, true);
 
 //INTAKE MOTORS
-pros::Motor intake (11); //"true" one of these to reverse
+pros::Motor intake (8); //"true" one of these to reverse
 pros::Motor intake2 (15, true);
 
 //CONTROLLER
