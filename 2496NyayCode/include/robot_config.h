@@ -14,12 +14,10 @@ extern pros::Motor RB;
 extern pros::Motor RM;
 
 //KICKER
-extern pros::Motor KL;
-extern pros::Motor KR;
+extern pros::Motor K;
 
 //INTAKE
 extern pros::Motor intake;
-extern pros::Motor intake2;
 
 //CONTROLLER
 extern pros::Controller master;
@@ -32,7 +30,6 @@ extern pros::ADIDigitalOut blocker;
 
 //LIMIT SWITCH
 extern pros::ADIDigitalIn kickerLimit;
-extern pros::ADIDigitalIn testLim;
 
 //IMU
 extern pros::IMU imu;

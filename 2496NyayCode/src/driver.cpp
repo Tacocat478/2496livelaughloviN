@@ -37,17 +37,13 @@ void arcade_driverFourMotor(){
 void intake_driver(){
     if (master.get_digital(DIGITAL_R1)){
 		intake.move_velocity(200);
-		intake2.move_velocity(200);
 	}
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
 		intake.move_velocity(-200);
-		intake2.move_velocity(-200);
 	}
     else{
 		intake.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-		intake2.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 		intake.brake();
-		intake2.brake();
 	}
 }
 
@@ -101,12 +97,10 @@ void blocker_driver(){
 
 void kicker_driver(){
     if (kickerLimit.get_value() == false || master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
-		KL.move_velocity(85);
-		KR.move_velocity(85);
+		K.move_velocity(85);
 	}
     else{
-		KL.brake();
-		KR.brake();
+		K.brake();
 	}
 }
 

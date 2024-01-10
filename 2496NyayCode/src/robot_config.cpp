@@ -6,20 +6,18 @@
 #include "pros/adi.hpp"
 
 //CHASSIS MOTORS
-pros::Motor LF (11); //"false" one side to reverse
+pros::Motor LF (3); //"false" one side to reverse
 pros::Motor LB (13);
-pros::Motor LM (12);
-pros::Motor RF (1, true);
-pros::Motor RB (4, true);
-pros::Motor RM (2, true);
+pros::Motor LM (1);
+pros::Motor RF (9, true);
+pros::Motor RB (19, true);
+pros::Motor RM (20, true);
 
 //KICKER MOTORS
-pros::Motor KL (19);
-pros::Motor KR (20, true);
+pros::Motor K (12);
 
 //INTAKE MOTORS
-pros::Motor intake (8); //"true" one of these to reverse
-pros::Motor intake2 (15, true);
+pros::Motor intake (10); 
 
 //CONTROLLER
 pros::Controller master (CONTROLLER_MASTER);
@@ -32,7 +30,6 @@ pros::ADIDigitalOut blocker('E', true);
 	
 //LIMIT SWITCH
 pros::ADIDigitalIn kickerLimit ('B');
-pros::ADIDigitalIn testLim ('F');
 
 //IMU
 pros::IMU imu (16); 

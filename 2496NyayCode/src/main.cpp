@@ -195,7 +195,7 @@ void autonomous() {
 
 
 		//FAR AUTON
-		
+		/*
 		forwardMove(1300, 0.20);
 		turn2(-26, 2.30, 0.0, 0.0, 0, 0);
 		chas_moveFor(800, 300);
@@ -210,7 +210,6 @@ void autonomous() {
 		turn2(50, 1.65, 0.0, 0.0, 0, 0);
 
 		intake.move_velocity(200);
-		intake2.move_velocity(200);
 
 		forwardMove(-2000, 0.20);
 		right_moveFor(-600, 200);
@@ -222,17 +221,13 @@ void autonomous() {
 		forwardMove(-500, 0.15);
 		
 		intake.move_velocity(-26);
-		intake2.move_velocity(-26);
 		turn2(180, 1.00, 0.0, 0.0, 0, 0);
 		intake.move_velocity(-200);
-		intake2.move_velocity(-200);
 		pros::delay(250);
 		intake.brake();
-		intake2.brake();
 
 		turn2(140, 1.08, 0.0, 0.0, 0, 0);
 		intake.move_velocity(200);
-		intake2.move_velocity(200);
 		forwardMove(-1500, 0.20);
 		left_moveFor(-600, 200);
 		pros::delay(600);
@@ -240,17 +235,13 @@ void autonomous() {
 		forwardMove(500, 0.20);
 		turn2(110, 1.17, 0.0, 0.0, 0, 0);
 		intake.brake();
-		intake2.brake();
 		forwardMove(-1300, 0.20);
 
 		intake.move_velocity(-47); //50
-		intake2.move_velocity(-47);
 		turn2(70, 1.38, 0.0, 0.0, 0, 0);
 		intake.move_velocity(-200);
-		intake2.move_velocity(-200);
 		pros::delay(200);
 		intake.brake();
-		intake2.brake();
 
 		turn2(220, 1.00, 0.0, 0.0, 0, 0); //180
 		wings.set_value(LOW);
@@ -258,7 +249,7 @@ void autonomous() {
 		wings.set_value(HIGH);
 		forwardMove(-500, 0.15);
 		blocker.set_value(LOW); //blocker up
-		
+		*/
 }
 
 /**
