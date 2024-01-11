@@ -6,7 +6,7 @@
 #include "pros/adi.hpp"
 
 //CHASSIS MOTORS
-pros::Motor LF (3); //"false" one side to reverse
+pros::Motor LF (4); //"false" one side to reverse
 pros::Motor LB (13);
 pros::Motor LM (1);
 pros::Motor RF (9, true);
@@ -17,7 +17,7 @@ pros::Motor RM (20, true);
 pros::Motor K (12);
 
 //INTAKE MOTORS
-pros::Motor intake (10); 
+pros::Motor intake (10,true); 
 
 //CONTROLLER
 pros::Controller master (CONTROLLER_MASTER);
@@ -34,4 +34,4 @@ pros::ADIDigitalIn kickerLimit ('B');
 //IMU
 pros::IMU imu (16); 
 
-#endif
+#endif 
