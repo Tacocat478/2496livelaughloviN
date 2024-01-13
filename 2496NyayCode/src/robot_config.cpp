@@ -23,9 +23,9 @@ pros::Motor intake (10,true);
 pros::Controller master (CONTROLLER_MASTER);
 
 //SOLENOIDS
-pros::ADIDigitalOut wings ('G', true);
+pros::ADIDigitalOut wings ('D', true);
 pros::ADIDigitalOut descorer ('H', true);
-pros::ADIDigitalOut hook ('D');
+pros::ADIDigitalOut hook ('C');
 pros::ADIDigitalOut blocker('E', true);
 	
 //LIMIT SWITCH
