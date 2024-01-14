@@ -14,7 +14,7 @@ pros::Motor RB (19, true);
 pros::Motor RM (20, true);
 
 //KICKER MOTORS
-pros::Motor K (12);
+pros::Motor K (12, true);
 
 //INTAKE MOTORS
 pros::Motor intake (10,true); 
@@ -23,7 +23,7 @@ pros::Motor intake (10,true);
 pros::Controller master (CONTROLLER_MASTER);
 
 //SOLENOIDS
-pros::ADIDigitalOut wings ('D', true);
+pros::ADIDigitalOut wings ('D', false);
 pros::ADIDigitalOut descorer ('H', true);
 pros::ADIDigitalOut hook ('C');
 pros::ADIDigitalOut blocker('E', true);

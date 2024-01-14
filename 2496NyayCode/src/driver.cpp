@@ -95,11 +95,23 @@ void blocker_driver(){
 	}
 }
 
+/*
 void kicker_driver(){
     if (kickerLimit.get_value() == false || master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
 		K.move_velocity(85);
 	}
     else{
+		K.brake();
+	}
+}
+*/
+
+void kicker_driver(){
+    if (master.get_digital(DIGITAL_L2)){
+		K.move_velocity(85);
+	}
+    else{
+		K.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 		K.brake();
 	}
 }
