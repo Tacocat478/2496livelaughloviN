@@ -182,17 +182,49 @@ void autonomous() {
 		blocker.set_value(LOW); //blocker up
 		*/
 		
+		
+		intake.move_velocity(-200);
+		turnLeftFor(260, 30);
+		pros::delay(1000);
+		chas_moveFor(1700, 70);
+		pros::delay(2000);
+		turnLeftFor(220, 40);
+		pros::delay(1000);
+		chas_moveFor(4000, 200);
+		pros::delay(2000);
+		chas_moveFor(-500, 200);
+		intake.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+		intake.brake();
+		
 
+		/*
+		intake.move_velocity(-200);
+		chas_moveFor(100, 50);
+		pros::delay(1000);
+		turnLeftFor(170, 30);
+		pros::delay(1000);
+		chas_moveFor(1400, 70);
+		pros::delay(2000);
+		turnLeftFor(230, 40);
+		pros::delay(1000);
+		chas_moveFor(4000, 200);
+		pros::delay(2000);
+		chas_moveFor(-500, 200);
+		intake.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+		intake.brake();
+		*/
 
 		//CLOSE AWP PUSH
 		/*
-		turn3(45, 1.69, 0.0, 0.0, 0, 0);
+		turn3(45, 1.4, 0.0, 0.0, 0, 0);
 		forwardMove(1100, 0.20); //1350
 		//turn3(41, 1.75, 0.0, 0.0, 0, 0); //1.51
 		turn3(45, 1.69, 0.0, 0.0, 0, 0);
 		forwardMove(3000, 0.15);
 		*/
 
+		//intake.move_velocity(-200);
+		
 
 		//FAR AUTON
 		/*
@@ -277,10 +309,10 @@ void opcontrol() {
 		kicker_driver();
 		blocker_driver();
 
-		//float positionTest = imu.get_rotation();
-		//float target = 90.0;
-		//master.print(0, 0, "%f %f", positionTest, (target - positionTest));
-		master.print(0,0,"%f",imu.get_rotation());
+		float positionTest = imu.get_rotation();
+		float target = 90.0;
+		master.print(0, 0, "%f %f", positionTest, (target - positionTest));
+		//master.print(0,0,"%f",imu.get_rotation());
 		//master.print(0,0,"%f",LF.get_position());
 
 		/*

@@ -7,6 +7,8 @@
 void setConstants(float, float, float);
 float calc(int, float, int, int);
 void chas_moveFor(int, int);
+void turnLeftFor(int, int);
+void turnRightFor(int, int);
 void right_moveFor(int, int);
 void left_moveFor(int, int);
 void chas_move(int, int);

@@ -47,35 +47,63 @@ float calc (int target, float input, int integralKI, int maxI){
 
 void reset_encoders(){
     LF.tare_position();
+    LM.tare_position();
     LB.tare_position();
     RF.tare_position();
+    RM.tare_position();
     RB.tare_position();
 }
 
 void chas_move(int vLeft, int vRight){
     LF.move(vLeft);
+    LM.move(vLeft);
 	LB.move(vLeft);
 	RF.move(vRight);
+    RM.move(vLeft);
 	RB.move(vRight);
 }
 
 void chas_moveFor(int distance, int velocity){
     reset_encoders();
     LF.move_absolute(distance, velocity);
+    LM.move_absolute(distance, velocity);
     LB.move_absolute(distance, velocity);
     RF.move_absolute(distance, velocity);
+    RM.move_absolute(distance, velocity);
     RB.move_absolute(distance, velocity);
+}
+
+void turnLeftFor(int distance, int velocity){
+    reset_encoders();
+    LF.move_absolute(distance, velocity);
+    LM.move_absolute(distance, velocity);
+    LB.move_absolute(distance, velocity);
+    RF.move_absolute(-distance, velocity);
+    RM.move_absolute(-distance, velocity);
+    RB.move_absolute(-distance, velocity);
+}
+
+void turnRightFor(int distance, int velocity){
+    reset_encoders();
+    LF.move_absolute(distance, -velocity);
+    LM.move_absolute(distance, -velocity);
+    LB.move_absolute(distance, -velocity);
+    RF.move_absolute(distance, -velocity);
+    RM.move_absolute(distance, -velocity);
+    RB.move_absolute(distance, -velocity);
 }
 
 void right_moveFor(int distance, int velocity){
     reset_encoders();
     RF.move_absolute(distance, velocity);
+    RM.move_absolute(distance, velocity);
     RB.move_absolute(distance, velocity);
 }
 
 void left_moveFor(int distance, int velocity){
     reset_encoders();
     LF.move_absolute(distance, velocity);
+    LM.move_absolute(distance, velocity);
     LB.move_absolute(distance, velocity);
 }
 

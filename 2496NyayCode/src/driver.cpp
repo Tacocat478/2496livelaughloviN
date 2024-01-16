@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "../include/driver.h"
+#include "pid.h"
 
 bool wingsTog = false;
 bool descorerTog = false;
