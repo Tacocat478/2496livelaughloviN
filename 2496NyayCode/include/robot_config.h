@@ -24,7 +24,7 @@ extern pros::Controller master;
 
 //SOLENOIDS
 extern pros::ADIDigitalOut wings;
-extern pros::ADIDigitalOut descorer;
+extern pros::ADIDigitalOut elevation;
 extern pros::ADIDigitalOut hook;
 extern pros::ADIDigitalOut blocker;
 

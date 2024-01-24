@@ -24,7 +24,7 @@ pros::Controller master (CONTROLLER_MASTER);
 
 //SOLENOIDS
 pros::ADIDigitalOut wings ('D', false);
-pros::ADIDigitalOut descorer ('H', true);
+pros::ADIDigitalOut elevation ('F', true);
 pros::ADIDigitalOut hook ('C');
 pros::ADIDigitalOut blocker('E', true);
 	

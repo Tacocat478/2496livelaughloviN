@@ -6,7 +6,7 @@
 #include "pid.h"
 
 bool wingsTog = false;
-bool descorerTog = false;
+bool elevationTog = false;
 bool hookTog = false;
 bool blockerTog = false;
 
@@ -72,14 +72,14 @@ void hook_driver(){
 	}
 }
 
-void descorer_driver(){
+void elevation_driver(){
     if (master.get_digital_new_press(DIGITAL_X)){
-		descorerTog = !descorerTog;
-		if (descorerTog){
-			descorer.set_value(HIGH);
+		elevationTog = !elevationTog;
+		if (elevationTog){
+			elevation.set_value(HIGH);
 		}
 		else{
-			descorer.set_value(LOW);
+			elevation.set_value(LOW);
 		}
 	}
 }
