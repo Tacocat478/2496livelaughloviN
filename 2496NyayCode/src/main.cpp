@@ -69,9 +69,9 @@ void competition_initialize() {}
 void autonomous() {
 		//SKILS PROG (V2)
 		/*
-		K2.move_velocity(600);
+		K.move_velocity(600);
 		int count = 0;
-		while(count < 46){ //replace with near infinite number if only shooting during skils
+		while(count < 100){ //replace with near infinite number if only shooting during skils
 			if (kickerLimit.get_new_press()) {
 			count ++;
 			pros::delay(300);
@@ -81,29 +81,36 @@ void autonomous() {
 		
 		
 		while (kickerLimit.get_value() == false){
-		KL.move_velocity(120);
-		KR.move_velocity(120);
+		K.move_velocity(600);
 		}
-		KL.brake();
-		KR.brake();
+		K.brake();
 		*/
-
 
 		//AWP DESCORE (V2)
-		/*
-		wings.set_value(LOW);
-		pros::delay(500);
-		//turn2(-50, 1.65, 0.0, 0.0, 0, 0);
-		turn2(-60, 1.50, 0.0, 0.0, 0, 0);
-		wings.set_value(HIGH);
-		//turn2(55, 1.60, 0.0, 0.0, 0, 0);
-		//turn2(65, 1.40, 0.0, 0.0, 0, 0);
-		turn2(-160, 1.35, 0.0, 0.0, 0, 0); //will need to revise kP
-		forwardMove(-1250, 0.20);
-		turn4(-14, 3.5, 0.0, 0.0, 0, 0); 
 		intake.move_velocity(-200);
-		forwardMoveb(-850, 0.15);
-		*/
+		chas_moveFor(300, 200);
+		pros::delay(1000);
+		chas_moveFor(1, 0);
+		wings.set_value(HIGH);
+		turnLeftFor(300, 40);
+		pros::delay(1000);
+		//turn2(-60, 1.50, 0.0, 0.0, 0, 0);
+		wings.set_value(LOW);
+		//turn2(-160, 1.35, 0.0, 0.0, 0, 0); //will need to revise kP
+		turnRightFor(150, 40);
+		pros::delay(1000);
+		chas_moveFor(-900, 100);
+		pros::delay(1500);
+		turnLeftFor(100, 40);
+		pros::delay(1000);
+		chas_moveFor(-1350, 100);
+		pros::delay(3000);
+		
+		//intake.move_velocity(-200);
+		//forwardMoveb(-850, 0.15);
+		//chas_moveFor(-200, 200);
+		//pros::delay(1000);
+		
 
 
 		//SHOOT ONE (V2)
