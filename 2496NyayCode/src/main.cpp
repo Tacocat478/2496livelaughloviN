@@ -87,6 +87,7 @@ void autonomous() {
 		*/
 
 		//AWP DESCORE (V2)
+		/*
 		intake.move_velocity(-200);
 		chas_moveFor(300, 200);
 		pros::delay(1000);
@@ -105,7 +106,8 @@ void autonomous() {
 		pros::delay(1000);
 		chas_moveFor(-1350, 100);
 		pros::delay(3000);
-		
+		*/
+
 		//intake.move_velocity(-200);
 		//forwardMoveb(-850, 0.15);
 		//chas_moveFor(-200, 200);
@@ -154,6 +156,11 @@ void autonomous() {
 
 		//OUTAKE
 		//intake.move_velocity(-200);
+
+		//TEST
+		imu.tare_rotation();
+		setConstants(0.1, 0.0, 0.0);
+		turnNew(90);
 }
 
 /**
@@ -173,17 +180,16 @@ void opcontrol() {
 	imu.tare_rotation();
 	//LF.tare_position();
 	while(true){
-		arcade_driver();
+		arcade_driverSixMotor();
 		intake_driver();
 		wings_driver();
 		hook_driver();
 		elevation_driver();
 		kicker_driver();
-		blocker_driver();
 
-		float positionTest = imu.get_rotation();
-		float target = 90.0;
-		master.print(0, 0, "%f %f", positionTest, (target - positionTest));
+		//float positionTest = imu.get_rotation();
+		//float target = 90.0;
+		//master.print(0, 0, "%f ", positionTest);
 		//master.print(0,0,"%f",imu.get_rotation());
 		//master.print(0,0,"%f",LF.get_position());
 

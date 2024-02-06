@@ -10,19 +10,7 @@ bool elevationTog = false;
 bool hookTog = false;
 bool blockerTog = false;
 
-
-void arcade_driver(){
-    int power = -(master.get_analog(ANALOG_LEFT_Y));
-	int turn = -(master.get_analog(ANALOG_RIGHT_X));
-	int left = power + turn;
-	int right = power - turn;
-	LF.move(left);
-	LB.move(left);
-	RF.move(right);
-	RB.move(right);
-}
-
-void arcade_driverFourMotor(){
+void arcade_driverSixMotor(){
     int power = -(master.get_analog(ANALOG_LEFT_Y));
 	int turn = -(master.get_analog(ANALOG_RIGHT_X));
 	int left = power + turn;

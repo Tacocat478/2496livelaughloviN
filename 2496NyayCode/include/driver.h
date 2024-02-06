@@ -4,8 +4,7 @@
 #include "main.h"
 #include "robot_config.h"
 
-void arcade_driver();
-void arcade_driverFourMotor();
+void arcade_driverSixMotor();
 void intake_driver();
 void wings_driver();
 void hook_driver();
