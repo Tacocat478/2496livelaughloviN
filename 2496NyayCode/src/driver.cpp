@@ -12,7 +12,7 @@ bool blockerTog = false;
 
 void arcade_driverSixMotor(){
     int power = -(master.get_analog(ANALOG_LEFT_Y));
-	int turn = -(master.get_analog(ANALOG_RIGHT_X));
+	int turn = -(master.get_analog(ANALOG_RIGHT_X))*.90;
 	int left = power + turn;
 	int right = power - turn;
 	LF.move(left);
