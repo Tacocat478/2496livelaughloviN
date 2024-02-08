@@ -60,7 +60,7 @@ void chas_move(int vLeft, int vRight){
     LM.move(vLeft);
 	LB.move(vLeft);
 	RF.move(vRight);
-    RM.move(vLeft);
+    RM.move(vRight);
 	RB.move(vRight);
 }
 

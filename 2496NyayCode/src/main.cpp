@@ -159,13 +159,13 @@ void autonomous() {
 
 		//TEST
 		imu.tare_rotation();
-		setConstants(0.1, 0.0, 0.0);
+		setConstants(1.162, 0.0, 0.0);
 		turnNew(90);
 }
 
 /**
  * Runs the operator control code. This function will be started in its own task
- * with the default priority and stack size whenever the robot is enabled via
+ * with the default priority and 05tack size whenever the robot is enabled via
  * the Field Management System or the VEX Competition Switch in the operator
  * control mode.
  *
