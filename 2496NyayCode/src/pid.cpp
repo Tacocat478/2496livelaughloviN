@@ -8,7 +8,7 @@ float t_kp;
 float t_ki;
 float t_kd;
 float KI = 0;
-float maxI = 0;
+float maxI = 200;
 int error = 0;
 int prev_error = 0;
 int integral = 0;
@@ -250,6 +250,7 @@ void turnNew(int target){
     float position;
     int count = 0;
     float bound = 1.5; //1.3
+    float boundTwo = 0;
 
     while(true){
         position = imu.get_rotation();
@@ -257,12 +258,18 @@ void turnNew(int target){
         master.print(0, 0, "%f %f", (target - position), voltage);
 
         chas_move(-voltage, voltage);
-        if ((target - position) <= bound && (target - position) >= -bound){
+        if ((target - position) <= boundTwo && (target - position) >= -boundTwo){
             count++;
         }
+        
         if (count >= 30) {
             break;
         }
+        /*
+        if ((target - position) <= boundTwo && (target - position) >= -boundTwo){
+            break;
+        }
+        */
         pros::delay(10);
     }
     chas_move(0,0);

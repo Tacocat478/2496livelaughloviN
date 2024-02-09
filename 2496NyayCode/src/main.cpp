@@ -159,7 +159,8 @@ void autonomous() {
 
 		//TEST
 		imu.tare_rotation();
-		setConstants(1.162, 0.0, 0.0);
+		//setConstants(1.16, 0.0, 0.0);
+		setConstants(3, 0.6, 0.0); //2   6
 		turnNew(90);
 }
 
