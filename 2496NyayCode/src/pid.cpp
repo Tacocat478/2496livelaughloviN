@@ -25,19 +25,17 @@ float calc (int target, float input, int integralKI, int maxI){
     prev_error = error; 
     error = target - input; 
 
-    if(std::abs(error) < integralKI && std::abs(error) > 0.7){ //add max to prevent non-zero integral when error is extremely low (would cause overshoot)
+    if(std::abs(error) < 6){ //add max to prevent non-zero integral when error is extremely low (would cause overshoot)
         integral += error;            
     }
-    else{
-        integral = 0;
-    }
+
     
-    if(integral >= 0){
-        integral = std::min(integral, maxI); 
-    }
-    else{
-        integral = std::max(integral, -maxI);
-    }
+    // if(integral >= 0){
+    //     integral = std::min(integral, maxI); 
+    // }
+    // else{
+    //     integral = std::max(integral, -maxI);
+    // }
 
     derivative = error - prev_error; 
 
@@ -262,7 +260,7 @@ void turnNew(int target){
             count++;
         }
         
-        if (count >= 30) {
+        if (count >= 100) {
             break;
         }
         /*
