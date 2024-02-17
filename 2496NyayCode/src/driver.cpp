@@ -97,7 +97,7 @@ void kicker_driver(){
 
 void kicker_driver(){
     if (master.get_digital(DIGITAL_L2)){
-		K.move_velocity(170); //200
+		K.move_velocity(200); //170  (200 max)
 	}
     else{
 		K.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);

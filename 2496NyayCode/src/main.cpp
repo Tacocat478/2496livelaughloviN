@@ -160,8 +160,8 @@ void autonomous() {
 		//TEST
 		imu.tare_rotation();
 		//setConstants(1.16, 0.0, 0.0);
-		setConstants(1.8, 0, 1.5); //2   6
-		turnNew(90);
+		setConstants(3.0, 0.0, 0.0); //1.8
+		turnNew(45);
 }
 
 /**
@@ -199,14 +199,14 @@ void opcontrol() {
 			autonomous();
 		}
 		*/
-
+		/*
 		imu.tare_rotation();
 		//setConstants(1.16, 0.0, 0.0);
 		setConstants(3, 0, 2.5); //2   6
 		if (master.get_digital_new_press(DIGITAL_LEFT)){
 			turnNew(90);
 		}
-
+		*/
 
 		pros::delay(100);//
 
