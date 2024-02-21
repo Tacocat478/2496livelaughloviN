@@ -160,8 +160,8 @@ void autonomous() {
 		//TEST
 		imu.tare_rotation();
 		//setConstants(1.16, 0.0, 0.0);
-		setConstants(3.0, 0.0, 0.0); //1.8
-		turnNew(45);
+		//setConstants(1.6, 0.0, 7.9); 
+		turnNew(100); //error goes above +-1 under 45 degrees (consistently 1.6?), gets iffy above  95 degrees (is either perfect or around 1.5-2.0)
 }
 
 /**
