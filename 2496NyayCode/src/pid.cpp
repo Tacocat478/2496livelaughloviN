@@ -7,6 +7,7 @@
 float t_kp;
 float t_ki;
 float t_kd;
+float extraD = 0;
 float KI = 0;
 float maxI = 200;
 int error = 0;
@@ -40,10 +41,16 @@ float calc (int target, float input, int integralKI, int maxI){
 
     derivative = error - prev_error; 
 
+    extraD = 0;
+    if (target > 35 && target < 45) extraD = 3;
+    if (target < 35) extraD = 6;
+    if (target > 90);
+
+
     float ap = -4.0326*pow(10,-10), bp = 2.3486*pow(10, -7), cp = -0.0000528563, dp = 0.00570746, fp = -0.297477, gp = 7.91727;
     float ad = -2.4118*pow(10,-9), bd = 0.00000130151, cd = -0.000262289, dd = 0.0238383, fd = -0.917237, gd = 18.6136;
     t_kp = ap*pow(target, 5) + bp*pow(target, 4) + cp*pow(target, 3) + dp*pow(target, 2) + fp*target + gp;
-    t_kd = ad*pow(target, 5) + bd*pow(target, 4) + cd*pow(target, 3) + dd*pow(target, 2) + fd*target + gd;
+    t_kd = ad*pow(target, 5) + bd*pow(target, 4) + cd*pow(target, 3) + dd*pow(target, 2) + fd*target + gd + extraD;
     t_ki = 0;
     power = t_kp*error + t_ki*integral + t_kd*derivative; 
 

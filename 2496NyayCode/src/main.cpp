@@ -161,7 +161,7 @@ void autonomous() {
 		imu.tare_rotation();
 		//setConstants(1.16, 0.0, 0.0);
 		//setConstants(1.6, 0.0, 7.9); 
-		turnNew(100); //error goes above +-1 under 45 degrees (consistently 1.6?), gets iffy above  95 degrees (is either perfect or around 1.5-2.0)
+		turnNew(15); //error goes above +-1 [always negative 1.6 ish] under 45 degrees, gets iffy above  95 degrees (is either perfect or around 1.5-2.0 --usually negative aroung 130 but above it's balanced positive to negative?) [usually negative error]
 }
 
 /**
