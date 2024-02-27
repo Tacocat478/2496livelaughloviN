@@ -6,6 +6,7 @@
 
 void setConstants(float, float, float);
 float calc(int, float, int, int);
+float calcTime(int);
 void chas_moveFor(int, int);
 void turnLeftFor(int, int);
 void turnRightFor(int, int);
@@ -18,7 +19,8 @@ void forwardMoveb(int, float);
 void forwardMove2(int, float);
 void forwardMove3(int, float);
 void forwardMove4(int, float);
-void turnNew(int);
+void turnCW(int);
+void turnCCW(int);
 void turn(int, float, float, float, int, int);
 void turn2(int, float, float, float, int, int);
 void turn3(int, float, float, float, int, int);

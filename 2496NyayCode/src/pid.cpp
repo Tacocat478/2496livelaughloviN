@@ -45,8 +45,8 @@ float calc (int target, float input, int integralKI, int maxI){
     extraD = 0;
     if (abs(target) > 35 && abs(target) < 45) extraD = 3;
     if (abs(target) < 35) extraD = 6;
-    if (abs(target) > 85 && abs(target) < 105) extraD = -0.5;
-    if (abs(target) == 180) extraD = -1;
+    if (abs(target) > 85 && abs(target) < 105) extraD = 0; //-0.5
+    if (abs(target) == 180) extraD = 0; //-1
 
 
     float ap = -4.0326*pow(10,-10), bp = 2.3486*pow(10, -7), cp = -0.0000528563, dp = 0.00570746, fp = -0.297477, gp = 7.91727;
@@ -58,6 +58,13 @@ float calc (int target, float input, int integralKI, int maxI){
     power = t_kp*error + t_ki*integral + t_kd*derivative; 
 
     return power; 
+}
+
+float calcTime(int target){
+    float at = -2.7626*pow(10,-9), bt = 0.0000011704, ct = -0.00015766, dt = 0.00555204, ft = 0.518313, gt = 17.5455;
+    float time = at*pow(target, 5) + bt*pow(target, 4) + ct*pow(target, 3) + dt*pow(target, 2) + ft*target + gt;
+    time += 20;
+    return time;
 }
 
 void reset_encoders(){
@@ -258,32 +265,62 @@ void forwardMove4(int target, float p){
     chas_move(0,0); 
 }
 
-void turnNew(int target){
+void turnCW(int target){
     //imu.tare_rotation();
     float voltage;
     float position;
-    int count = 0;
-    float bound = 1.5; //1.3
+    float count = 0;
+    float bound = 1.5; 
     float boundTwo = 0;
+    float timeLimit = calcTime(target);
 
     while(true){
+        //CW
         position = imu.get_rotation();
         voltage = calc(target, position, KI, maxI);
         master.print(0, 0, "%f %f", (target - position), voltage);
 
         chas_move(-voltage, voltage);
-        if ((target - position) <= boundTwo && (target - position) >= -boundTwo){
+
+        if (count > timeLimit) {
+            break;
+        }
+
+        count++;
+        pros::delay(10);
+        /*if (abs(position-target) > 1.5) count++;
+        master.print(0, 0, "%f", count); */
+    }
+    chas_move(0,0);
+}
+
+void turnCCW(int target){
+    //imu.tare_rotation();
+    float voltage;
+    float position;
+    int count = 0;
+    float bound = 1.5; 
+    float boundTwo = 0;
+
+
+    while(true){
+        //CW
+        position = -imu.get_rotation();
+        voltage = calc(target, position, KI, maxI);
+        master.print(0, 0, "%f %f", (target - position), voltage);
+
+        chas_move(voltage, -voltage);
+
+        /*
+        if ((abs(target - position)) <= boundTwo){
             count++;
         }
         
         if (count >= 100) {
             break;
         }
-        /*
-        if ((target - position) <= boundTwo && (target - position) >= -boundTwo){
-            break;
-        }
         */
+    
         pros::delay(10);
     }
     chas_move(0,0);
