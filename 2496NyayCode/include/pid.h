@@ -6,6 +6,7 @@
 
 void setConstants(float, float, float);
 float calc(int, float, int, int);
+float fwdCalc(int, float, int, int);
 float calcTime(int);
 void chas_moveFor(int, int);
 void turnLeftFor(int, int);

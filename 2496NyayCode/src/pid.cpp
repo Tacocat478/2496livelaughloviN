@@ -60,6 +60,29 @@ float calc (int target, float input, int integralKI, int maxI){
     return power; 
 }
 
+float fwdCalc (int target, float input, int integralKI, int maxI){
+    prev_error = error; 
+    error = target - input; 
+
+    if(std::abs(error) < 6){ //add max to prevent non-zero integral when error is extremely low (would cause overshoot)
+        integral += error;            
+    }
+
+    
+    // if(integral >= 0){
+    //     integral = std::min(integral, maxI); 
+    // }
+    // else{
+    //     integral = std::max(integral, -maxI);
+    // }
+
+    derivative = error - prev_error; 
+    
+    power = t_kp*error + t_ki*integral + t_kd*derivative; 
+
+    return power; 
+}
+
 float calcTime(int target){
     float at = -2.7626*pow(10,-9), bt = 0.0000011704, ct = -0.00015766, dt = 0.00555204, ft = 0.518313, gt = 17.5455;
     float time = at*pow(target, 5) + bt*pow(target, 4) + ct*pow(target, 3) + dt*pow(target, 2) + ft*target + gt;
@@ -131,6 +154,7 @@ void left_moveFor(int distance, int velocity){
 
 
 void forwardMove(int target, float p){
+    //target = -target; //1200 is one tile
     reset_encoders(); 
     setConstants(p, 0.0, 0.0);
 
@@ -141,18 +165,21 @@ void forwardMove(int target, float p){
 
     while(true){
         
-        encoder_average = (LF.get_position() + RF.get_position()) / 2;
-        voltage = calc(target, encoder_average, 0, 0);
-        master.print(0, 0, "%f", (target - encoder_average));
+        encoder_average = -(LM.get_position() + RM.get_position()) / 2;
+        voltage = fwdCalc(target, encoder_average, 0, 0);
+        master.print(0, 0, "%f %f", (target - encoder_average), encoder_average);
 
-        chas_move(voltage, voltage); 
-        if ((target - encoder_average) <= bound && (target - encoder_average) >= -bound) {
+        chas_move(-voltage, -voltage); 
+
+        /*
+        if (abs(target - encoder_average) <= bound) {
             count++; 
         }
         if (count >= 10) { //28
             break; 
         }                                   
         pros::delay(10);
+        */
     }
     chas_move(0,0); 
 }
@@ -301,7 +328,7 @@ void turnCCW(int target){
     int count = 0;
     float bound = 1.5; 
     float boundTwo = 0;
-
+    float timeLimit = calcTime(target);
 
     while(true){
         //CW
@@ -311,15 +338,9 @@ void turnCCW(int target){
 
         chas_move(voltage, -voltage);
 
-        /*
-        if ((abs(target - position)) <= boundTwo){
-            count++;
-        }
-        
-        if (count >= 100) {
+        if (count > timeLimit) {
             break;
         }
-        */
     
         pros::delay(10);
     }
