@@ -160,7 +160,7 @@ void autonomous() {
 		//TEST
 		//imu.tare_rotation();
 		//turnCW(90); //error goes above +-1 [always negative 1.6 ish] under 45 degrees, gets iffy above  95 degrees (is either perfect or around 1.5-2.0 --usually negative aroung 130 but above it's balanced positive to negative?) [usually negative error]; over 130 error is around -1.6 [110-120 is fine; 140 seems even?; 150 is negative low up to -1.6; 160-170 is fine; fixed slight error in 180 with conditional]
-		forwardMove(1200, 1.6); //error is opposite sign
+		forwardMove(1200, 0.3, 0.0, 0.15); //error is opposite sign
 } 
 
 /**

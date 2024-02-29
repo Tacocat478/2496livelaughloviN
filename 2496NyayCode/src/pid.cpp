@@ -153,10 +153,10 @@ void left_moveFor(int distance, int velocity){
 }
 
 
-void forwardMove(int target, float p){
+void forwardMove(int target, float p, float i, float d){
     //target = -target; //1200 is one tile
     reset_encoders(); 
-    setConstants(p, 0.0, 0.0);
+    setConstants(p, i, d);
 
     float voltage;
     float encoder_average;
