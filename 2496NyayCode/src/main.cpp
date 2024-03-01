@@ -157,10 +157,44 @@ void autonomous() {
 		//OUTAKE
 		//intake.move_velocity(-200);
 
+		//6Ball
+		imu.tare_rotation();
+		//intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+		intake.move_velocity(-200);
+		pros::delay(200);
+		intake.move_velocity(200);
+		forwardMove(400, 0.3, 0.0, 0.15, 78);
+		//intake.brake();
+		turnCW(180);
+
+		forwardMove(1700, 0.3, 0.0, 0.15, 125);
+		turnCW(140);
+		wings.set_value(HIGH);
+		forwardMove(600, 0.3, 0.0, 0.15, 78);
+		turnCW(90);
+		wings.set_value(LOW);
+		turnCW(130);
+		forwardMove(1000, 0.3, 0.0, 0.15, 78);
+		turnCW(90);
+		forwardMove(1200, 0.3, 0.0, 0.15, 78);
+		forwardMove(-600, 0.3, 0.0, 0.15, 78);
+		turnCW(45);
+
+		/*
+		wings.set_value(LOW);
+		turnCW(140);
+		forwardMove(400, 0.3, 0.0, 0.15, 78);
+		turnCW(90);
+		intake.move_velocity(-200);
+		forwardMove(1200, 0.3, 0.0, 0.15, 105);
+		*/
+
+		
+
 		//TEST
 		//imu.tare_rotation();
 		//turnCW(90); //error goes above +-1 [always negative 1.6 ish] under 45 degrees, gets iffy above  95 degrees (is either perfect or around 1.5-2.0 --usually negative aroung 130 but above it's balanced positive to negative?) [usually negative error]; over 130 error is around -1.6 [110-120 is fine; 140 seems even?; 150 is negative low up to -1.6; 160-170 is fine; fixed slight error in 180 with conditional]
-		forwardMove(1200, 0.3, 0.0, 0.15); //error is opposite sign
+		//forwardMove(600, 0.3, 0.0, 0.15); //lowering d here = increasing d in turning
 } 
 
 /**
@@ -187,9 +221,9 @@ void opcontrol() {
 		elevation_driver();
 		kicker_driver();
 
-		//float positionTest = imu.get_rotation();
+		float positionTest = imu.get_rotation();
 		//float target = 90.0;
-		//master.print(0, 0, "%f ", positionTest);
+		master.print(0, 0, "%f ", positionTest);
 
 		
 		//float encoder_averageNew = -(LM.get_position() + RM.get_position()) / 2;

@@ -86,7 +86,7 @@ float fwdCalc (int target, float input, int integralKI, int maxI){
 float calcTime(int target){
     float at = -2.7626*pow(10,-9), bt = 0.0000011704, ct = -0.00015766, dt = 0.00555204, ft = 0.518313, gt = 17.5455;
     float time = at*pow(target, 5) + bt*pow(target, 4) + ct*pow(target, 3) + dt*pow(target, 2) + ft*target + gt;
-    time += 20;
+    time += 0;//20  5
     return time;
 }
 
@@ -153,15 +153,14 @@ void left_moveFor(int distance, int velocity){
 }
 
 
-void forwardMove(int target, float p, float i, float d){
+void forwardMove(int target, float p, float i, float d, int timeLimit){
     //target = -target; //1200 is one tile
     reset_encoders(); 
     setConstants(p, i, d);
 
     float voltage;
     float encoder_average;
-    int count = 0;
-    int bound = 100; //60
+    float count = 0;
 
     while(true){
         
@@ -171,15 +170,14 @@ void forwardMove(int target, float p, float i, float d){
 
         chas_move(-voltage, -voltage); 
 
-        /*
-        if (abs(target - encoder_average) <= bound) {
-            count++; 
-        }
-        if (count >= 10) { //28
+        if (count >= timeLimit) { 
             break; 
-        }                                   
+        }   
+        count++;
+        
         pros::delay(10);
-        */
+        
+
     }
     chas_move(0,0); 
 }
@@ -486,6 +484,140 @@ void turn5(int target, float p, float i, float d, int KI, int maxI){
     chas_move(0,0);
 }
 
+void driveArcL(double theta, double radius, int timeout){
+    //setConstants(STRAIGHT_KP, STRAIGHT_KI, STRAIGHT_KD);
+    setConstants(0.25, 0, 0.01);
+    double ltarget = 0;
+    double rtarget = 0;
+    double pi =  3.14159265359;
+    double init_heading = imu.get_heading();
+    //imu.tare_heading();
+    int count = 0;
+    int time = 0;
+    reset_encoders();
+    master.clear();
+    //int timeout = 5000;
+    ltarget = double((theta / 360) * 2 * pi * radius); // * double(2) * pi * double(radius));
+    rtarget = double((theta / 360) * 2 * pi * (radius + 222));
+    while (true){
 
+        setConstants(0.25, 0, 0);
+
+        double heading = imu.get_heading() - init_heading;
+        if (theta > 0){
+            if (heading > 30){
+                heading = heading - 360;
+            }
+        } else {
+            if (heading > 300){
+                heading = heading - 360;
+            }    
+        }
+        double encoderAvgL = LF.get_position();
+        //encoderAvgL = 100;
+        double encoderAvgR = (RB.get_position() +  RM.get_position()) / 2;
+        int voltageL = calc(ltarget, encoderAvgL, 0, 0);
+
+        if(voltageL > 70){
+            voltageL = 70;
+        } else if (voltageL < -70){
+            voltageL = -70;
+        }
+        int voltageR = calc(rtarget, encoderAvgR, 0, 0);
+
+        if(voltageR > 100){
+            voltageR = 100;
+        } else if (voltageR < -100){
+            voltageR = -100;
+        }
+
+        //delay(50);
+        //con.print(1, 0, "Aut 0: %f        ", float(encoderAvgL));
+        double leftcorrect = (encoderAvgL * 360) / (2 * pi * radius);
+        int fix = int(heading + leftcorrect);
+        fix = fix * 10;
+        master.print(0, 0, "Aut 0: %f        ", float(voltageR + fix));
+        
+        fix = 0;
+        chas_move( (voltageL - fix), (voltageR + fix));
+        if ((abs(ltarget - encoderAvgL) <= 4) && (abs(rtarget - encoderAvgR) <= 4)) count++;
+        if (count >= 20 || time > timeout){
+            break;
+        } 
+        time += 10;
+        pros::delay(10);
+
+    }
+}
+
+void driveArcR(double theta, double radius, int timeout){
+    //setConstants(STRAIGHT_KP, STRAIGHT_KI, STRAIGHT_KD);
+    setConstants(0.25, 0, 0.01);
+    double ltarget = 0;
+    double rtarget = 0;
+    double pi =  3.14159265359;
+    double init_heading = imu.get_heading();
+    if (init_heading > 180){
+        init_heading = init_heading - 360;
+    }
+    //imu.tare_heading();
+    int count = 0;
+    int time = 0;
+    reset_encoders();
+    master.clear();
+    //int timeout = 5000;
+    ltarget = double((theta / 360) * 2 * pi * (radius + 222)); // * double(2) * pi * double(radius));
+    rtarget = double((theta / 360) * 2 * pi * (radius));
+    while (true){
+
+    
+        setConstants(0.25, 0, 0.01);
+
+
+        double heading = imu.get_heading() - init_heading;
+        if (theta > 0){
+            if (heading > 300){
+                heading = heading - 360;
+            }
+        } else {
+            if (heading > 30){
+                heading = heading - 360;
+            }    
+        }
+        double encoderAvgL = LF.get_position();
+        //encoderAvgL = 100;
+        double encoderAvgR = (RB.get_position() +  RM.get_position()) / 2;
+        int voltageL = calc(ltarget, encoderAvgL, 0, 0);
+
+        if(voltageL > 100){
+            voltageL = 100;
+        } else if (voltageL < -100){
+            voltageL = -100;
+        }
+        int voltageR = calc(rtarget, encoderAvgR, 0, 0);
+
+        if(voltageR > 70){
+            voltageR = 70;
+        } else if (voltageR < -70){
+            voltageR = -70;
+        }
+
+        //delay(50);
+        //con.print(1, 0, "Aut 0: %f        ", float(encoderAvgL));
+        double rightcorrect = (encoderAvgR * 360) / (2 * pi * radius);
+        int fix = int(heading - rightcorrect);
+        fix = fix * 10;
+        master.print(0, 0, "Aut 0: %f        ", float(heading));
+        
+
+        chas_move( (voltageL - fix), (voltageR + fix));
+        if ((abs(ltarget - encoderAvgL) <= 4) && (abs(rtarget - encoderAvgR) <= 4)) count++;
+        if (count >= 20 || time > timeout){
+            break;
+        } 
+        time += 10;
+        pros::delay(10);
+    }
+}
 
 #endif

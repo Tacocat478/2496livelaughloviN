@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "PIDtest",
+    "project_name": "6BallFar",
     "target": "v5",
     "templates": {
       "kernel": {

@@ -15,7 +15,7 @@ void right_moveFor(int, int);
 void left_moveFor(int, int);
 void chas_move(int, int);
 void reset_encoders();
-void forwardMove(int, float, float, float);
+void forwardMove(int, float, float, float, int);
 void forwardMoveb(int, float);
 void forwardMove2(int, float);
 void forwardMove3(int, float);
@@ -27,6 +27,8 @@ void turn2(int, float, float, float, int, int);
 void turn3(int, float, float, float, int, int);
 void turn4(int, float, float, float, int, int);
 void turn5(int, float, float, float, int, int);
+void driveArcL(double, double, int);
+void driveArcR(double, double, int);
 
 
 #endif
