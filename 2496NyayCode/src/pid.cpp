@@ -194,7 +194,7 @@ void forwardMoveb(int target, float p){
     while(true){
         
         encoder_average = (LF.get_position() + RF.get_position()) / 2;
-        voltage = calc(target, encoder_average, 0, 0);
+        voltage = fwdCalc(target, encoder_average, 0, 0);
         master.print(0, 0, "%f", (target - encoder_average));
 
         chas_move(voltage, voltage); 

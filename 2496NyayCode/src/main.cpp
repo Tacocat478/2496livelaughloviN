@@ -107,7 +107,6 @@ void autonomous() {
 		chas_moveFor(-1350, 100);
 		pros::delay(3000);
 		*/
-
 		//intake.move_velocity(-200);
 		//forwardMoveb(-850, 0.15);
 		//chas_moveFor(-200, 200);
@@ -148,16 +147,17 @@ void autonomous() {
 		//CLOSE AWP PUSH (V1)
 		/*
 		turn3(45, 1.4, 0.0, 0.0, 0, 0);
-		forwardMove(1100, 0.20); //1350
+		forwardMoveb(1100, 0.20); //1350
 		//turn3(41, 1.75, 0.0, 0.0, 0, 0); //1.51
 		turn3(45, 1.69, 0.0, 0.0, 0, 0);
-		forwardMove(3000, 0.15);
+		forwardMoveb(3000, 0.15);
 		*/
 
 		//OUTAKE
 		//intake.move_velocity(-200);
 
-		//6Ball
+		//6Ball (V2)
+		/*
 		imu.tare_rotation();
 
 		intake.move_velocity(-200);
@@ -192,7 +192,7 @@ void autonomous() {
 		intake.move_velocity(-200);
 		forwardMove(1800, 0.3, 0.0, 0.15, 78);
 		forwardMove(-1200, 0.3, 0.0, 0.15, 78);
-
+		*/
 		
 
 		//TEST
