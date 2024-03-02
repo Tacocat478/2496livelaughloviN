@@ -159,35 +159,39 @@ void autonomous() {
 
 		//6Ball
 		imu.tare_rotation();
-		//intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+
 		intake.move_velocity(-200);
 		pros::delay(200);
 		intake.move_velocity(200);
-		forwardMove(400, 0.3, 0.0, 0.15, 78);
-		//intake.brake();
-		turnCW(180);
-
-		forwardMove(1700, 0.3, 0.0, 0.15, 125);
-		turnCW(140);
+		forwardMove(1100, 0.3, 0.0, 0.15, 105);
+		turnCCW(35, 0); //45
 		wings.set_value(HIGH);
 		forwardMove(600, 0.3, 0.0, 0.15, 78);
-		turnCW(90);
+		turnCCW(110, 0); //90
 		wings.set_value(LOW);
-		turnCW(130);
-		forwardMove(1000, 0.3, 0.0, 0.15, 78);
-		turnCW(90);
-		forwardMove(1200, 0.3, 0.0, 0.15, 78);
-		forwardMove(-600, 0.3, 0.0, 0.15, 78);
-		turnCW(45);
-
-		/*
-		wings.set_value(LOW);
-		turnCW(140);
-		forwardMove(400, 0.3, 0.0, 0.15, 78);
-		turnCW(90);
+		turnCCW(45, 0);
+		forwardMove(700, 0.3, 0.0, 0.15, 78);
+		turnCCW(90, 0);
 		intake.move_velocity(-200);
-		forwardMove(1200, 0.3, 0.0, 0.15, 105);
-		*/
+		forwardMove(2400, 0.6, 0.0, 0.15, 78);
+		forwardMove(-400, 0.3, 0.0, 0.15, 78);
+		turnCCW(172, 0);
+		intake.move_velocity(200);
+		forwardMove(2400, 0.3, 0.0, 0.15, 145);
+		turnCCW(45, 50);
+
+		intake.move_velocity(-200);
+		forwardMove(700, 0.3, 0.0, 0.15, 78);
+
+		pros::delay(500);
+		turnCCW(140, 0); //130
+		intake.move_velocity(200);
+		forwardMove(800, 0.3, 0.0, 0.15, 105);
+		turnCCW(0, 50); //0, 50
+		wings.set_value(HIGH);
+		intake.move_velocity(-200);
+		forwardMove(1800, 0.3, 0.0, 0.15, 78);
+		forwardMove(-1200, 0.3, 0.0, 0.15, 78);
 
 		
 

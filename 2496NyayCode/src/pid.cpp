@@ -290,7 +290,7 @@ void forwardMove4(int target, float p){
     chas_move(0,0); 
 }
 
-void turnCW(int target){
+void turnCW(int target, int extraTime){
     //imu.tare_rotation();
     float voltage;
     float position;
@@ -307,7 +307,7 @@ void turnCW(int target){
 
         chas_move(-voltage, voltage);
 
-        if (count > timeLimit) {
+        if (count > timeLimit + extraTime) {
             break;
         }
 
@@ -319,7 +319,7 @@ void turnCW(int target){
     chas_move(0,0);
 }
 
-void turnCCW(int target){
+void turnCCW(int target, int extraTime){
     //imu.tare_rotation();
     float voltage;
     float position;
@@ -336,10 +336,11 @@ void turnCCW(int target){
 
         chas_move(voltage, -voltage);
 
-        if (count > timeLimit) {
+        if (count > timeLimit + extraTime) {
             break;
         }
-    
+
+        count++;
         pros::delay(10);
     }
     chas_move(0,0);
