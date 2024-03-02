@@ -201,6 +201,37 @@ void autonomous() {
 		//imu.tare_rotation();
 		//turnCW(90); //error goes above +-1 [always negative 1.6 ish] under 45 degrees, gets iffy above  95 degrees (is either perfect or around 1.5-2.0 --usually negative aroung 130 but above it's balanced positive to negative?) [usually negative error]; over 130 error is around -1.6 [110-120 is fine; 140 seems even?; 150 is negative low up to -1.6; 160-170 is fine; fixed slight error in 180 with conditional]
 		//forwardMove(600, 0.3, 0.0, 0.15); //lowering d here = increasing d in turning
+
+		//Far Rush (V2)
+		/*
+		imu.tare_rotation();
+		intake.move_velocity(-200);
+		pros::delay(200);
+		intake.move_velocity(200);
+		forwardMove(2400, 0.3, 0.0, 0.15, 145);
+		turnCW(90, 0);
+		intake.move_velocity(-200);
+		forwardMove(1200, 0.3, 0.0, 0.15, 105);
+		forwardMove(-600, 0.3, 0.0, 0.15, 78);
+
+		//imu.tare_rotation();
+		turnCW(225, 0);
+		*/
+		turnCW(90, 0);
+		turnCW(225, 20);
+
+		/*
+		intake.move_velocity(-200);
+		forwardMove(2400, 0.3, 0.0, 0.15, 145);
+
+		turnCW(75, 30);
+		intake.move_velocity(-200);
+
+		forwardMove(700, 0.3, 0.0, 0.15, 78);
+		pros::delay(600);
+		*/
+
+
 } 
 
 /**
