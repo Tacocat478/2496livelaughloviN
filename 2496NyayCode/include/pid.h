@@ -22,6 +22,7 @@ void forwardMove3(int, float);
 void forwardMove4(int, float);
 void turnCW(int, int);
 void turnCCW(int, int);
+void turnCCWb(int);
 void turn(int, float, float, float, int, int);
 void turn2(int, float, float, float, int, int);
 void turn3(int, float, float, float, int, int);

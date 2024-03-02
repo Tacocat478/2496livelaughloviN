@@ -156,7 +156,7 @@ void autonomous() {
 		//OUTAKE
 		//intake.move_velocity(-200);
 
-		//6Ball (V2)
+		//5Ball (V2)
 		/*
 		imu.tare_rotation();
 
@@ -164,36 +164,38 @@ void autonomous() {
 		pros::delay(200);
 		intake.move_velocity(200);
 		forwardMove(1100, 0.3, 0.0, 0.15, 105);
-		turnCCW(35, 0); //45
+		turnCCW(35, 0); 
 		wings.set_value(HIGH);
 		forwardMove(600, 0.3, 0.0, 0.15, 78);
-		turnCCW(110, 0); //90
+		turnCCW(110, 0); //110
 		wings.set_value(LOW);
 		turnCCW(45, 0);
-		forwardMove(700, 0.3, 0.0, 0.15, 78);
+		forwardMove(800, 0.3, 0.0, 0.15, 78); //700 800
 		turnCCW(90, 0);
 		intake.move_velocity(-200);
-		forwardMove(2400, 0.6, 0.0, 0.15, 78);
-		forwardMove(-400, 0.3, 0.0, 0.15, 78);
+		forwardMove(2400, 1.0, 0.0, 0.15, 48);
+		forwardMove(-600, 0.3, 0.0, 0.15, 30); //400
+		forwardMove(2400, 1.0, 0.0, 0.15, 48);
+		forwardMove(-600, 0.3, 0.0, 0.15, 88);
+
 		turnCCW(172, 0);
 		intake.move_velocity(200);
 		forwardMove(2400, 0.3, 0.0, 0.15, 145);
-		turnCCW(45, 50);
+		turnCCW(30, 50); //45
 
-		intake.move_velocity(-200);
+		intake.move_velocity(-400); //200
 		forwardMove(700, 0.3, 0.0, 0.15, 78);
 
-		pros::delay(500);
+		pros::delay(600);
 		turnCCW(140, 0); //130
-		intake.move_velocity(200);
-		forwardMove(800, 0.3, 0.0, 0.15, 105);
-		turnCCW(0, 50); //0, 50
+		intake.move_velocity(400); //200
+		forwardMove(1150, 0.3, 0.0, 0.15, 105); //800  940
+		turnCCWb(0); //0, 50   turnCCW(0, 40);
 		wings.set_value(HIGH);
 		intake.move_velocity(-200);
-		forwardMove(1800, 0.3, 0.0, 0.15, 78);
+		forwardMove(1800, 0.3, 0.0, 0.15, 105); //125
 		forwardMove(-1200, 0.3, 0.0, 0.15, 78);
 		*/
-		
 
 		//TEST
 		//imu.tare_rotation();

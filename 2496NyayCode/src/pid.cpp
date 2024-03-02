@@ -346,6 +346,33 @@ void turnCCW(int target, int extraTime){
     chas_move(0,0);
 }
 
+void turnCCWb(int target){
+    //imu.tare_rotation();
+    float voltage;
+    float position;
+    int count = 0;
+    float bound = 1.5; 
+    float boundTwo = 0;
+    float timeLimit = calcTime(target);
+
+    while(true){
+        //CW
+        position = -imu.get_rotation();
+        voltage = calc(target, position, KI, maxI);
+        master.print(0, 0, "%f %f", (target - position), voltage);
+
+        chas_move(voltage, -voltage);
+
+        if (count > 30) {
+            break;
+        }
+
+        if(abs(target - position) < 5) count++;
+        pros::delay(10);
+    }
+    chas_move(0,0);
+}
+
 void turn(int target, float p, float i, float d, int KI, int maxI){
     imu.tare_rotation();
     setConstants(p, i, d);
