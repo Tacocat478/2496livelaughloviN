@@ -297,10 +297,10 @@ void turnCW(int target, int extraTime){
     float count = 0;
     float bound = 1.5; 
     float boundTwo = 0;
-    float timeLimit = calcTime(target);
+    //float timeLimit = calcTime(target);
+    float timeLimit = calcTime(abs(target-imu.get_rotation())); //changed 3/4 after 5 ball
 
     while(true){
-        //CW
         position = imu.get_rotation();
         voltage = calc(target, position, KI, maxI);
         master.print(0, 0, "%f %f", (target - position), voltage);
@@ -326,10 +326,10 @@ void turnCCW(int target, int extraTime){
     int count = 0;
     float bound = 1.5; 
     float boundTwo = 0;
-    float timeLimit = calcTime(target);
+    //float timeLimit = calcTime(target);
+    float timeLimit = calcTime(abs(target+imu.get_rotation())); //changed 3/4 after 5 ball
 
     while(true){
-        //CW
         position = -imu.get_rotation();
         voltage = calc(target, position, KI, maxI);
         master.print(0, 0, "%f %f", (target - position), voltage);
@@ -353,7 +353,7 @@ void turnCCWb(int target){
     int count = 0;
     float bound = 1.5; 
     float boundTwo = 0;
-    float timeLimit = calcTime(target);
+    //float timeLimit = calcTime(target);
 
     while(true){
         //CW
@@ -363,9 +363,39 @@ void turnCCWb(int target){
 
         chas_move(voltage, -voltage);
 
+        
         if (count > 30) {
             break;
         }
+        
+
+        if(abs(target - position) < 5) count++;
+        pros::delay(10);
+    }
+    chas_move(0,0);
+}
+
+void turnCWb(int target){
+    //imu.tare_rotation();
+    float voltage;
+    float position;
+    int count = 0;
+    float bound = 1.5; 
+    float boundTwo = 0;
+
+    while(true){
+        //CW
+        position = imu.get_rotation();
+        voltage = calc(target, position, KI, maxI);
+        master.print(0, 0, "%f %f", (target - position), voltage);
+
+        chas_move(-voltage, voltage);
+
+        
+        if (count > 30) {
+            break;
+        }
+        
 
         if(abs(target - position) < 5) count++;
         pros::delay(10);

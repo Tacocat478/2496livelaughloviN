@@ -158,38 +158,38 @@ void autonomous() {
 
 		//5Ball (V2)
 		/*
-		imu.tare_rotation();
-
-		intake.move_velocity(-200);
+		imu.tare_rotation(); //initially resets the inertia sensor  reading
+		intake.move_velocity(-200); //outtake to deploy intake
 		pros::delay(200);
 		intake.move_velocity(200);
 		forwardMove(1100, 0.3, 0.0, 0.15, 105);
 		turnCCW(35, 0); 
-		wings.set_value(HIGH);
+		wings.set_value(HIGH); //wings out
 		forwardMove(600, 0.3, 0.0, 0.15, 78);
-		turnCCW(110, 0); //110
-		wings.set_value(LOW);
+		turnCCW(110, 0); //turn to remove the triball
+		wings.set_value(LOW); //wings in
 		turnCCW(45, 0);
-		forwardMove(800, 0.3, 0.0, 0.15, 78); //700 800
-		turnCCW(90, 0);
+		forwardMove(800, 0.3, 0.0, 0.15, 78); 
+		turnCCW(90, 0); //turn to face the goal
 		intake.move_velocity(-200);
 		forwardMove(2400, 1.0, 0.0, 0.15, 48);
-		forwardMove(-600, 0.3, 0.0, 0.15, 30); //400
+		forwardMove(-600, 0.3, 0.0, 0.15, 30); 
 		forwardMove(2400, 1.0, 0.0, 0.15, 48);
 		forwardMove(-600, 0.3, 0.0, 0.15, 88);
 
 		turnCCW(172, 0);
 		intake.move_velocity(200);
 		forwardMove(2400, 0.3, 0.0, 0.15, 145);
-		turnCCW(30, 50); //45
 
-		intake.move_velocity(-400); //200
+		turnCCW(30, 50); 
+		intake.move_velocity(-400); //outtake
 		forwardMove(700, 0.3, 0.0, 0.15, 78);
-
 		pros::delay(600);
-		turnCCW(140, 0); //130
-		intake.move_velocity(400); //200
-		forwardMove(1150, 0.3, 0.0, 0.15, 105); //800  940
+
+		turnCCW(140, 0); 
+		intake.move_velocity(400); //intake
+		forwardMove(1150, 0.3, 0.0, 0.15, 105); 
+
 		turnCCWb(0); //0, 50   turnCCW(0, 40);
 		wings.set_value(HIGH);
 		intake.move_velocity(-200);
@@ -203,32 +203,102 @@ void autonomous() {
 		//forwardMove(600, 0.3, 0.0, 0.15); //lowering d here = increasing d in turning
 
 		//Far Rush (V2)
-		/*
 		imu.tare_rotation();
+		intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 		intake.move_velocity(-200);
 		pros::delay(200);
 		intake.move_velocity(200);
 		forwardMove(2400, 0.3, 0.0, 0.15, 145);
 		turnCW(90, 0);
 		intake.move_velocity(-200);
-		forwardMove(1200, 0.3, 0.0, 0.15, 105);
-		forwardMove(-600, 0.3, 0.0, 0.15, 78);
+		forwardMove(2400, 1.0, 0.0, 0.15, 85);
+		forwardMove(-600, 0.3, 0.0, 0.15, 68);
+		imu.tare_rotation();
+		//turnCW(145, 0);
+		turnCW(180, 0);
+		intake.move_velocity(200);
+		forwardMove(1200, 0.3, 0.0, 0.15, 100);
+		forwardMove(-600, 0.3, 0.0, 0.15, 73);
+		turnCWb(0);
+		intake.move_velocity(-200);
+		forwardMove(2400, 1.0, 0.0, 0.15, 85);
+		forwardMove(-600, 0.3, 0.0, 0.15, 78); //timeout could cause inaccurate lineup for next ball
+		turnCW(140, 0);
+		intake.move_velocity(200);
+		forwardMove(1300, 0.3, 0.0, 0.15, 100);
 
-		//imu.tare_rotation();
-		turnCW(225, 0);
-		*/
-		turnCW(90, 0);
-		turnCW(225, 20);
+		turnCW(50, 0);
+		intake.brake();
+		forwardMove(2300, 0.3, 0.0, 0.15, 145);
+		imu.tare_rotation();
+		turnCCW(75, 0); //85
+		wings.set_value(HIGH);
+		forwardMove(500, 0.3, 0.0, 0.15, 78);
+		turnCCW(180, 0);
+		wings.set_value(LOW);
+		turnCCW(110, 0);
+		intake.move_velocity(-200);
+		forwardMove(2400, 1.0, 0.0, 0.15, 85);
+		forwardMove(-600, 0.3, 0.0, 0.15, 68);
+		forwardMove(2400, 1.0, 0.0, 0.15, 85);
+		forwardMove(-600, 0.3, 0.0, 0.15, 68);
+		
+
 
 		/*
-		intake.move_velocity(-200);
-		forwardMove(2400, 0.3, 0.0, 0.15, 145);
+		imu.tare_rotation();
+		turnCCW(75, 0); //85
+		wings.set_value(HIGH);
+		forwardMove(500, 0.3, 0.0, 0.15, 78);
+		turnCCW(180, 0);
+		wings.set_value(LOW);
+		turnCCW(110, 0);
+		*/
 
-		turnCW(75, 30);
+		//progSkills
+		/*
+		imu.tare_rotation();
+		turnCW(30, 0);
+		forwardMove(3600, 0.3, 0, 0, 145);
+		imu.tare_rotation();
+		turnCCW(45, 0);
+		forwardMove(600, 0.3, 0, 0, 78);
+		turnCCW(90, 0);
 		intake.move_velocity(-200);
+		forwardMove(2400, 1.0, 0.0, 0.15, 48);
+		forwardMove(-600, 0.3, 0.0, 0.15, 30); 
+		forwardMove(2400, 1.0, 0.0, 0.15, 48);
+		forwardMove(-600, 0.3, 0.0, 0.15, 88);
 
-		forwardMove(700, 0.3, 0.0, 0.15, 78);
-		pros::delay(600);
+		turnCCW(180, 20);
+		forwardMove(2400, 1.0, 0.0, 0.15, 145);
+		turnCCW(90, 0);
+		forwardMove(1200, 1.0, 0.0, 0.15, 105);
+
+		turnCCW(0, 30);
+		wings.set_value(HIGH); //wings out
+		forwardMove(4000, 1.0, 0.0, 0.15, 125);
+		forwardMove(-1200, 0.3, 0.0, 0.15, 30); 
+		wings.set_value(LOW); //wings in
+		turnCCW(20, 0);
+		wings.set_value(HIGH); //wings out
+		forwardMove(6000, 1.0, 0.0, 0.15, 125);
+		forwardMove(-1200, 0.3, 0.0, 0.15, 30); 
+		wings.set_value(LOW); //wings in
+
+		turnCCW(90, 0);
+		forwardMove(1800, 0.3, 0.0, 0.15, 78); 
+		turnCCW(0, 0);
+		forwardMove(2400, 0.3, 0.0, 0.15, 105);
+		turnCCW(270, 0);
+		forwardMove(2400, 1.0, 0.0, 0.15, 60);
+		forwardMove(-600, 0.3, 0.0, 0.15, 88);
+
+		turnCCW(225, 0);
+		forwardMove(700, 0.3, 0.0, 0.15, 88);
+		turnCCW(25, 0);
+		elevation.set_value(HIGH);
+		forwardMove(3000, 0.3, 0.0, 0.15, 88);
 		*/
 
 
