@@ -375,7 +375,7 @@ void turnCCWb(int target){
     chas_move(0,0);
 }
 
-void turnCWb(int target){
+void turnCWb(int target, int extraBound){
     //imu.tare_rotation();
     float voltage;
     float position;
@@ -392,7 +392,7 @@ void turnCWb(int target){
         chas_move(-voltage, voltage);
 
         
-        if (count > 30) {
+        if (count > 30 + extraBound) {
             break;
         }
         

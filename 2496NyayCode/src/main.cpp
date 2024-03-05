@@ -211,38 +211,43 @@ void autonomous() {
 		forwardMove(2400, 0.3, 0.0, 0.15, 145);
 		turnCW(90, 0);
 		intake.move_velocity(-200);
-		forwardMove(2400, 1.0, 0.0, 0.15, 85);
-		forwardMove(-600, 0.3, 0.0, 0.15, 68);
+		forwardMove(2400, 1.0, 0.0, 0.15, 75); //85
+		forwardMove(-600, 0.3, 0.0, 0.15, 60); //68
 		imu.tare_rotation();
 		//turnCW(145, 0);
-		turnCW(180, 0);
+		turnCW(180, -10); //0
 		intake.move_velocity(200);
-		forwardMove(1200, 0.3, 0.0, 0.15, 100);
+		forwardMove(1200, 0.3, 0.0, 0.15, 90); //100
 		forwardMove(-600, 0.3, 0.0, 0.15, 73);
-		turnCWb(0);
+		turnCWb(0, -10);
 		intake.move_velocity(-200);
-		forwardMove(2400, 1.0, 0.0, 0.15, 85);
-		forwardMove(-600, 0.3, 0.0, 0.15, 78); //timeout could cause inaccurate lineup for next ball
-		turnCW(140, 0);
+		forwardMove(2400, 1.0, 0.0, 0.15, 75);
+		forwardMove(-600, 0.3, 0.0, 0.15, 70); //timeout could cause inaccurate lineup for next ball   78
+		turnCW(140, -5);
 		intake.move_velocity(200);
-		forwardMove(1300, 0.3, 0.0, 0.15, 100);
+		forwardMove(1450, 0.3, 0.0, 0.15, 100); //115
 
-		turnCW(50, 0);
+		turnCW(56, -5); //50,0
 		intake.brake();
-		forwardMove(2300, 0.3, 0.0, 0.15, 145);
+		forwardMove(2250, 0.3, 0.0, 0.15, 125); //2300
 		imu.tare_rotation();
-		turnCCW(75, 0); //85
+		turnCCW(82, -5); //75,-5
 		wings.set_value(HIGH);
-		forwardMove(500, 0.3, 0.0, 0.15, 78);
-		turnCCW(180, 0);
+		forwardMove(620, 0.3, 0.0, 0.15, 78); //500
+		turnCCW(190, -5); //180,-10
 		wings.set_value(LOW);
-		turnCCW(110, 0);
+		/*
+		turnCCW(100, 0); //110,-10
+		forwardMove(400, 0.3, 0.0, 0.15, 60); 
+		right_moveFor(-400, 200);
+		*/
 		intake.move_velocity(-200);
+		turnCCW(117, 0); //110
+		//pros::delay(700);
 		forwardMove(2400, 1.0, 0.0, 0.15, 85);
 		forwardMove(-600, 0.3, 0.0, 0.15, 68);
 		forwardMove(2400, 1.0, 0.0, 0.15, 85);
 		forwardMove(-600, 0.3, 0.0, 0.15, 68);
-		
 
 
 		/*
