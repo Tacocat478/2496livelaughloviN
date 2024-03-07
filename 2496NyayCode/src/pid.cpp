@@ -346,11 +346,12 @@ void turnCCW(int target, int extraTime){
     chas_move(0,0);
 }
 
-void turnCCWb(int target){
+void turnCCWb(int target, int extraBound, int timeOut){
     //imu.tare_rotation();
     float voltage;
     float position;
     int count = 0;
+    int count2 = 0;
     float bound = 1.5; 
     float boundTwo = 0;
     //float timeLimit = calcTime(target);
@@ -364,22 +365,24 @@ void turnCCWb(int target){
         chas_move(voltage, -voltage);
 
         
-        if (count > 30) {
+        if (count > 30 + extraBound || count2 > timeOut) {
             break;
         }
         
 
-        if(abs(target - position) < 5) count++;
+        if(abs(target - position) < 5) count++; //5
+        count2++;
         pros::delay(10);
     }
     chas_move(0,0);
 }
 
-void turnCWb(int target, int extraBound){
+void turnCWb(int target, int extraBound, int timeOut){
     //imu.tare_rotation();
     float voltage;
     float position;
     int count = 0;
+    int count2 = 0;
     float bound = 1.5; 
     float boundTwo = 0;
 
@@ -392,12 +395,13 @@ void turnCWb(int target, int extraBound){
         chas_move(-voltage, voltage);
 
         
-        if (count > 30 + extraBound) {
+        if (count > 30 + extraBound || count2 > timeOut) {
             break;
         }
         
 
         if(abs(target - position) < 5) count++;
+        count2++;
         pros::delay(10);
     }
     chas_move(0,0);
