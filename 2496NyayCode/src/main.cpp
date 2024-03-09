@@ -270,50 +270,77 @@ void autonomous() {
 		imu.tare_rotation();
 		turnCCWb(90, 0, 150);
 		imu.tare_rotation();
-		forwardMove(2300, 0.3, 0.0, 0.15, 145); //2350
+		//forwardMove(2300, 0.3, 0.0, 0.15, 145); //2350
+
+		forwardMove(1000, 0.3, 0.0, 0.15, 145);
+		turnCWb(90, 0, 150);
+		forwardMove(1000, 0.3, 0.0, 0.15, 105);
+		forwardMove(-1000, 0.3, 0.0, 0.15, 105);
+		turnCWb(0, 0, 150);
+		forwardMove(1300, 0.3, 0.0, 0.15, 145);
 
 		turnCWb(87, 0, 150); 
+		intake.move_velocity(200);
 		forwardMove(1100, 0.3, 0.0, 0.15, 105); //600
-		turnCWb(190, 0, 150); //180
+		turnCWb(185, 0, 150); //190
 		//forwardMove(4000, 1.0, 0, 0.15, 200);
 		intake.move_velocity(-200);
 		chas_move(-4000, -4000);
-		pros::delay(3000);
+		pros::delay(2000);
 		intake.brake();
 		forwardMove(-1750, 0.3, 0.0, 0.15, 115); //1400  1750
 
 		turnCWb(90, 0, 200);
-		forwardMove(600, 0.3, 0, 0.15, 88); 
+		intake.move_velocity(200);
+		forwardMove(700, 0.3, 0, 0.15, 88); 
 		turnCWb(190, 0, 200);
 		wings.set_value(HIGH);
 		intake.move_velocity(-200);
 		//forwardMove(4000, 1.0, 0, 0.15, 200);
 		chas_move(-4000, -4000);
-		pros::delay(3000);
+		pros::delay(2000);
+		wings.set_value(LOW);
+		intake.brake();
+		forwardMove(-400, 0.3, 0.0, 0.15, 50);
+		forwardMove(4000, 6.0, 0.0, 0.15, 50);
+		forwardMove(-1750, 0.3, 0.0, 0.15, 115);
+		
+		turnCWb(87, 0, 200);
+		imu.tare_rotation();
+		intake.move_velocity(200);
+		forwardMove(1800, 0.3, 0, 0.15, 105); 
+		turnCWb(90, 0, 200);
+		forwardMove(400, 0.3, 0, 0.15, 70); 
+		turnCWb(150, 0, 200); //140
+		wings.set_value(HIGH);
+		intake.move_velocity(-200);
+		forwardMove(4000, 1.0, 0, 0.15, 200); 
+		forwardMove(-400, 0.3, 0.0, 0.15, 50);
+		forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		wings.set_value(LOW);
 		intake.brake();
 		forwardMove(-1750, 0.3, 0.0, 0.15, 115);
 
-		/*
-		turnCWb(90, 0, 200);
-		forwardMove(500, 0.3, 0, 0.15, 88); 
-		turnCWb(190, 0, 200);
-		wings.set_value(HIGH);
-		///forwardMove(4000, 1.0, 0, 0.15, 100);
-		chas_move(-4000, -4000);
-		pros::delay(3000);
-		wings.set_value(LOW);
-		forwardMove(-1750, 0.3, 0.0, 0.15, 115);
-		*/
-		/*
-		turnCWb(90, 0, 200);
+		turnCWb(30, 0, 200);
+		intake.move_velocity(-200);
+		forwardMove(3300, 0.3, 0, 0.15, 300); 
+		turnCWb(130, 0, 200);
+		forwardMove(1300, 0.3, 0.0, 0.15, 130);
+		turnCWb(180, 0, 200);
+		forwardMove(4000, 6.0, 0.0, 0.15, 65);
+		forwardMove(-300, 0.3, 0.0, 0.15, 68);
+		forwardMove(4000, 6.0, 0.0, 0.15, 65);
+		forwardMove(-300, 0.3, 0.0, 0.15, 68);
+		forwardMove(4000, 6.0, 0.0, 0.15, 65);
 		imu.tare_rotation();
-		forwardMove(1200, 0.3, 0, 0.15, 105); 
-		turnCWb(90, 0, 200);
-		forwardMove(800, 0.3, 0, 0.15, 88); 
-		turnCWb(160, 0, 200);
-		wings.set_value(HIGH);
-		*/
+		forwardMove(-600, 0.3, 0.0, 0.15, 68);
+
+		turnCWb(135, 0, 200);
+		forwardMove(2200, 0.3, 0, 0.15, 145); 
+		turnCWb(75, 0, 200); //not sure why this is off
+		elevation.set_value(HIGH);
+		forwardMove(2400, 0.3, 0, 0.15, 145); 
+
 } 
 
 /**
