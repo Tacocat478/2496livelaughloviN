@@ -312,7 +312,7 @@ void autonomous() {
 		pros::delay(900); //2000 1000
 		wings.set_value(LOW);
 		intake.brake();
-		forwardMove(-400, 0.3, 0.0, 0.15, 40); //50
+		forwardMove(-400, 0.3, 0.0, 0.15, 40);
 		forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		forwardMove(-1750, 0.3, 0.0, 0.15, 100); //115
 		
@@ -325,7 +325,7 @@ void autonomous() {
 		turnCWb(150, 0, 90); //200 100
 		wings.set_value(HIGH);
 		intake.move_velocity(-200);
-		forwardMove(4000, 1.0, 0, 0.15, 150); //200 180
+		forwardMove(4000, 1.0, 0, 0.15, 160); //200 180
 		forwardMove(-400, 0.3, 0.0, 0.15, 50);
 		forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		wings.set_value(LOW);
@@ -346,6 +346,7 @@ void autonomous() {
 		imu.tare_rotation();
 		forwardMove(-600, 0.3, 0.0, 0.15, 68);
 
+		/*
 		turnCWb(135, 0, 150); //200
 		forwardMove(2200, 0.3, 0, 0.15, 145); 
 		turnCWb(75, 0, 100); //not sure why this is off 200
@@ -353,6 +354,7 @@ void autonomous() {
 		//forwardMove(2400, 0.3, 0, 0.15, 145); 
 		chas_move(-100, -100);
 		pros::delay(3000);
+		*/
 
 } 
 
