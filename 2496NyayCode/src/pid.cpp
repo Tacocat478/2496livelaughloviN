@@ -395,7 +395,7 @@ void turnCWb(int target, int extraBound, int timeOut){
         chas_move(-voltage, voltage);
 
         
-        if (count > 30 + extraBound || count2 > timeOut) {
+        if (count > 20 + extraBound || count2 > timeOut) { //30
             break;
         }
         
