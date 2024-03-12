@@ -26,10 +26,10 @@ pros::Controller master (CONTROLLER_MASTER);
 pros::ADIDigitalOut wings ('D', false);
 pros::ADIDigitalOut elevation ('F', false);
 pros::ADIDigitalOut hook ('C');
-pros::ADIDigitalOut blocker('E', true);
+pros::ADIDigitalOut blocker('B', true);
 	
 //LIMIT SWITCH
-pros::ADIDigitalIn kickerLimit ('B');
+pros::ADIDigitalIn kickerLimit ('E');
 
 //IMU
 pros::IMU imu (21); 
