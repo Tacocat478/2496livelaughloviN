@@ -248,6 +248,7 @@ void autonomous() {
 
 
 		//progSkills
+		
 		K.move_velocity(200);
 		intake.move_velocity(-60);
 		pros::delay(200);
@@ -277,23 +278,21 @@ void autonomous() {
 		turnCCWb(90, 0, 80); //100 90
 		imu.tare_rotation();
 
-		/*
 		forwardMove(1100, 0.3, 0.0, 0.15, 70); //145  1000 85 80
 		turnCWb(90, 0, 50); //150  100 80 70
 		forwardMove(1000, 0.3, 0.0, 0.15, 70); //105 85 80
 		forwardMove(-1000, 0.3, 0.0, 0.15, 70); //85 80
 		turnCWb(0, 0, 70); //100 80 70
 		forwardMove(1200, 0.3, 0.0, 0.15, 70); //1300 95 80
-		*/
 
-		forwardMove(2300, 0.3, 0.0, 0.15, 135);
+		//forwardMove(2300, 0.3, 0.0, 0.15, 135);
 
 		turnCWb(87, 0, 80); //150 100 80
 		intake.move_velocity(200);
 		forwardMove(1000, 0.3, 0.0, 0.15, 70); //105 90 70 1100
 		turnCWb(185, 0, 80); //150 100 90 80
 		intake.move_velocity(-130);
-		chas_move(-150, -150); //-4000
+		chas_move(-4000, -4000); //-4000
 		pros::delay(1500); //2000 1000 900
 		intake.brake();
 		forwardMove(-1750, 0.3, 0.0, 0.15, 100); //115
@@ -304,23 +303,26 @@ void autonomous() {
 		turnCWb(190, 0, 70); //200 100 90 80
 		//wings.set_value(HIGH);
 		intake.move_velocity(-130);
-		chas_move(-150, -150); //-4000  -150
+		chas_move(-4000, -4000); //-4000  -150
 		pros::delay(2000); //2000 1000 900
 		//wings.set_value(LOW);
 		intake.brake();
-		forwardMove(-400, 0.3, 0.0, 0.15, 40);
-		forwardMove(4000, 6.0, 0.0, 0.15, 50);
+		//forwardMove(-400, 0.3, 0.0, 0.15, 40);
+		//forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		forwardMove(-1750, 0.3, 0.0, 0.15, 100); //1500
 
-		turnCWb(90, 0, 70); //200 100 90 80
+		turnCWb(60, 0, 70); //200 100 90 80   //90 deg
 		intake.move_velocity(200);
-		forwardMove(1100, 0.3, 0, 0.15, 145); //88 1900 1700
+		forwardMove(600, 0.3, 0, 0.15, 65);
+		turnCWb(90, 0, 60); //90 wt
+		//intake.move_velocity(200);
+		forwardMove(1300, 0.3, 0, 0.15, 100); //88 1900 1700 1100 1400
 		imu.tare_rotation();
-		turnCWb(140, 0, 70); //200 100 90 80
+		turnCWb(140, 0, 150); //200 100 90 80
 		wings.set_value(HIGH);
 		intake.move_velocity(-130);
 		chas_move(-100, -100); //-4000  -150
-		pros::delay(4000); //2000 1000 900
+		pros::delay(2000); //2000 1000 900
 		//wings.set_value(LOW);
 		intake.brake();
 		forwardMove(-400, 0.3, 0.0, 0.15, 40);
