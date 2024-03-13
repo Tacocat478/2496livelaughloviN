@@ -247,8 +247,8 @@ void autonomous() {
 		*/
 
 
-		//progSkills
-		
+		//progSkills (V2)
+		/*
 		K.move_velocity(200);
 		intake.move_velocity(-60);
 		pros::delay(200);
@@ -285,7 +285,7 @@ void autonomous() {
 		turnCWb(0, 0, 70); //100 80 70
 		forwardMove(1200, 0.3, 0.0, 0.15, 70); //1300 95 80
 
-		//forwardMove(2300, 0.3, 0.0, 0.15, 135);
+		//forwardMove(2300, 0.3, 0.0, 0.15, 135); leave UNCOMMENTED
 
 		turnCWb(87, 0, 80); //150 100 80
 		intake.move_velocity(200);
@@ -328,7 +328,9 @@ void autonomous() {
 		forwardMove(-400, 0.3, 0.0, 0.15, 40);
 		forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		forwardMove(-1750, 0.3, 0.0, 0.15, 100); //1500
-		///////////////////////////////////////////////////////
+		*/
+
+		/////////////////////////////////////////////////////// leave folowwing uncommenetd
 
 		/*
 		turnCWb(45, 0, 150); //117
@@ -389,6 +391,40 @@ void autonomous() {
 		forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		forwardMove(-600, 0.3, 0.0, 0.15, 68);
 		*/
+
+
+		//closeRush (V2)
+		imu.tare_rotation();
+		intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+		intake.move_velocity(-200);
+		pros::delay(200);
+
+		intake.move_velocity(200);
+		forwardMove(2400, 0.3, 0.0, 0.15, 130); //145
+		turnCWb(18, 0, 40); //50
+		forwardMove(-2400, 0.3, 0.0, 0.15, 135);
+		intake.brake();
+
+		turnCWb(160, 0, 150);
+		wings.set_value(HIGH);
+		forwardMove(370, 0.3, 0.0, 0.15, 60);
+		turnCWb(40, 0, 100);
+		wings.set_value(LOW);
+		turnCWb(100, 0, 150);
+		forwardMove(1200, 0.3, 0.0, 0.15, 90);
+		turnCWb(70, 0, 50);
+
+		intake.move_velocity(-200);
+		forwardMove(800, 0.3, 0.0, 0.15, 135);
+		intake.brake();
+		forwardMove(-1600, 0.3, 0.0, 0.15, 115);
+		turnCWb(120, 0, 50);
+
+
+
+
+
+
 
 } 
 
