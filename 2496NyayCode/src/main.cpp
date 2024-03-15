@@ -266,53 +266,55 @@ void autonomous() {
 		turnCCW(63, -30); //63, 0
 		forwardMove(200, 0.3, 0.0, 0.15, 40); //78
 		turnCCW(90, 0);
-		intake.move_velocity(-130);
+		intake.move_velocity(-160);
 		forwardMove(4000, 6.0, 0.0, 0.15, 60);
 		forwardMove(-300, 0.3, 0.0, 0.15, 40); //-600, 50
 		forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		forwardMove(-300, 0.3, 0.0, 0.15, 40);
 		forwardMove(4000, 6.0, 0.0, 0.15, 50);
-		forwardMove(-250, 0.3, 0.0, 0.15, 40); //68 60 50 //300
+		forwardMove(-250, 0.3, 0.0, 0.15, 50); //68 60 50 40//300 250
 		intake.brake();
 
 		imu.tare_rotation();
-		turnCCWb(90, 0, 80); //100 90
+		turnCCWb(90, 0, 90); //100 90
 		imu.tare_rotation();
 
 		forwardMove(1400, 0.3, 0.0, 0.15, 70); //145  1000 85 80
-		turnCWb(90, 0, 50); //150  100 80 70
-		intake.move_velocity(-130);
+		turnCWb(90, 0, 70); //150  100 80 70
+		intake.move_velocity(-160);
 		pros::delay(100);
 		wings.set_value(HIGH);
-		forwardMove(1100, 0.3, 0.0, 0.15, 50); //105 85 80 70  //d 700
+		forwardMove(950, 0.3, 0.0, 0.15, 50); //105 85 80 70  //d 700 1100
 		wings.set_value(LOW);
-		turnCWb(90, 0, 50);
-		forwardMove(-1000, 0.3, 0.0, 0.15, 50); //85 80 70 //d -600
+		turnCWb(90, 0, 60); //50
+		forwardMove(-850, 0.3, 0.0, 0.15, 50); //85 80 70 //d -600 1000
 		turnCWb(0, 0, 70); //100 80 70
 		intake.move_velocity(130);
-		forwardMove(900, 0.3, 0.0, 0.15, 70); //1300 95 80
+		forwardMove(800, 0.3, 0.0, 0.15, 70); //1300 95 80 //d 900 (total 2300)
 
 		//intake.move_velocity(130);
 		//forwardMove(2300, 0.3, 0.0, 0.15, 135); //leave UNCOMMENTED
 
-		turnCWb(87, 0, 80); //150 100 80
+		turnCWb(87, 0, 90); //150 100 80
 		intake.move_velocity(200);
-		forwardMove(900, 0.3, 0.0, 0.15, 70); //105 90 70 1100 1000
-		turnCWb(180, 0, 80); //150 100 90 80  //deg 185
-		intake.move_velocity(-130);
+		forwardMove(800, 0.3, 0.0, 0.15, 70); //105 90 70 1100 1000 900
+		turnCWb(180, 0, 90); //150 100 90 80  //deg 185
+		intake.move_velocity(-160);
 		chas_move(-4000, -4000); //-4000
 		pros::delay(1000); //2000 1000 900 1500 1200
+		forwardMove(-400, 0.3, 0.0, 0.15, 40);
+		forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		forwardMove(-400, 0.3, 0.0, 0.15, 40);
 		forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		chas_move(0, 0); //new
 		intake.brake();
 		turnCWb(180, 0, 40); //new
-		forwardMove(-1750, 0.3, 0.0, 0.15, 100); //115
+		forwardMove(-1750, 0.3, 0.0, 0.15, 100); //115 //d 1750
 
-		turnCWb(90, 0, 70); //200 100 90 80
+		turnCWb(90, 0, 90); //200 100 90 80
 		intake.move_velocity(200);
 		forwardMove(600, 0.3, 0, 0.15, 68); //88
-		turnCWb(180, 0, 70); //200 100 90 80  //deg 190
+		turnCWb(195, 0, 90); //200 100 90 80  //deg 190 180 190
 		//wings.set_value(HIGH);
 		intake.brake();
 		//intake.move_velocity(-130);
@@ -324,22 +326,24 @@ void autonomous() {
 		intake.brake();
 		chas_move(0, 0); 
 		turnCWb(180, 0, 40); //new
-		forwardMove(-1600, 0.3, 0.0, 0.15, 100); //1500 1750
+		forwardMove(-1500, 0.3, 0.0, 0.15, 100); //1500 1750 1600
 
 		turnCWb(60, 0, 70); //200 100 90 80   //90 deg
 		intake.move_velocity(200);
 		forwardMove(600, 0.3, 0, 0.15, 65);
 		turnCWb(90, 0, 60); //90 wt
 		//intake.move_velocity(200);
-		forwardMove(1300, 0.3, 0, 0.15, 100); //88 1900 1700 1100 1400
+		forwardMove(1200, 0.3, 0, 0.15, 100); //88 1900 1700 1100 1400 1300
 		imu.tare_rotation();
-		turnCWb(140, 0, 150); //200 100 90 80 140
+		turnCWb(135, 0, 150); //200 100 90 80 140
 		wings.set_value(HIGH);
-		intake.move_velocity(-130);
+		intake.move_velocity(-160);
 		chas_move(-100, -100); //-4000  -150
 		pros::delay(1800); //2000 1000 900 2000
 		//wings.set_value(LOW);
 		intake.brake();
+		forwardMove(-400, 0.3, 0.0, 0.15, 40);
+		forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		forwardMove(-400, 0.3, 0.0, 0.15, 40);
 		forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		forwardMove(-1750, 0.3, 0.0, 0.15, 100); //1500
