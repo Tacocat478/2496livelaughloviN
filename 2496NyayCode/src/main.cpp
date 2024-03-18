@@ -189,9 +189,9 @@ void autonomous() {
 
 		turnCCW(140, 0); 
 		intake.move_velocity(400); //intake
-		forwardMove(1150, 0.3, 0.0, 0.15, 105); 
+		forwardMove(1200, 0.3, 0.0, 0.15, 105); //1150
 
-		turnCCWb(0); //0, 50   turnCCW(0, 40);
+		turnCCWb(0, 0, 90); //0, 50   turnCCW(0, 40); 90
 		wings.set_value(HIGH);
 		intake.move_velocity(-200);
 		forwardMove(1800, 0.3, 0.0, 0.15, 105); //125
@@ -204,50 +204,51 @@ void autonomous() {
 		//forwardMove(600, 0.3, 0.0, 0.15); //lowering d here = increasing d in turning
 
 		//Far Rush (V2)
-		/*
+		
 		imu.tare_rotation();
 		intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 		intake.move_velocity(-200);
 		pros::delay(200);
 		intake.move_velocity(200);
-		forwardMove(2400, 0.3, 0.0, 0.15, 145);
+		forwardMove(2500, 0.3, 0.0, 0.15, 130);//145 2400
 		turnCW(90, 0);
 		intake.move_velocity(-200);
-		forwardMove(2400, 1.0, 0.0, 0.15, 75); //85
-		forwardMove(-600, 0.3, 0.0, 0.15, 60); //68
+		forwardMove(2400, 1.0, 0.0, 0.15, 60); //85 75
+		forwardMove(-600, 0.3, 0.0, 0.15, 50); //68 60
 		imu.tare_rotation();
 		//turnCW(145, 0);
-		turnCW(180, -10); //0
+		turnCW(180, -5); //0 turnCWb(180, 0, 110); 3/15
 		intake.move_velocity(200);
 		forwardMove(1200, 0.3, 0.0, 0.15, 90); //100
-		forwardMove(-600, 0.3, 0.0, 0.15, 73);
-		turnCWb(0, -10);
+		forwardMove(-600, 0.3, 0.0, 0.15, 60); //73
+		turnCWb(0, 0, 120); //0, -10, 90
 		intake.move_velocity(-200);
 		forwardMove(2400, 1.0, 0.0, 0.15, 75);
 		forwardMove(-600, 0.3, 0.0, 0.15, 70); //timeout could cause inaccurate lineup for next ball   78
-		turnCW(140, -5);
+		turnCW(140, -5); //140 //-5 //turnCWb(140, 0, 150);
 		intake.move_velocity(200);
-		forwardMove(1450, 0.3, 0.0, 0.15, 100); //115
+		forwardMove(1450, 0.3, 0.0, 0.15, 90); //115 100
 
-		turnCW(56, -5); //50,0
+		turnCWb(50, 0, 100); //50,0 turnCW(56, -5); 
 		intake.brake();
 		forwardMove(2250, 0.3, 0.0, 0.15, 125); //2300
 		imu.tare_rotation();
-		turnCCW(82, -5); //75,-5
+		turnCCW(82, -5); //75,-5 
 		wings.set_value(HIGH);
-		forwardMove(620, 0.3, 0.0, 0.15, 78); //500
+		forwardMove(620, 0.3, 0.0, 0.15, 60); //500 //w 78
 		turnCCW(190, -5); //180,-10
 		wings.set_value(LOW);
 		intake.move_velocity(-200);
-		turnCCW(117, 0); //110
+		turnCCWb(107, 0, 100); //110
 		forwardMove(2400, 1.0, 0.0, 0.15, 85);
 		forwardMove(-600, 0.3, 0.0, 0.15, 68);
-		forwardMove(2400, 1.0, 0.0, 0.15, 85);
-		forwardMove(-600, 0.3, 0.0, 0.15, 68);
-		*/
+		//forwardMove(2400, 1.0, 0.0, 0.15, 85);
+		//forwardMove(-600, 0.3, 0.0, 0.15, 68);
+		
 
 
 		//progSkills (V2)
+		/*
 		K.move_velocity(200);
 		intake.move_velocity(-60);
 		pros::delay(200);
@@ -266,7 +267,7 @@ void autonomous() {
 		turnCCW(63, -30); //63, 0
 		forwardMove(200, 0.3, 0.0, 0.15, 40); //78
 		turnCCW(90, 0);
-		intake.move_velocity(-160);
+		intake.move_velocity(-200);
 		forwardMove(4000, 6.0, 0.0, 0.15, 60);
 		forwardMove(-300, 0.3, 0.0, 0.15, 40); //-600, 50
 		forwardMove(4000, 6.0, 0.0, 0.15, 50);
@@ -281,7 +282,7 @@ void autonomous() {
 
 		forwardMove(1400, 0.3, 0.0, 0.15, 70); //145  1000 85 80
 		turnCWb(90, 0, 70); //150  100 80 70
-		intake.move_velocity(-160);
+		intake.move_velocity(-200);
 		pros::delay(100);
 		wings.set_value(HIGH);
 		forwardMove(950, 0.3, 0.0, 0.15, 50); //105 85 80 70  //d 700 1100
@@ -299,7 +300,7 @@ void autonomous() {
 		intake.move_velocity(200);
 		forwardMove(800, 0.3, 0.0, 0.15, 70); //105 90 70 1100 1000 900
 		turnCWb(180, 0, 90); //150 100 90 80  //deg 185
-		intake.move_velocity(-160);
+		intake.move_velocity(-200);
 		chas_move(-4000, -4000); //-4000
 		pros::delay(1000); //2000 1000 900 1500 1200
 		forwardMove(-400, 0.3, 0.0, 0.15, 40);
@@ -337,7 +338,7 @@ void autonomous() {
 		imu.tare_rotation();
 		turnCWb(135, 0, 150); //200 100 90 80 140
 		wings.set_value(HIGH);
-		intake.move_velocity(-160);
+		intake.move_velocity(-200);
 		chas_move(-100, -100); //-4000  -150
 		pros::delay(1800); //2000 1000 900 2000
 		//wings.set_value(LOW);
@@ -347,7 +348,7 @@ void autonomous() {
 		forwardMove(-400, 0.3, 0.0, 0.15, 40);
 		forwardMove(4000, 6.0, 0.0, 0.15, 50);
 		forwardMove(-1750, 0.3, 0.0, 0.15, 100); //1500
-
+		*/
 		/////////////////////////////////////////////////////// leave folowwing uncommenetd
 
 		/*
