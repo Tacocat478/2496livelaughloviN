@@ -25,15 +25,29 @@ void arcade_driverSixMotor(){
 
 void intake_driver(){
     if (master.get_digital(DIGITAL_R1)){
-		intake.move_velocity(200);
+		intakeL.move_velocity(200);
+		intakeR.move_velocity(200);
 	}
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
-		intake.move_velocity(-200);
+		intakeL.move_velocity(-200);
+		intakeR.move_velocity(-200);
 	}
     else{
-		intake.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
-		intake.brake();
+		intakeL.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+		intakeR.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+		intakeL.brake();
+		intakeR.brake();
 	}
+}
+
+void intakeMove_velocity(int speed){
+	intakeL.move_velocity(speed);
+	intakeR.move_velocity(speed);
+}
+
+void intakeBrake(){
+	intakeL.brake();
+	intakeR.brake();
 }
 
 void wings_driver(){

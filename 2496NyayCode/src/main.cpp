@@ -204,33 +204,34 @@ void autonomous() {
 		//forwardMove(600, 0.3, 0.0, 0.15); //lowering d here = increasing d in turning
 
 		//Far Rush (V2)
-		
+		/*
 		imu.tare_rotation();
-		intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-		intake.move_velocity(-200);
+		intakeL.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+		intakeR.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+		intakeMove_velocity(-200);
 		pros::delay(200);
-		intake.move_velocity(200);
+		intakeMove_velocity(200);
 		forwardMove(2500, 0.3, 0.0, 0.15, 130);//145 2400
 		turnCW(90, 0);
-		intake.move_velocity(-200);
+		intakeMove_velocity(-200);
 		forwardMove(2400, 1.0, 0.0, 0.15, 60); //85 75
 		forwardMove(-600, 0.3, 0.0, 0.15, 50); //68 60
 		imu.tare_rotation();
 		//turnCW(145, 0);
 		turnCW(180, -5); //0 turnCWb(180, 0, 110); 3/15
-		intake.move_velocity(200);
+		intakeMove_velocity(200);
 		forwardMove(1200, 0.3, 0.0, 0.15, 90); //100
 		forwardMove(-600, 0.3, 0.0, 0.15, 60); //73
 		turnCWb(0, 0, 120); //0, -10, 90
-		intake.move_velocity(-200);
+		intakeMove_velocity(-200);
 		forwardMove(2400, 1.0, 0.0, 0.15, 75);
 		forwardMove(-600, 0.3, 0.0, 0.15, 70); //timeout could cause inaccurate lineup for next ball   78
 		turnCW(140, -5); //140 //-5 //turnCWb(140, 0, 150);
-		intake.move_velocity(200);
+		intakeMove_velocity(200);
 		forwardMove(1450, 0.3, 0.0, 0.15, 90); //115 100
 
 		turnCWb(50, 0, 100); //50,0 turnCW(56, -5); 
-		intake.brake();
+		intakeBrake();
 		forwardMove(2250, 0.3, 0.0, 0.15, 125); //2300
 		imu.tare_rotation();
 		turnCCW(82, -5); //75,-5 
@@ -238,10 +239,11 @@ void autonomous() {
 		forwardMove(620, 0.3, 0.0, 0.15, 60); //500 //w 78
 		turnCCW(190, -5); //180,-10
 		wings.set_value(LOW);
-		intake.move_velocity(-200);
+		intakeMove_velocity(-200);
 		turnCCWb(107, 0, 100); //110
 		forwardMove(2400, 1.0, 0.0, 0.15, 85);
 		forwardMove(-600, 0.3, 0.0, 0.15, 68);
+		*/
 		//forwardMove(2400, 1.0, 0.0, 0.15, 85);
 		//forwardMove(-600, 0.3, 0.0, 0.15, 68);
 		

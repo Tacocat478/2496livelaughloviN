@@ -17,7 +17,8 @@ pros::Motor RM (20, true);
 pros::Motor K (12, true);
 
 //INTAKE MOTORS
-pros::Motor intake (10,true); 
+pros::Motor intakeL (12); 
+pros::Motor intakeR (8,true); 
 
 //CONTROLLER
 pros::Controller master (CONTROLLER_MASTER);

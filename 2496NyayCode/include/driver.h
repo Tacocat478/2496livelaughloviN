@@ -6,6 +6,8 @@
 
 void arcade_driverSixMotor();
 void intake_driver();
+void intakeMove_velocity(int);
+void intakeBrake();
 void wings_driver();
 void hook_driver();
 void elevation_driver();

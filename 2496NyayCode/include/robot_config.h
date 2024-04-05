@@ -17,7 +17,8 @@ extern pros::Motor RM;
 extern pros::Motor K;
 
 //INTAKE
-extern pros::Motor intake;
+extern pros::Motor intakeL;
+extern pros::Motor intakeR;
 
 //CONTROLLER
 extern pros::Controller master;
