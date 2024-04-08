@@ -14,7 +14,7 @@ pros::Motor RB (19, true);
 pros::Motor RM (20, true);
 
 //KICKER MOTORS
-pros::Motor K (12, true);
+pros::Motor K (17, true);
 
 //INTAKE MOTORS
 pros::Motor intakeL (12); 
