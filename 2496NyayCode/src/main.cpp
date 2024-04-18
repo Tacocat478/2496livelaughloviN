@@ -443,7 +443,9 @@ void autonomous() {
 		turnCWb(120, 0, 50);
 		*/
 
-
+		//V3 PID Test
+		imu.tare_rotation();
+		turnCW(150, 0);
 
 
 

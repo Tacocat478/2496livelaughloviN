@@ -5,6 +5,7 @@
 #include "robot_config.h"
 
 void setConstants(float, float, float);
+void setNewConstants(int, float);
 float calc(int, float, int, int);
 float fwdCalc(int, float, int, int);
 float calcTime(int);

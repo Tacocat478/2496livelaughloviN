@@ -33,6 +33,6 @@ pros::ADIDigitalOut blocker('B', true);
 pros::ADIDigitalIn kickerLimit ('E');
 
 //IMU
-pros::IMU imu (21); 
+pros::IMU imu (5); 
 
 #endif 
