@@ -16,22 +16,12 @@ int integral = 0;
 int derivative = 0;
 float power = 0;
 bool negative;
-float ap, bp, cp, dp, fp, gp, ad, bd, cd, dd, fd, gd;
 
 
 void setConstants(float kp, float ki, float kd){ 
     t_kp = kp;
     t_ki = ki;
     t_kd = kd;
-}
-
-void setNewConstants(int target, float input){
-    error = target - input; 
-    if (abs(error) >= 80 && abs(error) <= 100) extraD = 2.5;
-    if (abs(error) >= 130 && abs(error) <= 180) extraD = 100;
-
-    ap = -6.9479*pow(10,-10), bp = 3.7943*pow(10, -7), cp = -0.0000784358, dp = 0.00761929, fp = -0.352518, gp = 7.75784;
-    ad = -2.1188*pow(10,-9), bd = 9.8641*pow(10,-7), cd = -0.000157061, dd = 0.00901409, fd = -0.0463471, gd = -0.560709;
 }
 
 float calc (int target, float input, int integralKI, int maxI){
@@ -42,12 +32,29 @@ float calc (int target, float input, int integralKI, int maxI){
         integral += error;            
     }
 
+    
+    // if(integral >= 0){
+    //     integral = std::min(integral, maxI); 
+    // }
+    // else{
+    //     integral = std::max(integral, -maxI);
+    // }
+
     derivative = error - prev_error; 
 
+    extraD = 0;
+    if (abs(target) > 35 && abs(target) < 45) extraD = 3;
+    if (abs(target) < 35) extraD = 6;
+    if (abs(target) > 85 && abs(target) < 105) extraD = 0; //-0.5
+    if (abs(target) == 180) extraD = 0; //-1
+
+
+    float ap = -4.0326*pow(10,-10), bp = 2.3486*pow(10, -7), cp = -0.0000528563, dp = 0.00570746, fp = -0.297477, gp = 7.91727;
+    float ad = -2.4118*pow(10,-9), bd = 0.00000130151, cd = -0.000262289, dd = 0.0238383, fd = -0.917237, gd = 18.6136;
     t_kp = ap*pow(target, 5) + bp*pow(target, 4) + cp*pow(target, 3) + dp*pow(target, 2) + fp*target + gp;
     t_kd = ad*pow(target, 5) + bd*pow(target, 4) + cd*pow(target, 3) + dd*pow(target, 2) + fd*target + gd + extraD;
     t_ki = 0.0;
-
+    
     power = t_kp*error + t_ki*integral + t_kd*derivative; 
 
     return power; 
@@ -292,7 +299,6 @@ void turnCW(int target, int extraTime){
     float boundTwo = 0;
     //float timeLimit = calcTime(target);
     float timeLimit = calcTime(abs(target-imu.get_rotation())); //changed 3/4 after 5 ball
-    setNewConstants(target, imu.get_rotation()); //new
 
     while(true){
         position = imu.get_rotation();
@@ -301,15 +307,14 @@ void turnCW(int target, int extraTime){
 
         chas_move(-voltage, voltage);
 
-        /*
         if (count > timeLimit + extraTime) {
             break;
         }
-        */
-        
 
         count++;
         pros::delay(10);
+        /*if (abs(position-target) > 1.5) count++;
+        master.print(0, 0, "%f", count); */
     }
     chas_move(0,0);
 }
