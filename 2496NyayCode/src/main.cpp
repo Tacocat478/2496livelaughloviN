@@ -443,6 +443,9 @@ void autonomous() {
 		turnCWb(120, 0, 50);
 		*/
 
+		imu.tare_rotation();
+		turnCW(80,0);
+
 
 
 
