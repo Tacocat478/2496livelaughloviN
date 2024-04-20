@@ -10,6 +10,7 @@ float t_kd;
 float extraD = 0;
 float KI = 0;
 float maxI = 200;
+int iniDiff;
 int error = 0;
 int prev_error = 0;
 int integral = 0;
@@ -35,12 +36,10 @@ float calc (int target, float input, int integralKI, int maxI){
     derivative = error - prev_error; 
     
     extraD = 0;
-    if (abs(target) >= 80 && abs(target) <= 100) extraD = 2.5;
-    if (abs(target) >= 130 && abs(target) <= 155) extraD = -0.3;
-    if (abs(target) > 155 && abs(target) <= 175) extraD = 0.7;
-    if (abs(target) > 175) extraD = -1;
-
-
+    if (abs(iniDiff) >= 80 && abs(iniDiff) <= 100) extraD = 2.0;
+    if (abs(iniDiff) >= 130 && abs(iniDiff) <= 155) extraD = -0.3;
+    if (abs(iniDiff) > 155 && abs(iniDiff) <= 175) extraD = 0.7;
+    if (abs(iniDiff) > 175) extraD = -1;
 
     float ap = -6.9479*pow(10,-10), bp = 3.7943*pow(10, -7), cp = -0.0000784358, dp = 0.00761929, fp = -0.352518, gp = 7.75784;
     float ad = -2.1188*pow(10,-9), bd = 9.8641*pow(10,-7), cd = -0.000157061, dd = 0.00901409, fd = -0.0463471, gd = -0.560709;
@@ -293,6 +292,7 @@ void turnCW(int target, int extraTime){
     float boundTwo = 0;
     //float timeLimit = calcTime(target);
     float timeLimit = calcTime(abs(target-imu.get_rotation())); //changed 3/4 after 5 ball
+    iniDiff = target-imu.get_rotation();
 
     while(true){
         position = imu.get_rotation();
