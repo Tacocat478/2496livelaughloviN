@@ -89,7 +89,7 @@ void autonomous() {
 
 		//AWP DESCORE (V2)
 		/*
-		intake.move_velocity(-200);
+		intakeMove_velocity(-200);
 		chas_moveFor(300, 200);
 		pros::delay(1000);
 		chas_moveFor(1, 0);
@@ -108,10 +108,7 @@ void autonomous() {
 		chas_moveFor(-1350, 100);
 		pros::delay(3000);
 		*/
-		//intake.move_velocity(-200);
-		//forwardMoveb(-850, 0.15);
-		//chas_moveFor(-200, 200);
-		//pros::delay(1000);
+		
 		
 
 
@@ -157,53 +154,52 @@ void autonomous() {
 		//OUTAKE
 		//intake.move_velocity(-200);
 
-		//5Ball (V2)
-		/*
+		//5Ball (V3)
 		imu.tare_rotation(); //initially resets the inertia sensor  reading
-		intake.move_velocity(-200); //outtake to deploy intake
+		intakeMove_velocity(-200); //outtake to deploy intake
 		pros::delay(200);
-		intake.move_velocity(200);
-		forwardMove(1100, 0.3, 0.0, 0.15, 105);
-		turnCCW(35, 0); 
+		intakeMove_velocity(200);
+		forwardMove(820, 0.3, 0.0, 0.15, 90); //1100
+		turnCCWb(35, 0, 50); 
 		wings.set_value(HIGH); //wings out
-		forwardMove(600, 0.3, 0.0, 0.15, 78);
-		turnCCW(110, 0); //turn to remove the triball
+		forwardMove(460, 0.3, 0.0, 0.15, 78); //600
+		turnCCWb(110, 0, 100); //turn to remove the triball
 		wings.set_value(LOW); //wings in
-		turnCCW(45, 0);
-		forwardMove(800, 0.3, 0.0, 0.15, 78); 
-		turnCCW(90, 0); //turn to face the goal
-		intake.move_velocity(-200);
-		forwardMove(2400, 1.0, 0.0, 0.15, 48);
-		forwardMove(-600, 0.3, 0.0, 0.15, 30); 
-		forwardMove(2400, 1.0, 0.0, 0.15, 48);
-		forwardMove(-600, 0.3, 0.0, 0.15, 88);
+		turnCCWb(45, 0, 60);
+		forwardMove(660, 0.3, 0.0, 0.15, 78); //800
+		turnCCWb(90, 0, 80); //turn to face the goal
+		intakeMove_velocity(-200);
+		forwardMove(1840, 1.0, 0.0, 0.15, 48); //2400
+		forwardMove(-460, 0.3, 0.0, 0.15, 30); //-600
+		forwardMove(1840, 1.0, 0.0, 0.15, 48); //2400
+		forwardMove(-460, 0.3, 0.0, 0.15, 88); //-600
 
-		turnCCW(172, 0);
-		intake.move_velocity(200);
-		forwardMove(2400, 0.3, 0.0, 0.15, 145);
+		turnCCWb(172, 0, 150);
+		intakeMove_velocity(200);
+		forwardMove(1840, 0.3, 0.0, 0.15, 145); //2400
 
 		turnCCW(30, 50); 
-		intake.move_velocity(-400); //outtake
-		forwardMove(700, 0.3, 0.0, 0.15, 78);
+		intakeMove_velocity(-400); //outtake
+		forwardMove(470, 0.3, 0.0, 0.15, 78); //700
 		pros::delay(600);
 
 		turnCCW(140, 0); 
-		intake.move_velocity(400); //intake
-		forwardMove(1200, 0.3, 0.0, 0.15, 105); //1150
+		intakeMove_velocity(400); 
+		forwardMove(920, 0.3, 0.0, 0.15, 105); //1200
 
-		turnCCWb(0, 0, 90); //0, 50   turnCCW(0, 40); 90
+		turnCCWb(0, 0, 90); //
 		wings.set_value(HIGH);
-		intake.move_velocity(-200);
-		forwardMove(1800, 0.3, 0.0, 0.15, 105); //125
-		forwardMove(-1200, 0.3, 0.0, 0.15, 78);
-		*/
+		intakeMove_velocity(-200);
+		forwardMove(1520, 0.3, 0.0, 0.15, 105); //1800
+		forwardMove(-920, 0.3, 0.0, 0.15, 78); //-1200
+		
 
 		//TEST
 		//imu.tare_rotation();
 		//turnCW(90); //error goes above +-1 [always negative 1.6 ish] under 45 degrees, gets iffy above  95 degrees (is either perfect or around 1.5-2.0 --usually negative aroung 130 but above it's balanced positive to negative?) [usually negative error]; over 130 error is around -1.6 [110-120 is fine; 140 seems even?; 150 is negative low up to -1.6; 160-170 is fine; fixed slight error in 180 with conditional]
 		//forwardMove(600, 0.3, 0.0, 0.15); //lowering d here = increasing d in turning
 
-		//Far Rush (V2)
+		//Far Rush (V3) UNTESTED
 		/*
 		imu.tare_rotation();
 		intakeL.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
@@ -211,41 +207,39 @@ void autonomous() {
 		intakeMove_velocity(-200);
 		pros::delay(200);
 		intakeMove_velocity(200);
-		forwardMove(2500, 0.3, 0.0, 0.15, 130);//145 2400
+		forwardMove(1940, 0.3, 0.0, 0.15, 130);//2500
 		turnCW(90, 0);
 		intakeMove_velocity(-200);
-		forwardMove(2400, 1.0, 0.0, 0.15, 60); //85 75
-		forwardMove(-600, 0.3, 0.0, 0.15, 50); //68 60
+		forwardMove(1840, 1.0, 0.0, 0.15, 60); //2400
+		forwardMove(-460, 0.3, 0.0, 0.15, 50); //-600
 		imu.tare_rotation();
 		//turnCW(145, 0);
 		turnCW(180, -5); //0 turnCWb(180, 0, 110); 3/15
 		intakeMove_velocity(200);
-		forwardMove(1200, 0.3, 0.0, 0.15, 90); //100
-		forwardMove(-600, 0.3, 0.0, 0.15, 60); //73
+		forwardMove(920, 0.3, 0.0, 0.15, 90); //1200
+		forwardMove(-460, 0.3, 0.0, 0.15, 60); //-600
 		turnCWb(0, 0, 120); //0, -10, 90
 		intakeMove_velocity(-200);
-		forwardMove(2400, 1.0, 0.0, 0.15, 75);
-		forwardMove(-600, 0.3, 0.0, 0.15, 70); //timeout could cause inaccurate lineup for next ball   78
+		forwardMove(1840, 1.0, 0.0, 0.15, 75); //2400
+		forwardMove(-460, 0.3, 0.0, 0.15, 70); //timeout could cause inaccurate lineup for next ball -600
 		turnCW(140, -5); //140 //-5 //turnCWb(140, 0, 150);
 		intakeMove_velocity(200);
-		forwardMove(1450, 0.3, 0.0, 0.15, 90); //115 100
+		forwardMove(1070, 0.3, 0.0, 0.15, 90); //1450
 
 		turnCWb(50, 0, 100); //50,0 turnCW(56, -5); 
 		intakeBrake();
-		forwardMove(2250, 0.3, 0.0, 0.15, 125); //2300
+		forwardMove(1700, 0.3, 0.0, 0.15, 125); //2250
 		imu.tare_rotation();
 		turnCCW(82, -5); //75,-5 
 		wings.set_value(HIGH);
-		forwardMove(620, 0.3, 0.0, 0.15, 60); //500 //w 78
+		forwardMove(480, 0.3, 0.0, 0.15, 60); //620
 		turnCCW(190, -5); //180,-10
 		wings.set_value(LOW);
 		intakeMove_velocity(-200);
 		turnCCWb(107, 0, 100); //110
-		forwardMove(2400, 1.0, 0.0, 0.15, 85);
-		forwardMove(-600, 0.3, 0.0, 0.15, 68);
+		forwardMove(1840, 1.0, 0.0, 0.15, 85); //2400
+		forwardMove(-460, 0.3, 0.0, 0.15, 68); //-600
 		*/
-		//forwardMove(2400, 1.0, 0.0, 0.15, 85);
-		//forwardMove(-600, 0.3, 0.0, 0.15, 68);
 		
 
 
@@ -414,33 +408,38 @@ void autonomous() {
 		*/
 
 
-		//closeRush (V2)
+		//closeRush (V3)
 		/*
 		imu.tare_rotation();
-		intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-		intake.move_velocity(-200);
+		intakeL.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+		intakeR.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+		intakeMove_velocity(-200);
 		pros::delay(200);
 
-		intake.move_velocity(200);
-		forwardMove(2400, 0.3, 0.0, 0.15, 130); //145
-		turnCWb(18, 0, 40); //50
-		forwardMove(-2400, 0.3, 0.0, 0.15, 135);
-		intake.brake();
+		intakeMove_velocity(200);
+		forwardMove(1740, 0.3, 0.0, 0.15, 110); //2400
+		forwardMove(-600, 0.3, 0.0, 0.15, 80);
+		turnCWb(30, 0, 70); //18,40   23
+		forwardMove(-1240, 0.3, 0.0, 0.15, 135); //-2400  -1840
+		intakeBrake();
 
-		turnCWb(160, 0, 150);
+		turnCWb(170, 0, 150);
 		wings.set_value(HIGH);
-		forwardMove(370, 0.3, 0.0, 0.15, 60);
+		forwardMove(430, 0.3, 0.0, 0.15, 60); //370
 		turnCWb(40, 0, 100);
 		wings.set_value(LOW);
 		turnCWb(100, 0, 150);
-		forwardMove(1200, 0.3, 0.0, 0.15, 90);
+		forwardMove(920, 0.3, 0.0, 0.15, 90); //1200
 		turnCWb(70, 0, 50);
 
-		intake.move_velocity(-200);
-		forwardMove(800, 0.3, 0.0, 0.15, 135);
-		intake.brake();
-		forwardMove(-1600, 0.3, 0.0, 0.15, 115);
+		intakeMove_velocity(-200);
+		forwardMove(660, 0.3, 0.0, 0.15, 135); //800
+		intakeBrake();
+		forwardMove(-1320, 0.3, 0.0, 0.15, 115); //-1600
 		turnCWb(120, 0, 50);
+
+		forwardMove(-360, 0.3, 0.0, 0.15, 80);
+		wings.set_value(HIGH);
 		*/
 
 

@@ -163,12 +163,12 @@ void forwardMove(int target, float p, float i, float d, int timeLimit){
 
         chas_move(-voltage, -voltage); 
 
-        /*
+        
         if (count >= timeLimit) { 
             break; 
         }   
         count++;
-        */
+        
         
         pros::delay(10);
         
