@@ -443,8 +443,6 @@ void autonomous() {
 		turnCWb(120, 0, 50);
 		*/
 
-		imu.tare_rotation();
-		turnCW(70,0);
 
 
 
@@ -468,6 +466,7 @@ void autonomous() {
  */
 void opcontrol() {
 	imu.tare_rotation();
+	reset_encoders();
 	//int testCount = 0;
 	//LF.tare_position();
 	while(true){
@@ -478,9 +477,11 @@ void opcontrol() {
 		elevation_driver();
 		kicker_driver();
 
-		float positionTest = imu.get_rotation();
+		//float positionTest = imu.get_rotation();
 		//float target = 90.0;
-		master.print(0, 0, "%f ", positionTest);
+		//master.print(0, 0, "%f ", positionTest);
+		float encoder_average2 = -(LM.get_position() + RM.get_position()) / 2;
+		master.print(0, 0, "%f", encoder_average2);
 
 		
 		//float encoder_averageNew = -(LM.get_position() + RM.get_position()) / 2;
