@@ -155,6 +155,7 @@ void autonomous() {
 		//intake.move_velocity(-200);
 
 		//5Ball (V3)
+		/*
 		imu.tare_rotation(); //initially resets the inertia sensor  reading
 		intakeMove_velocity(-200); //outtake to deploy intake
 		pros::delay(200);
@@ -195,7 +196,7 @@ void autonomous() {
 		intakeMove_velocity(-200);
 		forwardMove(1520, 0.3, 0.0, 0.15, 80); //1800 105
 		forwardMove(-920, 0.3, 0.0, 0.15, 78); //-1200
-		
+		*/
 
 		//TEST
 		//imu.tare_rotation();
@@ -412,7 +413,7 @@ void autonomous() {
 
 
 		//closeRush (V3)
-		/*
+		
 		imu.tare_rotation();
 		intakeL.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 		intakeR.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
@@ -423,16 +424,16 @@ void autonomous() {
 		forwardMove(1740, 0.3, 0.0, 0.15, 110); //2400
 		forwardMove(-600, 0.3, 0.0, 0.15, 80);
 		turnCWb(30, 0, 70); //18,40   23
-		forwardMove(-1240, 0.3, 0.0, 0.15, 135); //-2400  -1840
+		forwardMove(-1170, 0.3, 0.0, 0.15, 135); //-2400  -1840 -1240
 		intakeBrake();
 
 		turnCWb(170, 0, 150);
 		wings.set_value(HIGH);
 		forwardMove(430, 0.3, 0.0, 0.15, 60); //370
-		turnCWb(40, 0, 100);
+		turnCWb(60, 0, 100); //40
 		wings.set_value(LOW);
-		turnCWb(100, 0, 150);
-		forwardMove(920, 0.3, 0.0, 0.15, 90); //1200
+		turnCWb(112, 0, 150); //100
+		forwardMove(1020, 0.3, 0.0, 0.15, 120); //1200
 		turnCWb(70, 0, 50);
 
 		intakeMove_velocity(-200);
@@ -443,7 +444,7 @@ void autonomous() {
 
 		forwardMove(-360, 0.3, 0.0, 0.15, 80);
 		wings.set_value(HIGH);
-		*/
+		
 
 
 
