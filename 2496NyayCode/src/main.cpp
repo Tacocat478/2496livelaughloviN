@@ -159,38 +159,39 @@ void autonomous() {
 		intakeMove_velocity(-200); //outtake to deploy intake
 		pros::delay(200);
 		intakeMove_velocity(200);
-		forwardMove(820, 0.3, 0.0, 0.15, 90); //1100
-		turnCCWb(35, 0, 50); 
+		forwardMove(820, 0.3, 0.0, 0.15, 80); //1100
+		turnCCWb(35, 0, 30);  //40
 		wings.set_value(HIGH); //wings out
-		forwardMove(460, 0.3, 0.0, 0.15, 78); //600
-		turnCCWb(110, 0, 100); //turn to remove the triball
+		forwardMove(460, 0.3, 0.0, 0.15, 50); //600 78 60
+		turnCCWb(110, 0, 50); //turn to remove the triball 100
 		wings.set_value(LOW); //wings in
-		turnCCWb(45, 0, 60);
-		forwardMove(660, 0.3, 0.0, 0.15, 78); //800
-		turnCCWb(90, 0, 80); //turn to face the goal
+		turnCCWb(45, 0, 50); //60
+		forwardMove(660, 0.3, 0.0, 0.15, 60); //800  78
+		turnCCWb(90, 0, 40); //turn to face the goal  80
 		intakeMove_velocity(-200);
+		pros::delay(200);
 		forwardMove(1840, 1.0, 0.0, 0.15, 48); //2400
 		forwardMove(-460, 0.3, 0.0, 0.15, 30); //-600
 		forwardMove(1840, 1.0, 0.0, 0.15, 48); //2400
-		forwardMove(-460, 0.3, 0.0, 0.15, 88); //-600
+		forwardMove(-460, 0.3, 0.0, 0.15, 40); //-600  //T 88
 
-		turnCCWb(172, 0, 150);
+		turnCCWb(175, 0, 100); //150
 		intakeMove_velocity(200);
-		forwardMove(1840, 0.3, 0.0, 0.15, 145); //2400
+		forwardMove(1840, 0.3, 0.0, 0.15, 125); //2400  145
 
-		turnCCW(30, 50); 
+		turnCCW(30, 40); //50
 		intakeMove_velocity(-400); //outtake
-		forwardMove(470, 0.3, 0.0, 0.15, 78); //700
+		forwardMove(470, 0.3, 0.0, 0.15, 60); //700  //T 78
 		pros::delay(600);
 
 		turnCCW(140, 0); 
 		intakeMove_velocity(400); 
-		forwardMove(920, 0.3, 0.0, 0.15, 105); //1200
+		forwardMove(920, 0.3, 0.0, 0.15, 80); //1200   105
 
-		turnCCWb(0, 0, 90); //
+		turnCCWb(0, 0, 120); //90
 		wings.set_value(HIGH);
 		intakeMove_velocity(-200);
-		forwardMove(1520, 0.3, 0.0, 0.15, 105); //1800
+		forwardMove(1520, 0.3, 0.0, 0.15, 80); //1800 105
 		forwardMove(-920, 0.3, 0.0, 0.15, 78); //-1200
 		
 
