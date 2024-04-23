@@ -166,7 +166,7 @@ void autonomous() {
 		turnCCWb(110, 0, 50); //turn to remove the triball 100
 		wings.set_value(LOW); //wings in
 		turnCCWb(45, 0, 50); //60
-		forwardMove(660, 0.3, 0.0, 0.15, 60); //800  78
+		forwardMove(660, 0.3, 0.0, 0.15, 70); //800  78
 		turnCCWb(90, 0, 40); //turn to face the goal  80
 		intakeMove_velocity(-200);
 		pros::delay(200);
@@ -181,14 +181,16 @@ void autonomous() {
 
 		turnCCW(30, 40); //50
 		intakeMove_velocity(-400); //outtake
-		forwardMove(470, 0.3, 0.0, 0.15, 60); //700  //T 78
+		forwardMove(600, 0.3, 0.0, 0.15, 60); //470  //T 78
 		pros::delay(600);
 
-		turnCCW(140, 0); 
+		turnCCW(150, 0); //140
 		intakeMove_velocity(400); 
 		forwardMove(920, 0.3, 0.0, 0.15, 80); //1200   105
 
-		turnCCWb(0, 0, 120); //90
+		//turnCCWb(0, 0, 130); //90  120
+		imu.tare_rotation();
+		turnCWb(160,0,100);
 		wings.set_value(HIGH);
 		intakeMove_velocity(-200);
 		forwardMove(1520, 0.3, 0.0, 0.15, 80); //1800 105
