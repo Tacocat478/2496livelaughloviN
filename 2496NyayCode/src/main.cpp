@@ -87,30 +87,27 @@ void autonomous() {
 		K.brake();
 		*/
 
-		//AWP DESCORE (V2)
+		//AWP DESCORE (V3)
 		/*
 		intakeMove_velocity(-200);
-		chas_moveFor(300, 200);
+		chas_moveFor(230, 200);
 		pros::delay(1000);
-		chas_moveFor(1, 0);
+		chas_moveFor(1, 0); //distance, velocity
 		wings.set_value(HIGH);
-		turnLeftFor(300, 40);
+		turnLeftFor(330, 40);
 		pros::delay(1000);
-		//turn2(-60, 1.50, 0.0, 0.0, 0, 0);
 		wings.set_value(LOW);
-		//turn2(-160, 1.35, 0.0, 0.0, 0, 0); //will need to revise kP
-		turnRightFor(150, 40);
+		turnRightFor(370, 40); //115
 		pros::delay(1000);
-		chas_moveFor(-900, 100);
+		chas_moveFor(-250, 100); //-660
 		pros::delay(1500);
-		turnLeftFor(100, 40);
+		turnLeftFor(210, 40); //232
 		pros::delay(1000);
-		chas_moveFor(-1350, 100);
+		wings.set_value(HIGH);
+		chas_moveFor(-1540, 100);
 		pros::delay(3000);
+		wings.set_value(LOW);
 		*/
-		
-		
-
 
 		//SHOOT ONE (V2)
 		/*
@@ -155,7 +152,6 @@ void autonomous() {
 		//intake.move_velocity(-200);
 
 		//5Ball (V3)
-		/*
 		imu.tare_rotation(); //initially resets the inertia sensor  reading
 		intakeMove_velocity(-200); //outtake to deploy intake
 		pros::delay(200);
@@ -187,16 +183,20 @@ void autonomous() {
 
 		turnCCW(150, 0); //140
 		intakeMove_velocity(400); 
-		forwardMove(920, 0.3, 0.0, 0.15, 80); //1200   105
+		forwardMove(940, 0.3, 0.0, 0.15, 80); //1200  920    105
+		intakeL.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+		intakeR.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+		intakeBrake();
 
 		//turnCCWb(0, 0, 130); //90  120
 		imu.tare_rotation();
-		turnCWb(160,0,100);
+		turnCWb(150,0,100); //160
 		wings.set_value(HIGH);
 		intakeMove_velocity(-200);
+		pros::delay(200);
 		forwardMove(1520, 0.3, 0.0, 0.15, 80); //1800 105
 		forwardMove(-920, 0.3, 0.0, 0.15, 78); //-1200
-		*/
+
 
 		//TEST
 		//imu.tare_rotation();
@@ -413,7 +413,7 @@ void autonomous() {
 
 
 		//closeRush (V3)
-		
+		/*
 		imu.tare_rotation();
 		intakeL.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 		intakeR.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
@@ -437,16 +437,46 @@ void autonomous() {
 		turnCWb(70, 0, 50);
 
 		intakeMove_velocity(-200);
-		forwardMove(660, 0.3, 0.0, 0.15, 135); //800
+		forwardMove(520, 0.3, 0.0, 0.15, 135); //660
 		intakeBrake();
 		forwardMove(-1320, 0.3, 0.0, 0.15, 115); //-1600
 		turnCWb(120, 0, 50);
 
 		forwardMove(-360, 0.3, 0.0, 0.15, 80);
 		wings.set_value(HIGH);
-		
+		*/
 
+		//closeRushR(V3)
+		/*
+		imu.tare_rotation();
+		intakeL.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+		intakeR.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+		intakeMove_velocity(-200);
+		pros::delay(200);
 
+		intakeMove_velocity(200);
+		forwardMove(2200, 0.3, 0.0, 0.15, 110); //2400
+		forwardMove(-2000, 0.3, 0.0, 0.15, 135); //-2400  -1840 -1240
+		intakeBrake();
+
+		turnCWb(170, 0, 150);
+		wings.set_value(HIGH);
+		forwardMove(430, 0.3, 0.0, 0.15, 60); //370
+		turnCWb(60, 0, 100); //40
+		wings.set_value(LOW);
+		turnCWb(112, 0, 150); //100
+		forwardMove(1020, 0.3, 0.0, 0.15, 120); //1200
+		turnCWb(60, 0, 50);
+
+		intakeMove_velocity(-200);
+		forwardMove(520, 0.3, 0.0, 0.15, 135); //660
+		intakeBrake();
+		forwardMove(-1320, 0.3, 0.0, 0.15, 115); //-1600
+		turnCWb(120, 0, 50);
+
+		forwardMove(-360, 0.3, 0.0, 0.15, 80);
+		wings.set_value(HIGH);
+		*/
 
 
 
