@@ -88,7 +88,6 @@ void autonomous() {
 		*/
 
 		//AWP DESCORE (V3)
-		/*
 		intakeMove_velocity(-200);
 		chas_moveFor(230, 200);
 		pros::delay(1000);
@@ -97,17 +96,17 @@ void autonomous() {
 		turnLeftFor(330, 40);
 		pros::delay(1000);
 		wings.set_value(LOW);
-		turnRightFor(370, 40); //115
+		turnRightFor(350, 40); //115 370
 		pros::delay(1000);
-		chas_moveFor(-250, 100); //-660
-		pros::delay(1500);
-		turnLeftFor(210, 40); //232
-		pros::delay(1000);
-		wings.set_value(HIGH);
-		chas_moveFor(-1540, 100);
-		pros::delay(3000);
-		wings.set_value(LOW);
-		*/
+		chas_moveFor(-450, 70); //-660 230
+		pros::delay(2000);
+		turnLeftFor(200, 30); //232
+		pros::delay(2500);
+		//wings.set_value(HIGH);
+		chas_moveFor(-1400, 100);
+		pros::delay(4000);
+		//wings.set_value(LOW);
+		
 
 		//SHOOT ONE (V2)
 		/*
@@ -194,7 +193,7 @@ void autonomous() {
 		turnCWb(150,0,100); //160
 		wings.set_value(HIGH);
 		intakeMove_velocity(-200);
-		pros::delay(200);
+		pros::delay(500); //200
 		forwardMove(1520, 0.3, 0.0, 0.15, 80); //1800 105
 		forwardMove(-920, 0.3, 0.0, 0.15, 78); //-1200
 		*/
@@ -431,7 +430,7 @@ void autonomous() {
 		turnCWb(170, 0, 150);
 		wings.set_value(HIGH);
 		forwardMove(430, 0.3, 0.0, 0.15, 60); //370
-		turnCWb(60, 0, 100); //40
+		turnCWb(40, 0, 100); //40 60
 		wings.set_value(LOW);
 		turnCWb(112, 0, 150); //100
 		forwardMove(1020, 0.3, 0.0, 0.15, 120); //1200
@@ -448,7 +447,7 @@ void autonomous() {
 		*/
 
 		//closeRushR(V3)
-		
+		/*
 		imu.tare_rotation();
 		intakeL.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 		intakeR.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
@@ -477,7 +476,7 @@ void autonomous() {
 
 		forwardMove(-360, 0.3, 0.0, 0.15, 80);
 		wings.set_value(HIGH);
-		
+		*/
 
 
 
